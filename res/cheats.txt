@@ -1,0 +1,6262 @@
+// This file was decompiled using SASCM.ini published on 2022-03-20
+// Sanny Builder
+{$CLEO .cs}
+
+03A4: script_name 'CHEATS' 
+0AB3: cleo_shared_var 200 = 0 
+0AB3: cleo_shared_var 201 = 0 
+0AB3: cleo_shared_var 202 = 0 
+0AB3: cleo_shared_var 203 = 0 
+0AB3: cleo_shared_var 204 = 0 
+0AB3: cleo_shared_var 205 = 0 
+0AB3: cleo_shared_var 206 = 0 
+0AB3: cleo_shared_var 207 = 0 
+0AB3: cleo_shared_var 208 = 0 
+0A95: save_this_custom_script 
+
+:CHEATS_76
+0001: wait 0 ms 
+0AB4: 0@ = cleo_shared_var 200 
+00D6: if 1 
+0256:   player $PLAYER_CHAR defined 
+0039:   0@ == 0 
+004D: jump_if_false @CHEATS_184 
+00D6: if 1 
+0AB0:   is_key_pressed 17 
+0AB0:   is_key_pressed 67 
+004D: jump_if_false @CHEATS_151 
+01B4: set_player $PLAYER_CHAR can_move 0 
+0AB3: cleo_shared_var 200 = 1 
+0002: jump @CHEATS_217 
+
+:CHEATS_151
+0AB4: 0@ = cleo_shared_var 201 
+00D6: if 
+0039:   0@ == 1 
+004D: jump_if_false @CHEATS_184 
+0002: jump @CHEATS_27058 
+
+:CHEATS_184
+0AB4: 0@ = cleo_shared_var 206 
+00D6: if 
+0039:   0@ == 1 
+004D: jump_if_false @CHEATS_76 
+0002: jump @CHEATS_50482 
+
+:CHEATS_217
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CHT11' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'CHT1' 'CHT2' 'CHT3' 'CHT4' 'CHT5' 'CHT6' 'CHT7' 'CHT8' 'CHT9' 'CHT48' 'CHT10' 'DUMMY' 
+
+:CHEATS_383
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_416 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_51462 
+
+:CHEATS_416
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_383 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 11 default_jump 0 @CHEATS_51462 jumps 0 @CHEATS_570 1 @CHEATS_6333 2 @CHEATS_6476 3 @CHEATS_7237 4 @CHEATS_8151 5 @CHEATS_9367 6 @CHEATS_11670 
+0872: jump_table_jumps 7 @CHEATS_24004 8 @CHEATS_29180 9 @CHEATS_30625 10 @CHEATS_30272 -1 @CHEATS_17021 -1 @CHEATS_23983 -1 @CHEATS_23983 -1 @CHEATS_23983 -1 @CHEATS_23983 
+
+:CHEATS_570
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CHT1' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'CHT12' 'CHT15' 'CHT16' 'CHT17' 'CHT21' 'CHT22' 'CH246' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 
+
+:CHEATS_736
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_769 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_217 
+
+:CHEATS_769
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_736 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 7 default_jump 0 @CHEATS_51462 jumps 0 @CHEATS_858 1 @CHEATS_5614 2 @CHEATS_5731 3 @CHEATS_5848 4 @CHEATS_5965 5 @CHEATS_6199 6 @CHEATS_47648 
+
+:CHEATS_858
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CHT12' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'CHT13' 'CHT14' 'CHT80' 'CHT81' 'CHT82' 'CHT83' 'CHT84' 'CHT85' 'CHT86' 'CHT87' 'CHT88' 'DUMMY' 
+
+:CHEATS_1024
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_1057 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_570 
+
+:CHEATS_1057
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_1024 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 11 default_jump 0 @CHEATS_51462 jumps 0 @CHEATS_1211 1 @CHEATS_1832 2 @CHEATS_2189 3 @CHEATS_2546 4 @CHEATS_2903 5 @CHEATS_3216 6 @CHEATS_3529 
+0872: jump_table_jumps 7 @CHEATS_3930 8 @CHEATS_4331 9 @CHEATS_4688 10 @CHEATS_5045 -1 @CHEATS_17021 -1 @CHEATS_23983 -1 @CHEATS_23983 -1 @CHEATS_23983 -1 @CHEATS_23983 
+
+:CHEATS_1211
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CHT13' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'CHT89' 'CHT90' 'CHT91' 'CHT92' 'CHT93' 'CHT94' 'CHT95' 'CHT96' 'CHT97' 'DUMMY' 'DUMMY' 'DUMMY' 
+
+:CHEATS_1377
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_1410 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_858 
+
+:CHEATS_1410
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_1377 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0001: wait 0 ms 
+00D6: if 
+0039:   1@ == 0 
+004D: jump_if_false @CHEATS_1480 
+0006: 0@ = 1 
+0006: 2@ = 331 
+0002: jump @CHEATS_5534 
+
+:CHEATS_1480
+0001: wait 0 ms 
+00D6: if 
+0039:   1@ == 1 
+004D: jump_if_false @CHEATS_1524 
+0006: 0@ = 2 
+0006: 2@ = 333 
+0002: jump @CHEATS_5534 
+
+:CHEATS_1524
+0001: wait 0 ms 
+00D6: if 
+0039:   1@ == 2 
+004D: jump_if_false @CHEATS_1568 
+0006: 0@ = 3 
+0006: 2@ = 334 
+0002: jump @CHEATS_5534 
+
+:CHEATS_1568
+0001: wait 0 ms 
+00D6: if 
+0039:   1@ == 3 
+004D: jump_if_false @CHEATS_1612 
+0006: 0@ = 4 
+0006: 2@ = 335 
+0002: jump @CHEATS_5534 
+
+:CHEATS_1612
+0001: wait 0 ms 
+00D6: if 
+0039:   1@ == 4 
+004D: jump_if_false @CHEATS_1656 
+0006: 0@ = 5 
+0006: 2@ = 336 
+0002: jump @CHEATS_5534 
+
+:CHEATS_1656
+0001: wait 0 ms 
+00D6: if 
+0039:   1@ == 5 
+004D: jump_if_false @CHEATS_1700 
+0006: 0@ = 6 
+0006: 2@ = 337 
+0002: jump @CHEATS_5534 
+
+:CHEATS_1700
+0001: wait 0 ms 
+00D6: if 
+0039:   1@ == 6 
+004D: jump_if_false @CHEATS_1744 
+0006: 0@ = 7 
+0006: 2@ = 338 
+0002: jump @CHEATS_5534 
+
+:CHEATS_1744
+0001: wait 0 ms 
+00D6: if 
+0039:   1@ == 7 
+004D: jump_if_false @CHEATS_1788 
+0006: 0@ = 8 
+0006: 2@ = 339 
+0002: jump @CHEATS_5534 
+
+:CHEATS_1788
+0001: wait 0 ms 
+00D6: if 
+0039:   1@ == 8 
+004D: jump_if_false @CHEATS_5593 
+0006: 0@ = 9 
+0006: 2@ = 341 
+0002: jump @CHEATS_5534 
+
+:CHEATS_1832
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CHT14' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'CHT98' 'CHT99' 'CH100' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 
+
+:CHEATS_1998
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_2031 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_858 
+
+:CHEATS_2031
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_1998 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0001: wait 0 ms 
+00D6: if 
+0039:   1@ == 0 
+004D: jump_if_false @CHEATS_2101 
+0006: 0@ = 22 
+0006: 2@ = 346 
+0002: jump @CHEATS_5534 
+
+:CHEATS_2101
+0001: wait 0 ms 
+00D6: if 
+0039:   1@ == 1 
+004D: jump_if_false @CHEATS_2145 
+0006: 0@ = 23 
+0006: 2@ = 347 
+0002: jump @CHEATS_5534 
+
+:CHEATS_2145
+0001: wait 0 ms 
+00D6: if 
+0039:   1@ == 2 
+004D: jump_if_false @CHEATS_5593 
+0006: 0@ = 24 
+0006: 2@ = 348 
+0002: jump @CHEATS_5534 
+
+:CHEATS_2189
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CHT80' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'CH101' 'CH102' 'CH103' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 
+
+:CHEATS_2355
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_2388 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_858 
+
+:CHEATS_2388
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_2355 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0001: wait 0 ms 
+00D6: if 
+0039:   1@ == 0 
+004D: jump_if_false @CHEATS_2458 
+0006: 0@ = 25 
+0006: 2@ = 349 
+0002: jump @CHEATS_5534 
+
+:CHEATS_2458
+0001: wait 0 ms 
+00D6: if 
+0039:   1@ == 1 
+004D: jump_if_false @CHEATS_2502 
+0006: 0@ = 26 
+0006: 2@ = 350 
+0002: jump @CHEATS_5534 
+
+:CHEATS_2502
+0001: wait 0 ms 
+00D6: if 
+0039:   1@ == 2 
+004D: jump_if_false @CHEATS_5593 
+0006: 0@ = 27 
+0006: 2@ = 351 
+0002: jump @CHEATS_5534 
+
+:CHEATS_2546
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CHT81' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'CH104' 'CH105' 'CH106' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 
+
+:CHEATS_2712
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_2745 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_858 
+
+:CHEATS_2745
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_2712 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0001: wait 0 ms 
+00D6: if 
+0039:   1@ == 0 
+004D: jump_if_false @CHEATS_2815 
+0006: 0@ = 32 
+0006: 2@ = 372 
+0002: jump @CHEATS_5534 
+
+:CHEATS_2815
+0001: wait 0 ms 
+00D6: if 
+0039:   1@ == 1 
+004D: jump_if_false @CHEATS_2859 
+0006: 0@ = 28 
+0006: 2@ = 352 
+0002: jump @CHEATS_5534 
+
+:CHEATS_2859
+0001: wait 0 ms 
+00D6: if 
+0039:   1@ == 2 
+004D: jump_if_false @CHEATS_5593 
+0006: 0@ = 29 
+0006: 2@ = 353 
+0002: jump @CHEATS_5534 
+
+:CHEATS_2903
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CHT82' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'CH107' 'CH108' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 
+
+:CHEATS_3069
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_3102 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_858 
+
+:CHEATS_3102
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_3069 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0001: wait 0 ms 
+00D6: if 
+0039:   1@ == 0 
+004D: jump_if_false @CHEATS_3172 
+0006: 0@ = 30 
+0006: 2@ = 355 
+0002: jump @CHEATS_5534 
+
+:CHEATS_3172
+0001: wait 0 ms 
+00D6: if 
+0039:   1@ == 1 
+004D: jump_if_false @CHEATS_5593 
+0006: 0@ = 31 
+0006: 2@ = 356 
+0002: jump @CHEATS_5534 
+
+:CHEATS_3216
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CHT83' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'CH109' 'CH110' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 
+
+:CHEATS_3382
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_3415 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_858 
+
+:CHEATS_3415
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_3382 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0001: wait 0 ms 
+00D6: if 
+0039:   1@ == 0 
+004D: jump_if_false @CHEATS_3485 
+0006: 0@ = 33 
+0006: 2@ = 357 
+0002: jump @CHEATS_5534 
+
+:CHEATS_3485
+0001: wait 0 ms 
+00D6: if 
+0039:   1@ == 1 
+004D: jump_if_false @CHEATS_5593 
+0006: 0@ = 34 
+0006: 2@ = 358 
+0002: jump @CHEATS_5534 
+
+:CHEATS_3529
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CHT84' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'CH111' 'CH112' 'CH113' 'CH114' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 
+
+:CHEATS_3695
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_3728 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_858 
+
+:CHEATS_3728
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_3695 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0001: wait 0 ms 
+00D6: if 
+0039:   1@ == 0 
+004D: jump_if_false @CHEATS_3798 
+0006: 0@ = 35 
+0006: 2@ = 359 
+0002: jump @CHEATS_5534 
+
+:CHEATS_3798
+0001: wait 0 ms 
+00D6: if 
+0039:   1@ == 1 
+004D: jump_if_false @CHEATS_3842 
+0006: 0@ = 36 
+0006: 2@ = 360 
+0002: jump @CHEATS_5534 
+
+:CHEATS_3842
+0001: wait 0 ms 
+00D6: if 
+0039:   1@ == 2 
+004D: jump_if_false @CHEATS_3886 
+0006: 0@ = 37 
+0006: 2@ = 361 
+0002: jump @CHEATS_5534 
+
+:CHEATS_3886
+0001: wait 0 ms 
+00D6: if 
+0039:   1@ == 3 
+004D: jump_if_false @CHEATS_5593 
+0006: 0@ = 38 
+0006: 2@ = 362 
+0002: jump @CHEATS_5534 
+
+:CHEATS_3930
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CHT85' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'CH115' 'CH116' 'CH117' 'CH118' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 
+
+:CHEATS_4096
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_4129 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_858 
+
+:CHEATS_4129
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_4096 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0001: wait 0 ms 
+00D6: if 
+0039:   1@ == 0 
+004D: jump_if_false @CHEATS_4199 
+0006: 0@ = 16 
+0006: 2@ = 342 
+0002: jump @CHEATS_5534 
+
+:CHEATS_4199
+0001: wait 0 ms 
+00D6: if 
+0039:   1@ == 1 
+004D: jump_if_false @CHEATS_4243 
+0006: 0@ = 18 
+0006: 2@ = 344 
+0002: jump @CHEATS_5534 
+
+:CHEATS_4243
+0001: wait 0 ms 
+00D6: if 
+0039:   1@ == 2 
+004D: jump_if_false @CHEATS_4287 
+0006: 0@ = 17 
+0006: 2@ = 343 
+0002: jump @CHEATS_5534 
+
+:CHEATS_4287
+0001: wait 0 ms 
+00D6: if 
+0039:   1@ == 3 
+004D: jump_if_false @CHEATS_5593 
+0006: 0@ = 39 
+0006: 2@ = 363 
+0002: jump @CHEATS_5534 
+
+:CHEATS_4331
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CHT86' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'CH119' 'CH120' 'CH121' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 
+
+:CHEATS_4497
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_4530 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_858 
+
+:CHEATS_4530
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_4497 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0001: wait 0 ms 
+00D6: if 
+0039:   1@ == 0 
+004D: jump_if_false @CHEATS_4600 
+0006: 0@ = 41 
+0006: 2@ = 365 
+0002: jump @CHEATS_5534 
+
+:CHEATS_4600
+0001: wait 0 ms 
+00D6: if 
+0039:   1@ == 1 
+004D: jump_if_false @CHEATS_4644 
+0006: 0@ = 42 
+0006: 2@ = 366 
+0002: jump @CHEATS_5534 
+
+:CHEATS_4644
+0001: wait 0 ms 
+00D6: if 
+0039:   1@ == 2 
+004D: jump_if_false @CHEATS_5593 
+0006: 0@ = 43 
+0006: 2@ = 367 
+0002: jump @CHEATS_5534 
+
+:CHEATS_4688
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CHT87' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'CH122' 'CH123' 'CH124' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 
+
+:CHEATS_4854
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_4887 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_858 
+
+:CHEATS_4887
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_4854 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0001: wait 0 ms 
+00D6: if 
+0039:   1@ == 0 
+004D: jump_if_false @CHEATS_4957 
+0006: 0@ = 44 
+0006: 2@ = 368 
+0002: jump @CHEATS_5534 
+
+:CHEATS_4957
+0001: wait 0 ms 
+00D6: if 
+0039:   1@ == 1 
+004D: jump_if_false @CHEATS_5001 
+0006: 0@ = 45 
+0006: 2@ = 369 
+0002: jump @CHEATS_5534 
+
+:CHEATS_5001
+0001: wait 0 ms 
+00D6: if 
+0039:   1@ == 2 
+004D: jump_if_false @CHEATS_5593 
+0006: 0@ = 46 
+0006: 2@ = 371 
+0002: jump @CHEATS_5534 
+
+:CHEATS_5045
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CHT88' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'CH125' 'CH126' 'CH127' 'CH128' 'CH129' 'CH130' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 
+
+:CHEATS_5211
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_5244 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_858 
+
+:CHEATS_5244
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_5211 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0001: wait 0 ms 
+00D6: if 
+0039:   1@ == 0 
+004D: jump_if_false @CHEATS_5314 
+0006: 0@ = 10 
+0006: 2@ = 321 
+0002: jump @CHEATS_5534 
+
+:CHEATS_5314
+0001: wait 0 ms 
+00D6: if 
+0039:   1@ == 1 
+004D: jump_if_false @CHEATS_5358 
+0006: 0@ = 11 
+0006: 2@ = 322 
+0002: jump @CHEATS_5534 
+
+:CHEATS_5358
+0001: wait 0 ms 
+00D6: if 
+0039:   1@ == 2 
+004D: jump_if_false @CHEATS_5402 
+0006: 0@ = 12 
+0006: 2@ = 323 
+0002: jump @CHEATS_5534 
+
+:CHEATS_5402
+0001: wait 0 ms 
+00D6: if 
+0039:   1@ == 3 
+004D: jump_if_false @CHEATS_5446 
+0006: 0@ = 13 
+0006: 2@ = 324 
+0002: jump @CHEATS_5534 
+
+:CHEATS_5446
+0001: wait 0 ms 
+00D6: if 
+0039:   1@ == 4 
+004D: jump_if_false @CHEATS_5490 
+0006: 0@ = 14 
+0006: 2@ = 325 
+0002: jump @CHEATS_5534 
+
+:CHEATS_5490
+0001: wait 0 ms 
+00D6: if 
+0039:   1@ == 5 
+004D: jump_if_false @CHEATS_5593 
+0006: 0@ = 15 
+0006: 2@ = 326 
+0002: jump @CHEATS_5534 
+
+:CHEATS_5534
+0247: load_model 2@ 
+038B: load_requested_models 
+0001: wait 0 ms 
+01B2: give_actor $PLAYER_ACTOR weapon 0@ ammo 2000 // Load the weapon model before using this 
+0249: release_model 2@ 
+0AB3: cleo_shared_var 200 = 0 
+03E5: show_text_box 'CH144' 
+01B4: set_player $PLAYER_CHAR can_move 1 
+0002: jump @CHEATS_51462 
+
+:CHEATS_5593
+0AB3: cleo_shared_var 200 = 0 
+01B4: set_player $PLAYER_CHAR can_move 1 
+0002: jump @CHEATS_51462 
+
+:CHEATS_5614
+062A: change_float_stat 69 to 0.0 
+062A: change_float_stat 70 to 0.0 
+062A: change_float_stat 71 to 0.0 
+062A: change_float_stat 72 to 0.0 
+062A: change_float_stat 73 to 0.0 
+062A: change_float_stat 74 to 0.0 
+062A: change_float_stat 75 to 0.0 
+062A: change_float_stat 76 to 0.0 
+062A: change_float_stat 77 to 0.0 
+062A: change_float_stat 78 to 0.0 
+062A: change_float_stat 79 to 0.0 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_5731
+062A: change_float_stat 69 to 400.0 
+062A: change_float_stat 70 to 500.0 
+062A: change_float_stat 71 to 0.0 
+062A: change_float_stat 72 to 400.0 
+062A: change_float_stat 73 to 0.0 
+062A: change_float_stat 74 to 400.0 
+062A: change_float_stat 75 to 400.0 
+062A: change_float_stat 76 to 400.0 
+062A: change_float_stat 77 to 400.0 
+062A: change_float_stat 78 to 400.0 
+062A: change_float_stat 79 to 400.0 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_5848
+062A: change_float_stat 69 to 10000.0 
+062A: change_float_stat 70 to 10000.0 
+062A: change_float_stat 71 to 10000.0 
+062A: change_float_stat 72 to 10000.0 
+062A: change_float_stat 73 to 10000.0 
+062A: change_float_stat 74 to 10000.0 
+062A: change_float_stat 75 to 10000.0 
+062A: change_float_stat 76 to 10000.0 
+062A: change_float_stat 77 to 10000.0 
+062A: change_float_stat 78 to 10000.0 
+062A: change_float_stat 79 to 10000.0 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_5965
+04B8: get_weapon_data_from_actor $PLAYER_ACTOR slot 3 weapon 1@ ammo 2@ model 3@ 
+017B: set_actor $PLAYER_ACTOR weapon 1@ ammo_to 10000 
+04B8: get_weapon_data_from_actor $PLAYER_ACTOR slot 4 weapon 1@ ammo 2@ model 3@ 
+017B: set_actor $PLAYER_ACTOR weapon 1@ ammo_to 10000 
+04B8: get_weapon_data_from_actor $PLAYER_ACTOR slot 5 weapon 1@ ammo 2@ model 3@ 
+017B: set_actor $PLAYER_ACTOR weapon 1@ ammo_to 10000 
+04B8: get_weapon_data_from_actor $PLAYER_ACTOR slot 6 weapon 1@ ammo 2@ model 3@ 
+017B: set_actor $PLAYER_ACTOR weapon 1@ ammo_to 10000 
+04B8: get_weapon_data_from_actor $PLAYER_ACTOR slot 7 weapon 1@ ammo 2@ model 3@ 
+017B: set_actor $PLAYER_ACTOR weapon 1@ ammo_to 10000 
+04B8: get_weapon_data_from_actor $PLAYER_ACTOR slot 8 weapon 1@ ammo 2@ model 3@ 
+017B: set_actor $PLAYER_ACTOR weapon 1@ ammo_to 10000 
+04B8: get_weapon_data_from_actor $PLAYER_ACTOR slot 9 weapon 1@ ammo 2@ model 3@ 
+017B: set_actor $PLAYER_ACTOR weapon 1@ ammo_to 10000 
+04B8: get_weapon_data_from_actor $PLAYER_ACTOR slot 10 weapon 1@ ammo 2@ model 3@ 
+017B: set_actor $PLAYER_ACTOR weapon 1@ ammo_to 10000 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_6199
+0001: wait 0 ms 
+0A8D: TIMERA = read_memory 9867640 size 1 virtual_protect 0 
+00D6: if 
+0039:   TIMERA == 0 
+004D: jump_if_false @CHEATS_6266 
+0A8C: write_memory 9867640 size 1 value 1 virtual_protect 0 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_6266
+0001: wait 0 ms 
+0A8D: TIMERA = read_memory 9867640 size 1 virtual_protect 0 
+00D6: if 
+0039:   TIMERA == 1 
+004D: jump_if_false @CHEATS_51462 
+0A8C: write_memory 9867640 size 1 value 0 virtual_protect 0 
+03E5: show_text_box 'CH145' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_6333
+03E5: show_text_box 'CHT20' 
+0006: 13@ = 1 
+01B6: set_weather 13@ 
+
+:CHEATS_6356
+0001: wait 0 ms 
+00D6: if 
+0AB0:   is_key_pressed 39 
+004D: jump_if_false @CHEATS_6387 
+000A: 13@ += 1 
+01B6: set_weather 13@ 
+
+:CHEATS_6387
+0001: wait 0 ms 
+00D6: if 
+0AB0:   is_key_pressed 37 
+004D: jump_if_false @CHEATS_6418 
+000E: 13@ -= 1 
+01B6: set_weather 13@ 
+
+:CHEATS_6418
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_6446 
+0002: jump @CHEATS_51462 
+
+:CHEATS_6446
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_6356 
+0915: sync_weather_with_time_and_location_instantly 
+0002: jump @CHEATS_51462 
+
+:CHEATS_6476
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CHT3' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'CHT23' 'CHT24' 'CHT25' 'CH252' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 
+
+:CHEATS_6642
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_6675 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_217 
+
+:CHEATS_6675
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_6642 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 4 default_jump 0 @CHEATS_51462 jumps 0 @CHEATS_6764 1 @CHEATS_7071 2 @CHEATS_7096 3 @CHEATS_50565 -1 @CHEATS_8151 -1 @CHEATS_9367 -1 @CHEATS_11670 
+
+:CHEATS_6764
+0001: wait 0 ms 
+03E5: show_text_box 'CHT26' 
+
+:CHEATS_6779
+0001: wait 0 ms 
+00D6: if 
+0AB0:   is_key_pressed 49 
+004D: jump_if_false @CHEATS_6823 
+010D: set_player $PLAYER_CHAR wanted_level_to 1 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_6823
+0001: wait 0 ms 
+00D6: if 
+0AB0:   is_key_pressed 50 
+004D: jump_if_false @CHEATS_6867 
+010D: set_player $PLAYER_CHAR wanted_level_to 2 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_6867
+0001: wait 0 ms 
+00D6: if 
+0AB0:   is_key_pressed 51 
+004D: jump_if_false @CHEATS_6911 
+010D: set_player $PLAYER_CHAR wanted_level_to 3 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_6911
+0001: wait 0 ms 
+00D6: if 
+0AB0:   is_key_pressed 52 
+004D: jump_if_false @CHEATS_6955 
+010D: set_player $PLAYER_CHAR wanted_level_to 4 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_6955
+0001: wait 0 ms 
+00D6: if 
+0AB0:   is_key_pressed 53 
+004D: jump_if_false @CHEATS_6999 
+010D: set_player $PLAYER_CHAR wanted_level_to 5 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_6999
+0001: wait 0 ms 
+00D6: if 
+0AB0:   is_key_pressed 54 
+004D: jump_if_false @CHEATS_7043 
+010D: set_player $PLAYER_CHAR wanted_level_to 6 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_7043
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_6779 
+0002: jump @CHEATS_51462 
+
+:CHEATS_7071
+010D: set_player $PLAYER_CHAR wanted_level_to 0 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_7096
+0001: wait 0 ms 
+0A8D: TIMERA = read_memory 9867633 size 1 virtual_protect 0 
+00D6: if 
+0039:   TIMERA == 0 
+004D: jump_if_false @CHEATS_7170 
+010D: set_player $PLAYER_CHAR wanted_level_to 0 
+0A8C: write_memory 9867633 size 1 value 1 virtual_protect 0 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_7170
+0001: wait 0 ms 
+0A8D: TIMERA = read_memory 9867633 size 1 virtual_protect 0 
+00D6: if 
+0039:   TIMERA == 1 
+004D: jump_if_false @CHEATS_51462 
+0A8C: write_memory 9867633 size 1 value 0 virtual_protect 0 
+03E5: show_text_box 'CH145' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_7237
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CHT4' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'CHT27' 'CHT28' 'CHT29' 'CH242' 'CH244' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 
+
+:CHEATS_7403
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_7436 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_217 
+
+:CHEATS_7436
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_7403 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 5 default_jump 0 @CHEATS_51462 jumps 0 @CHEATS_7525 1 @CHEATS_7550 2 @CHEATS_7575 3 @CHEATS_7600 4 @CHEATS_49627 -1 @CHEATS_7550 -1 @CHEATS_11670 
+
+:CHEATS_7525
+015D: set_gamespeed 2.0 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_7550
+015D: set_gamespeed 1.0 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_7575
+015D: set_gamespeed 0.5 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_7600
+03E5: show_text_box 'CH144' 
+0619: enable_actor $PLAYER_ACTOR collision_detection 0 
+015D: set_gamespeed 0.0 
+03E5: show_text_box 'CH243' 
+
+:CHEATS_7636
+0001: wait 0 ms 
+00D6: if 
+0AB0:   is_key_pressed 39 
+004D: jump_if_false @CHEATS_7700 
+04C4: store_coords_to 1@ 2@ 3@ from_actor $PLAYER_ACTOR with_offset 1.0 0.0 -1.0 
+00A1: put_actor $PLAYER_ACTOR at 1@ 2@ 3@ 
+02EB: restore_camera_with_jumpcut 
+
+:CHEATS_7700
+00D6: if 
+0AB0:   is_key_pressed 37 
+004D: jump_if_false @CHEATS_7760 
+04C4: store_coords_to 1@ 2@ 3@ from_actor $PLAYER_ACTOR with_offset -1.0 0.0 -1.0 
+00A1: put_actor $PLAYER_ACTOR at 1@ 2@ 3@ 
+02EB: restore_camera_with_jumpcut 
+
+:CHEATS_7760
+00D6: if 
+0AB0:   is_key_pressed 38 
+004D: jump_if_false @CHEATS_7820 
+04C4: store_coords_to 1@ 2@ 3@ from_actor $PLAYER_ACTOR with_offset 0.0 1.0 -1.0 
+00A1: put_actor $PLAYER_ACTOR at 1@ 2@ 3@ 
+02EB: restore_camera_with_jumpcut 
+
+:CHEATS_7820
+00D6: if 
+0AB0:   is_key_pressed 40 
+004D: jump_if_false @CHEATS_7880 
+04C4: store_coords_to 1@ 2@ 3@ from_actor $PLAYER_ACTOR with_offset 0.0 -1.0 -1.0 
+00A1: put_actor $PLAYER_ACTOR at 1@ 2@ 3@ 
+02EB: restore_camera_with_jumpcut 
+
+:CHEATS_7880
+00D6: if 
+0AB0:   is_key_pressed 87 
+004D: jump_if_false @CHEATS_7940 
+04C4: store_coords_to 1@ 2@ 3@ from_actor $PLAYER_ACTOR with_offset 0.0 0.0 0.0 
+00A1: put_actor $PLAYER_ACTOR at 1@ 2@ 3@ 
+02EB: restore_camera_with_jumpcut 
+
+:CHEATS_7940
+00D6: if 
+0AB0:   is_key_pressed 83 
+004D: jump_if_false @CHEATS_8000 
+04C4: store_coords_to 1@ 2@ 3@ from_actor $PLAYER_ACTOR with_offset 0.0 0.0 -2.0 
+00A1: put_actor $PLAYER_ACTOR at 1@ 2@ 3@ 
+02EB: restore_camera_with_jumpcut 
+
+:CHEATS_8000
+00D6: if 
+0AB0:   is_key_pressed 65 
+004D: jump_if_false @CHEATS_8043 
+0172: 0@ = actor $PLAYER_ACTOR Z_angle 
+000B: 0@ += 1.0 
+0173: set_actor $PLAYER_ACTOR Z_angle_to 0@ 
+02EB: restore_camera_with_jumpcut 
+
+:CHEATS_8043
+00D6: if 
+0AB0:   is_key_pressed 68 
+004D: jump_if_false @CHEATS_8086 
+0172: 0@ = actor $PLAYER_ACTOR Z_angle 
+000F: 0@ -= 1.0 
+0173: set_actor $PLAYER_ACTOR Z_angle_to 0@ 
+02EB: restore_camera_with_jumpcut 
+
+:CHEATS_8086
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_7636 
+01B4: set_player $PLAYER_CHAR can_move 1 
+0619: enable_actor $PLAYER_ACTOR collision_detection 1 
+015D: set_gamespeed 1.0 
+03E5: show_text_box 'CH145' 
+02EB: restore_camera_with_jumpcut 
+0AB3: cleo_shared_var 200 = 0 
+0002: jump @CHEATS_51462 
+
+:CHEATS_8151
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CHT5' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'CHT30' 'CHT31' 'CHT32' 'CHT33' 'CHT34' 'CHT35' 'CH228' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 
+
+:CHEATS_8317
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_8350 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_217 
+
+:CHEATS_8350
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_8317 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 7 default_jump 0 @CHEATS_51462 jumps 0 @CHEATS_8439 1 @CHEATS_8573 2 @CHEATS_8707 3 @CHEATS_8841 4 @CHEATS_8975 5 @CHEATS_9109 6 @CHEATS_9243 
+
+:CHEATS_8439
+0001: wait 0 ms 
+0A8D: TIMERA = read_memory 9867582 size 1 virtual_protect 0 
+00D6: if 
+0039:   TIMERA == 0 
+004D: jump_if_false @CHEATS_8506 
+0A8C: write_memory 9867582 size 1 value 1 virtual_protect 0 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_8506
+0001: wait 0 ms 
+0A8D: TIMERA = read_memory 9867582 size 1 virtual_protect 0 
+00D6: if 
+0039:   TIMERA == 1 
+004D: jump_if_false @CHEATS_51462 
+0A8C: write_memory 9867582 size 1 value 0 virtual_protect 0 
+03E5: show_text_box 'CH145' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_8573
+0001: wait 0 ms 
+0A8D: TIMERA = read_memory 9867583 size 1 virtual_protect 0 
+00D6: if 
+0039:   TIMERA == 0 
+004D: jump_if_false @CHEATS_8640 
+0A8C: write_memory 9867583 size 1 value 1 virtual_protect 0 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_8640
+0001: wait 0 ms 
+0A8D: TIMERA = read_memory 9867583 size 1 virtual_protect 0 
+00D6: if 
+0039:   TIMERA == 1 
+004D: jump_if_false @CHEATS_51462 
+0A8C: write_memory 9867583 size 1 value 0 virtual_protect 0 
+03E5: show_text_box 'CH145' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_8707
+0001: wait 0 ms 
+0A8D: TIMERA = read_memory 9867584 size 1 virtual_protect 0 
+00D6: if 
+0039:   TIMERA == 0 
+004D: jump_if_false @CHEATS_8774 
+0A8C: write_memory 9867584 size 1 value 1 virtual_protect 0 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_8774
+0001: wait 0 ms 
+0A8D: TIMERA = read_memory 9867584 size 1 virtual_protect 0 
+00D6: if 
+0039:   TIMERA == 1 
+004D: jump_if_false @CHEATS_51462 
+0A8C: write_memory 9867584 size 1 value 0 virtual_protect 0 
+03E5: show_text_box 'CH145' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_8841
+0001: wait 0 ms 
+0A8D: TIMERA = read_memory 9867644 size 1 virtual_protect 0 
+00D6: if 
+0039:   TIMERA == 0 
+004D: jump_if_false @CHEATS_8908 
+0A8C: write_memory 9867644 size 1 value 1 virtual_protect 0 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_8908
+0001: wait 0 ms 
+0A8D: TIMERA = read_memory 9867644 size 1 virtual_protect 0 
+00D6: if 
+0039:   TIMERA == 1 
+004D: jump_if_false @CHEATS_51462 
+0A8C: write_memory 9867644 size 1 value 0 virtual_protect 0 
+03E5: show_text_box 'CH145' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_8975
+0001: wait 0 ms 
+0A8D: TIMERA = read_memory 9867645 size 1 virtual_protect 0 
+00D6: if 
+0039:   TIMERA == 0 
+004D: jump_if_false @CHEATS_9042 
+0A8C: write_memory 9867645 size 1 value 1 virtual_protect 0 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_9042
+0001: wait 0 ms 
+0A8D: TIMERA = read_memory 9867645 size 1 virtual_protect 0 
+00D6: if 
+0039:   TIMERA == 1 
+004D: jump_if_false @CHEATS_51462 
+0A8C: write_memory 9867645 size 1 value 0 virtual_protect 0 
+03E5: show_text_box 'CH145' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_9109
+0001: wait 0 ms 
+0A8D: TIMERA = read_memory 9867646 size 1 virtual_protect 0 
+00D6: if 
+0039:   TIMERA == 0 
+004D: jump_if_false @CHEATS_9176 
+0A8C: write_memory 9867646 size 1 value 1 virtual_protect 0 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_9176
+0001: wait 0 ms 
+0A8D: TIMERA = read_memory 9867646 size 1 virtual_protect 0 
+00D6: if 
+0039:   TIMERA == 1 
+004D: jump_if_false @CHEATS_51462 
+0A8C: write_memory 9867646 size 1 value 0 virtual_protect 0 
+03E5: show_text_box 'CH145' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_9243
+0001: wait 0 ms 
+0AB4: 1@ = cleo_shared_var 204 
+00D6: if 
+0039:   1@ == 0 
+004D: jump_if_false @CHEATS_9305 
+03DE: set_pedestrians_density_multiplier_to 0.0 
+03E5: show_text_box 'CH144' 
+0AB3: cleo_shared_var 204 = 1 
+0002: jump @CHEATS_51462 
+
+:CHEATS_9305
+0001: wait 0 ms 
+0AB4: 1@ = cleo_shared_var 204 
+00D6: if 
+0039:   1@ == 1 
+004D: jump_if_false @CHEATS_51462 
+03DE: set_pedestrians_density_multiplier_to 1.0 
+03E5: show_text_box 'CH145' 
+0AB3: cleo_shared_var 204 = 0 
+0002: jump @CHEATS_51462 
+
+:CHEATS_9367
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CHT6' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'CH220' 'CH221' 'CH222' 'CH223' 'CH224' 'CH225' 'CHT11' 'CH248' 'CH249' 'CH250' 'CH258' 'CH259' 
+
+:CHEATS_9533
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_9566 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_217 
+
+:CHEATS_9566
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_9533 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 12 default_jump 0 @CHEATS_51462 jumps 0 @CHEATS_9720 1 @CHEATS_9776 2 @CHEATS_9844 3 @CHEATS_9902 4 @CHEATS_9958 5 @CHEATS_10016 6 @CHEATS_10245 
+0872: jump_table_jumps 7 @CHEATS_50294 8 @CHEATS_50340 9 @CHEATS_50386 10 @CHEATS_51297 11 @CHEATS_51346 -1 @CHEATS_23983 -1 @CHEATS_23983 -1 @CHEATS_23983 -1 @CHEATS_23983 
+
+:CHEATS_9720
+0001: wait 0 ms 
+00D6: if 
+00DF:   actor $PLAYER_ACTOR driving 
+004D: jump_if_false @CHEATS_51462 
+03C0: 0@ = actor $PLAYER_ACTOR car 
+0A30: repair_car 0@ 
+01C3: remove_references_to_car 0@ 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_9776
+0001: wait 0 ms 
+00D6: if 
+00DF:   actor $PLAYER_ACTOR driving 
+004D: jump_if_false @CHEATS_51462 
+03C0: 0@ = actor $PLAYER_ACTOR car 
+02AC: set_car 0@ immunities BP 1 FP 1 EP 1 CP 1 MP 1 
+053F: set_car 0@ tires_vulnerability 0 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_9844
+0001: wait 0 ms 
+00D6: if 
+00DF:   actor $PLAYER_ACTOR driving 
+004D: jump_if_false @CHEATS_51462 
+03C0: 0@ = actor $PLAYER_ACTOR car 
+07FF: set_car 0@ hydraulics 1 
+01C3: remove_references_to_car 0@ 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_9902
+0001: wait 0 ms 
+00D6: if 
+00DF:   actor $PLAYER_ACTOR driving 
+004D: jump_if_false @CHEATS_51462 
+03C0: 0@ = actor $PLAYER_ACTOR car 
+09E9: car 0@ set_single_nitro 
+01C3: remove_references_to_car 0@ 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_9958
+0001: wait 0 ms 
+00D6: if 
+00DF:   actor $PLAYER_ACTOR driving 
+004D: jump_if_false @CHEATS_51462 
+03C0: 0@ = actor $PLAYER_ACTOR car 
+01EC: make_car 0@ very_heavy 1 
+01C3: remove_references_to_car 0@ 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_10016
+0001: wait 0 ms 
+00D6: if 
+00DF:   actor $PLAYER_ACTOR driving 
+004D: jump_if_false @CHEATS_51462 
+03C0: 0@ = actor $PLAYER_ACTOR car 
+03F3: get_car 0@ primary_color_to 1@ secondary_color_to 2@ 
+03E5: show_text_box 'CH219' 
+
+:CHEATS_10066
+0001: wait 0 ms 
+00D6: if 
+0AB0:   is_key_pressed 39 
+004D: jump_if_false @CHEATS_10103 
+000A: 1@ += 1 
+0229: set_car 0@ primary_color_to 1@ secondary_color_to 2@ 
+
+:CHEATS_10103
+00D6: if 
+0AB0:   is_key_pressed 37 
+004D: jump_if_false @CHEATS_10136 
+000E: 1@ -= 1 
+0229: set_car 0@ primary_color_to 1@ secondary_color_to 2@ 
+
+:CHEATS_10136
+00D6: if 
+0AB0:   is_key_pressed 38 
+004D: jump_if_false @CHEATS_10169 
+000A: 2@ += 1 
+0229: set_car 0@ primary_color_to 1@ secondary_color_to 2@ 
+
+:CHEATS_10169
+00D6: if 
+0AB0:   is_key_pressed 40 
+004D: jump_if_false @CHEATS_10202 
+000E: 2@ -= 1 
+0229: set_car 0@ primary_color_to 1@ secondary_color_to 2@ 
+
+:CHEATS_10202
+00D6: if 
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_10066 
+01C3: remove_references_to_car 0@ 
+01B4: set_player $PLAYER_CHAR can_move 1 
+0AB3: cleo_shared_var 200 = 0 
+0002: jump @CHEATS_51462 
+
+:CHEATS_10245
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CHT11' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'CHT36' 'CHT37' 'CHT38' 'CHT39' 'CHT40' 'CHT41' 'CHT42' 'CHT44' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 
+
+:CHEATS_10411
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_10444 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_9367 
+
+:CHEATS_10444
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_10411 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 8 default_jump 0 @CHEATS_51462 jumps 0 @CHEATS_10598 1 @CHEATS_10732 2 @CHEATS_10866 3 @CHEATS_11000 4 @CHEATS_11134 5 @CHEATS_11268 6 @CHEATS_11402 
+0872: jump_table_jumps 7 @CHEATS_11536 -1 @CHEATS_29180 -1 @CHEATS_30625 -1 @CHEATS_30272 -1 @CHEATS_17021 -1 @CHEATS_23983 -1 @CHEATS_23983 -1 @CHEATS_23983 -1 @CHEATS_23983 
+
+:CHEATS_10598
+0001: wait 0 ms 
+0A8D: TIMERA = read_memory 9867596 size 1 virtual_protect 0 
+00D6: if 
+0039:   TIMERA == 0 
+004D: jump_if_false @CHEATS_10665 
+0A8C: write_memory 9867596 size 1 value 1 virtual_protect 0 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_10665
+0001: wait 0 ms 
+0A8D: TIMERA = read_memory 9867596 size 1 virtual_protect 0 
+00D6: if 
+0039:   TIMERA == 1 
+004D: jump_if_false @CHEATS_51462 
+0A8C: write_memory 9867596 size 1 value 0 virtual_protect 0 
+03E5: show_text_box 'CH145' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_10732
+0001: wait 0 ms 
+0A8D: TIMERA = read_memory 9867602 size 1 virtual_protect 0 
+00D6: if 
+0039:   TIMERA == 0 
+004D: jump_if_false @CHEATS_10799 
+0A8C: write_memory 9867602 size 1 value 1 virtual_protect 0 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_10799
+0001: wait 0 ms 
+0A8D: TIMERA = read_memory 9867602 size 1 virtual_protect 0 
+00D6: if 
+0039:   TIMERA == 1 
+004D: jump_if_false @CHEATS_51462 
+0A8C: write_memory 9867602 size 1 value 0 virtual_protect 0 
+03E5: show_text_box 'CH145' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_10866
+0001: wait 0 ms 
+0A8D: TIMERA = read_memory 9867616 size 1 virtual_protect 0 
+00D6: if 
+0039:   TIMERA == 0 
+004D: jump_if_false @CHEATS_10933 
+0A8C: write_memory 9867616 size 1 value 1 virtual_protect 0 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_10933
+0001: wait 0 ms 
+0A8D: TIMERA = read_memory 9867616 size 1 virtual_protect 0 
+00D6: if 
+0039:   TIMERA == 1 
+004D: jump_if_false @CHEATS_51462 
+0A8C: write_memory 9867616 size 1 value 0 virtual_protect 0 
+03E5: show_text_box 'CH145' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_11000
+0001: wait 0 ms 
+0A8D: TIMERA = read_memory 9867617 size 1 virtual_protect 0 
+00D6: if 
+0039:   TIMERA == 0 
+004D: jump_if_false @CHEATS_11067 
+0A8C: write_memory 9867617 size 1 value 1 virtual_protect 0 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_11067
+0001: wait 0 ms 
+0A8D: TIMERA = read_memory 9867617 size 1 virtual_protect 0 
+00D6: if 
+0039:   TIMERA == 1 
+004D: jump_if_false @CHEATS_51462 
+0A8C: write_memory 9867617 size 1 value 0 virtual_protect 0 
+03E5: show_text_box 'CH145' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_11134
+0001: wait 0 ms 
+0A8D: TIMERA = read_memory 9867620 size 1 virtual_protect 0 
+00D6: if 
+0039:   TIMERA == 0 
+004D: jump_if_false @CHEATS_11201 
+0A8C: write_memory 9867620 size 1 value 1 virtual_protect 0 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_11201
+0001: wait 0 ms 
+0A8D: TIMERA = read_memory 9867620 size 1 virtual_protect 0 
+00D6: if 
+0039:   TIMERA == 1 
+004D: jump_if_false @CHEATS_51462 
+0A8C: write_memory 9867620 size 1 value 0 virtual_protect 0 
+03E5: show_text_box 'CH145' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_11268
+0001: wait 0 ms 
+0A8D: TIMERA = read_memory 9867621 size 1 virtual_protect 0 
+00D6: if 
+0039:   TIMERA == 0 
+004D: jump_if_false @CHEATS_11335 
+0A8C: write_memory 9867621 size 1 value 1 virtual_protect 0 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_11335
+0001: wait 0 ms 
+0A8D: TIMERA = read_memory 9867621 size 1 virtual_protect 0 
+00D6: if 
+0039:   TIMERA == 1 
+004D: jump_if_false @CHEATS_51462 
+0A8C: write_memory 9867621 size 1 value 0 virtual_protect 0 
+03E5: show_text_box 'CH145' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_11402
+0001: wait 0 ms 
+0A8D: TIMERA = read_memory 9867622 size 1 virtual_protect 0 
+00D6: if 
+0039:   TIMERA == 0 
+004D: jump_if_false @CHEATS_11469 
+0A8C: write_memory 9867622 size 1 value 1 virtual_protect 0 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_11469
+0001: wait 0 ms 
+0A8D: TIMERA = read_memory 9867622 size 1 virtual_protect 0 
+00D6: if 
+0039:   TIMERA == 1 
+004D: jump_if_false @CHEATS_51462 
+0A8C: write_memory 9867622 size 1 value 0 virtual_protect 0 
+03E5: show_text_box 'CH145' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_11536
+0001: wait 0 ms 
+0A8D: TIMERA = read_memory 9867603 size 1 virtual_protect 0 
+00D6: if 
+0039:   TIMERA == 0 
+004D: jump_if_false @CHEATS_11603 
+0A8C: write_memory 9867603 size 1 value 1 virtual_protect 0 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_11603
+0001: wait 0 ms 
+0A8D: TIMERA = read_memory 9867603 size 1 virtual_protect 0 
+00D6: if 
+0039:   TIMERA == 1 
+004D: jump_if_false @CHEATS_51462 
+0A8C: write_memory 9867603 size 1 value 0 virtual_protect 0 
+03E5: show_text_box 'CH145' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_11670
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CHT7' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'CH137' 'CH138' 'CH139' 'CH140' 'CH141' 'CH142' 'CH143' 'CH146' 'CH147' 'CH148' 'CH149' 'CH150' 
+
+:CHEATS_11836
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_11869 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_217 
+
+:CHEATS_11869
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_11836 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 12 default_jump 0 @CHEATS_23983 jumps 0 @CHEATS_12023 1 @CHEATS_13292 2 @CHEATS_14616 3 @CHEATS_15149 4 @CHEATS_18803 5 @CHEATS_19321 6 @CHEATS_19809 
+0872: jump_table_jumps 7 @CHEATS_21228 8 @CHEATS_22492 9 @CHEATS_14143 10 @CHEATS_13795 11 @CHEATS_17021 -1 @CHEATS_23983 -1 @CHEATS_23983 -1 @CHEATS_23983 -1 @CHEATS_23983 
+
+:CHEATS_12023
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CH137' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'CH151' 'CH152' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 
+
+:CHEATS_12189
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_12222 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_11670 
+
+:CHEATS_12222
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_12189 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 2 default_jump 0 @CHEATS_23983 jumps 0 @CHEATS_12376 1 @CHEATS_12909 -1 @CHEATS_14616 -1 @CHEATS_15149 -1 @CHEATS_18803 -1 @CHEATS_19321 -1 @CHEATS_19809 
+0872: jump_table_jumps -1 @CHEATS_21228 -1 @CHEATS_22492 -1 @CHEATS_14143 -1 @CHEATS_13795 -1 @CHEATS_17021 -1 @CHEATS_23983 -1 @CHEATS_23983 -1 @CHEATS_23983 -1 @CHEATS_23983 
+
+:CHEATS_12376
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CH151' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'BF400' 'BIKE' 'BMX' 'FAGGIO' 'FCR900' 'FREEWAY' 'HPV1000' 'MTBIKE' 'NRG500' 'PCJ600' 'PIZZABO' 'QUAD' 
+
+:CHEATS_12542
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_12575 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_12023 
+
+:CHEATS_12575
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_12542 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 12 default_jump 0 @CHEATS_23983 jumps 0 @CHEATS_12729 1 @CHEATS_12744 2 @CHEATS_12759 3 @CHEATS_12774 4 @CHEATS_12789 5 @CHEATS_12804 6 @CHEATS_12894 
+0872: jump_table_jumps 7 @CHEATS_12819 8 @CHEATS_12834 9 @CHEATS_12849 10 @CHEATS_12864 11 @CHEATS_12879 -1 @CHEATS_23983 -1 @CHEATS_23983 -1 @CHEATS_23983 -1 @CHEATS_23983 
+
+:CHEATS_12729
+0006: 0@ = 581 
+0002: jump @CHEATS_23881 
+
+:CHEATS_12744
+0006: 0@ = 509 
+0002: jump @CHEATS_23881 
+
+:CHEATS_12759
+0006: 0@ = 481 
+0002: jump @CHEATS_23881 
+
+:CHEATS_12774
+0006: 0@ = 462 
+0002: jump @CHEATS_23881 
+
+:CHEATS_12789
+0006: 0@ = 521 
+0002: jump @CHEATS_23881 
+
+:CHEATS_12804
+0006: 0@ = 463 
+0002: jump @CHEATS_23881 
+
+:CHEATS_12819
+0006: 0@ = 510 
+0002: jump @CHEATS_23881 
+
+:CHEATS_12834
+0006: 0@ = 522 
+0002: jump @CHEATS_23881 
+
+:CHEATS_12849
+0006: 0@ = 461 
+0002: jump @CHEATS_23881 
+
+:CHEATS_12864
+0006: 0@ = 448 
+0002: jump @CHEATS_23881 
+
+:CHEATS_12879
+0006: 0@ = 471 
+0002: jump @CHEATS_23881 
+
+:CHEATS_12894
+0006: 0@ = 523 
+0002: jump @CHEATS_23881 
+
+:CHEATS_12909
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CH152' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'SANCHEZ' 'WAYFARE' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 
+
+:CHEATS_13075
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_13108 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_12023 
+
+:CHEATS_13108
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_13075 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 2 default_jump 0 @CHEATS_23983 jumps 0 @CHEATS_13277 1 @CHEATS_13262 -1 @CHEATS_14616 -1 @CHEATS_15149 -1 @CHEATS_18803 -1 @CHEATS_19321 -1 @CHEATS_19809 
+0872: jump_table_jumps -1 @CHEATS_21228 -1 @CHEATS_22492 -1 @CHEATS_14143 -1 @CHEATS_13795 -1 @CHEATS_17021 -1 @CHEATS_23983 -1 @CHEATS_23983 -1 @CHEATS_23983 -1 @CHEATS_23983 
+
+:CHEATS_13262
+0006: 0@ = 586 
+0002: jump @CHEATS_23881 
+
+:CHEATS_13277
+0006: 0@ = 468 
+0002: jump @CHEATS_23881 
+
+:CHEATS_13292
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CH138' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'COASTG' 'DINGHY' 'JETMAX' 'LAUNCH' 'MARQUIS' 'PREDATR' 'REEFER' 'SPEEDER' 'SQUALO' 'TROPIC' 'DUMMY' 'DUMMY' 
+
+:CHEATS_13458
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_13491 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_11670 
+
+:CHEATS_13491
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_13458 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 10 default_jump 0 @CHEATS_23983 jumps 0 @CHEATS_13645 1 @CHEATS_13660 2 @CHEATS_13675 3 @CHEATS_13690 4 @CHEATS_13705 5 @CHEATS_13720 6 @CHEATS_13735 
+0872: jump_table_jumps 7 @CHEATS_13750 8 @CHEATS_13765 9 @CHEATS_13780 -1 @CHEATS_13795 -1 @CHEATS_17021 -1 @CHEATS_23983 -1 @CHEATS_23983 -1 @CHEATS_23983 -1 @CHEATS_23983 
+
+:CHEATS_13645
+0006: 0@ = 472 
+0002: jump @CHEATS_23881 
+
+:CHEATS_13660
+0006: 0@ = 473 
+0002: jump @CHEATS_23881 
+
+:CHEATS_13675
+0006: 0@ = 493 
+0002: jump @CHEATS_23881 
+
+:CHEATS_13690
+0006: 0@ = 595 
+0002: jump @CHEATS_23881 
+
+:CHEATS_13705
+0006: 0@ = 484 
+0002: jump @CHEATS_23881 
+
+:CHEATS_13720
+0006: 0@ = 430 
+0002: jump @CHEATS_23881 
+
+:CHEATS_13735
+0006: 0@ = 453 
+0002: jump @CHEATS_23881 
+
+:CHEATS_13750
+0006: 0@ = 452 
+0002: jump @CHEATS_23881 
+
+:CHEATS_13765
+0006: 0@ = 446 
+0002: jump @CHEATS_23881 
+
+:CHEATS_13780
+0006: 0@ = 454 
+0002: jump @CHEATS_23881 
+
+:CHEATS_13795
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CH149' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'COMET' 'FELTZER' 'STALION' 'WINDSOR' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 
+
+:CHEATS_13961
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_13994 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_11670 
+
+:CHEATS_13994
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_13961 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 4 default_jump 0 @CHEATS_23983 jumps 0 @CHEATS_14083 1 @CHEATS_14098 2 @CHEATS_14113 3 @CHEATS_14128 -1 @CHEATS_13705 -1 @CHEATS_13720 -1 @CHEATS_13735 
+
+:CHEATS_14083
+0006: 0@ = 480 
+0002: jump @CHEATS_23881 
+
+:CHEATS_14098
+0006: 0@ = 533 
+0002: jump @CHEATS_23881 
+
+:CHEATS_14113
+0006: 0@ = 439 
+0002: jump @CHEATS_23881 
+
+:CHEATS_14128
+0006: 0@ = 555 
+0002: jump @CHEATS_23881 
+
+:CHEATS_14143
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CH148' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'BLADE' 'BROADWY' 'REMING' 'SAVANNA' 'SLAMVAN' 'TAHOMA' 'TORNADO' 'VOODOO' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 
+
+:CHEATS_14309
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_14342 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_11670 
+
+:CHEATS_14342
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_14309 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 8 default_jump 0 @CHEATS_23983 jumps 0 @CHEATS_14496 1 @CHEATS_14511 2 @CHEATS_14526 3 @CHEATS_14541 4 @CHEATS_14556 5 @CHEATS_14571 6 @CHEATS_14586 
+0872: jump_table_jumps 7 @CHEATS_14601 -1 @CHEATS_13765 -1 @CHEATS_13780 -1 @CHEATS_13795 -1 @CHEATS_17021 -1 @CHEATS_23983 -1 @CHEATS_23983 -1 @CHEATS_23983 -1 @CHEATS_23983 
+
+:CHEATS_14496
+0006: 0@ = 536 
+0002: jump @CHEATS_23881 
+
+:CHEATS_14511
+0006: 0@ = 575 
+0002: jump @CHEATS_23881 
+
+:CHEATS_14526
+0006: 0@ = 534 
+0002: jump @CHEATS_23881 
+
+:CHEATS_14541
+0006: 0@ = 567 
+0002: jump @CHEATS_23881 
+
+:CHEATS_14556
+0006: 0@ = 535 
+0002: jump @CHEATS_23881 
+
+:CHEATS_14571
+0006: 0@ = 566 
+0002: jump @CHEATS_23881 
+
+:CHEATS_14586
+0006: 0@ = 576 
+0002: jump @CHEATS_23881 
+
+:CHEATS_14601
+0006: 0@ = 412 
+0002: jump @CHEATS_23881 
+
+:CHEATS_14616
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CH139' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'BANDITO' 'BFINJC' 'DUNE' 'HUNTLEY' 'LANDSTK' 'MESAA' 'MONSTER' 'MONSTA' 'MONSTB' 'PATRIOT' 'RANCHER' 'SANDKIN' 
+
+:CHEATS_14782
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_14815 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_11670 
+
+:CHEATS_14815
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_14782 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 12 default_jump 0 @CHEATS_23983 jumps 0 @CHEATS_14969 1 @CHEATS_14984 2 @CHEATS_14999 3 @CHEATS_15014 4 @CHEATS_15029 5 @CHEATS_15044 6 @CHEATS_15059 
+0872: jump_table_jumps 7 @CHEATS_15074 8 @CHEATS_15089 9 @CHEATS_15104 10 @CHEATS_15119 11 @CHEATS_15134 -1 @CHEATS_23983 -1 @CHEATS_23983 -1 @CHEATS_23983 -1 @CHEATS_23983 
+
+:CHEATS_14969
+0006: 0@ = 568 
+0002: jump @CHEATS_23881 
+
+:CHEATS_14984
+0006: 0@ = 424 
+0002: jump @CHEATS_23881 
+
+:CHEATS_14999
+0006: 0@ = 573 
+0002: jump @CHEATS_23881 
+
+:CHEATS_15014
+0006: 0@ = 579 
+0002: jump @CHEATS_23881 
+
+:CHEATS_15029
+0006: 0@ = 400 
+0002: jump @CHEATS_23881 
+
+:CHEATS_15044
+0006: 0@ = 500 
+0002: jump @CHEATS_23881 
+
+:CHEATS_15059
+0006: 0@ = 444 
+0002: jump @CHEATS_23881 
+
+:CHEATS_15074
+0006: 0@ = 556 
+0002: jump @CHEATS_23881 
+
+:CHEATS_15089
+0006: 0@ = 557 
+0002: jump @CHEATS_23881 
+
+:CHEATS_15104
+0006: 0@ = 470 
+0002: jump @CHEATS_23881 
+
+:CHEATS_15119
+0006: 0@ = 489 
+0002: jump @CHEATS_23881 
+
+:CHEATS_15134
+0006: 0@ = 495 
+0002: jump @CHEATS_23881 
+
+:CHEATS_15149
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CH140' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'CH151' 'CH152' 'CH153' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 
+
+:CHEATS_15315
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_15348 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_11670 
+
+:CHEATS_15348
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_15315 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 3 default_jump 0 @CHEATS_23983 jumps 0 @CHEATS_15437 1 @CHEATS_15970 2 @CHEATS_16503 -1 @CHEATS_23983 -1 @CHEATS_13705 -1 @CHEATS_13720 -1 @CHEATS_13735 
+
+:CHEATS_15437
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CH151' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'ADMIRAL' 'BRAVURA' 'BUCCANE' 'CADRONA' 'CLOVER' 'ELEGANT' 'ELEGY' 'EMPEROR' 'ESPERAN' 'FORTUNE' 'GLENDAL' 'GLENSHI' 
+
+:CHEATS_15603
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_15636 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_15149 
+
+:CHEATS_15636
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_15603 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 12 default_jump 0 @CHEATS_23983 jumps 0 @CHEATS_15790 1 @CHEATS_15805 2 @CHEATS_15820 3 @CHEATS_15835 4 @CHEATS_15850 5 @CHEATS_15865 6 @CHEATS_15880 
+0872: jump_table_jumps 7 @CHEATS_15895 8 @CHEATS_15910 9 @CHEATS_15925 10 @CHEATS_15940 11 @CHEATS_15955 -1 @CHEATS_23983 -1 @CHEATS_23983 -1 @CHEATS_23983 -1 @CHEATS_23983 
+
+:CHEATS_15790
+0006: 0@ = 445 
+0002: jump @CHEATS_23881 
+
+:CHEATS_15805
+0006: 0@ = 401 
+0002: jump @CHEATS_23881 
+
+:CHEATS_15820
+0006: 0@ = 518 
+0002: jump @CHEATS_23881 
+
+:CHEATS_15835
+0006: 0@ = 527 
+0002: jump @CHEATS_23881 
+
+:CHEATS_15850
+0006: 0@ = 542 
+0002: jump @CHEATS_23881 
+
+:CHEATS_15865
+0006: 0@ = 507 
+0002: jump @CHEATS_23881 
+
+:CHEATS_15880
+0006: 0@ = 562 
+0002: jump @CHEATS_23881 
+
+:CHEATS_15895
+0006: 0@ = 585 
+0002: jump @CHEATS_23881 
+
+:CHEATS_15910
+0006: 0@ = 419 
+0002: jump @CHEATS_23881 
+
+:CHEATS_15925
+0006: 0@ = 526 
+0002: jump @CHEATS_23881 
+
+:CHEATS_15940
+0006: 0@ = 466 
+0002: jump @CHEATS_23881 
+
+:CHEATS_15955
+0006: 0@ = 604 
+0002: jump @CHEATS_23881 
+
+:CHEATS_15970
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CH152' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'GREENWO' 'HERMES' 'INTRUDR' 'MAJESTC' 'MANANA' 'MERIT' 'MOONBM' 'NEBULA' 'OCEANIC' 'PEREN' 'PREMIER' 'PREVION' 
+
+:CHEATS_16136
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_16169 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_15149 
+
+:CHEATS_16169
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_16136 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 12 default_jump 0 @CHEATS_23983 jumps 0 @CHEATS_16323 1 @CHEATS_16338 2 @CHEATS_16353 3 @CHEATS_16368 4 @CHEATS_16383 5 @CHEATS_16398 6 @CHEATS_16488 
+0872: jump_table_jumps 7 @CHEATS_16413 8 @CHEATS_16428 9 @CHEATS_16473 10 @CHEATS_16443 11 @CHEATS_16458 -1 @CHEATS_23983 -1 @CHEATS_23983 -1 @CHEATS_23983 -1 @CHEATS_23983 
+
+:CHEATS_16323
+0006: 0@ = 492 
+0002: jump @CHEATS_23881 
+
+:CHEATS_16338
+0006: 0@ = 474 
+0002: jump @CHEATS_23881 
+
+:CHEATS_16353
+0006: 0@ = 546 
+0002: jump @CHEATS_23881 
+
+:CHEATS_16368
+0006: 0@ = 517 
+0002: jump @CHEATS_23881 
+
+:CHEATS_16383
+0006: 0@ = 410 
+0002: jump @CHEATS_23881 
+
+:CHEATS_16398
+0006: 0@ = 551 
+0002: jump @CHEATS_23881 
+
+:CHEATS_16413
+0006: 0@ = 516 
+0002: jump @CHEATS_23881 
+
+:CHEATS_16428
+0006: 0@ = 467 
+0002: jump @CHEATS_23881 
+
+:CHEATS_16443
+0006: 0@ = 426 
+0002: jump @CHEATS_23881 
+
+:CHEATS_16458
+0006: 0@ = 436 
+0002: jump @CHEATS_23881 
+
+:CHEATS_16473
+0006: 0@ = 404 
+0002: jump @CHEATS_23881 
+
+:CHEATS_16488
+0006: 0@ = 418 
+0002: jump @CHEATS_23881 
+
+:CHEATS_16503
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CH153' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'PRIMO' 'REGINA' 'SENTINL' 'SOLAIR' 'STAFFRD' 'SUNRISE' 'TAMPA' 'VINCENT' 'VIRGO' 'WILLARD' 'WASHING' 'DUMMY' 
+
+:CHEATS_16669
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_16702 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_15149 
+
+:CHEATS_16702
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_16669 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 11 default_jump 0 @CHEATS_23983 jumps 0 @CHEATS_16856 1 @CHEATS_16871 2 @CHEATS_16886 3 @CHEATS_16901 4 @CHEATS_16916 5 @CHEATS_16931 6 @CHEATS_16946 
+0872: jump_table_jumps 7 @CHEATS_16961 8 @CHEATS_16976 9 @CHEATS_16991 10 @CHEATS_17006 -1 @CHEATS_16886 -1 @CHEATS_23983 -1 @CHEATS_23983 -1 @CHEATS_23983 -1 @CHEATS_23983 
+
+:CHEATS_16856
+0006: 0@ = 547 
+0002: jump @CHEATS_23881 
+
+:CHEATS_16871
+0006: 0@ = 479 
+0002: jump @CHEATS_23881 
+
+:CHEATS_16886
+0006: 0@ = 405 
+0002: jump @CHEATS_23881 
+
+:CHEATS_16901
+0006: 0@ = 458 
+0002: jump @CHEATS_23881 
+
+:CHEATS_16916
+0006: 0@ = 580 
+0002: jump @CHEATS_23881 
+
+:CHEATS_16931
+0006: 0@ = 550 
+0002: jump @CHEATS_23881 
+
+:CHEATS_16946
+0006: 0@ = 549 
+0002: jump @CHEATS_23881 
+
+:CHEATS_16961
+0006: 0@ = 540 
+0002: jump @CHEATS_23881 
+
+:CHEATS_16976
+0006: 0@ = 491 
+0002: jump @CHEATS_23881 
+
+:CHEATS_16991
+0006: 0@ = 529 
+0002: jump @CHEATS_23881 
+
+:CHEATS_17006
+0006: 0@ = 421 
+0002: jump @CHEATS_23881 
+
+:CHEATS_17021
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CH150' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'CH151' 'CH152' 'CH154' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 
+
+:CHEATS_17187
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_17220 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_11670 
+
+:CHEATS_17220
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_17187 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 3 default_jump 0 @CHEATS_23983 jumps 0 @CHEATS_17309 1 @CHEATS_17842 2 @CHEATS_18315 -1 @CHEATS_23983 -1 @CHEATS_13705 -1 @CHEATS_13720 -1 @CHEATS_13735 
+
+:CHEATS_17309
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CH151' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'BAGGAGE' 'CADDY' 'CAMPER' 'COMBINE' 'DOZER' 'DUMPER' 'FORKLFT' 'HOTKNIF' 'HOTDOG' 'HUSTLER' 'KART' 'MOWER' 
+
+:CHEATS_17475
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_17508 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_17021 
+
+:CHEATS_17508
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_17475 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 12 default_jump 0 @CHEATS_23983 jumps 0 @CHEATS_17662 1 @CHEATS_17677 2 @CHEATS_17692 3 @CHEATS_17707 4 @CHEATS_17722 5 @CHEATS_17737 6 @CHEATS_17752 
+0872: jump_table_jumps 7 @CHEATS_17767 8 @CHEATS_17782 9 @CHEATS_17797 10 @CHEATS_17812 11 @CHEATS_17827 -1 @CHEATS_23983 -1 @CHEATS_23983 -1 @CHEATS_23983 -1 @CHEATS_23983 
+
+:CHEATS_17662
+0006: 0@ = 485 
+0002: jump @CHEATS_23881 
+
+:CHEATS_17677
+0006: 0@ = 457 
+0002: jump @CHEATS_23881 
+
+:CHEATS_17692
+0006: 0@ = 483 
+0002: jump @CHEATS_23881 
+
+:CHEATS_17707
+0006: 0@ = 532 
+0002: jump @CHEATS_23881 
+
+:CHEATS_17722
+0006: 0@ = 486 
+0002: jump @CHEATS_23881 
+
+:CHEATS_17737
+0006: 0@ = 406 
+0002: jump @CHEATS_23881 
+
+:CHEATS_17752
+0006: 0@ = 530 
+0002: jump @CHEATS_23881 
+
+:CHEATS_17767
+0006: 0@ = 434 
+0002: jump @CHEATS_23881 
+
+:CHEATS_17782
+0006: 0@ = 588 
+0002: jump @CHEATS_23881 
+
+:CHEATS_17797
+0006: 0@ = 545 
+0002: jump @CHEATS_23881 
+
+:CHEATS_17812
+0006: 0@ = 571 
+0002: jump @CHEATS_23881 
+
+:CHEATS_17827
+0006: 0@ = 572 
+0002: jump @CHEATS_23881 
+
+:CHEATS_17842
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CH152' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'WHOOPEE' 'ROMERO' 'SECURI' 'STRETCH' 'SWEEPER' 'TOWTRUK' 'TUG' 'VORTEX' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 
+
+:CHEATS_18008
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_18041 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_17021 
+
+:CHEATS_18041
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_18008 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 8 default_jump 0 @CHEATS_23983 jumps 0 @CHEATS_18195 1 @CHEATS_18210 2 @CHEATS_18225 3 @CHEATS_18240 4 @CHEATS_18255 5 @CHEATS_18270 6 @CHEATS_18285 
+0872: jump_table_jumps 7 @CHEATS_18300 -1 @CHEATS_17782 -1 @CHEATS_17797 -1 @CHEATS_17812 -1 @CHEATS_17827 -1 @CHEATS_23983 -1 @CHEATS_23983 -1 @CHEATS_23983 -1 @CHEATS_23983 
+
+:CHEATS_18195
+0006: 0@ = 423 
+0002: jump @CHEATS_23881 
+
+:CHEATS_18210
+0006: 0@ = 442 
+0002: jump @CHEATS_23881 
+
+:CHEATS_18225
+0006: 0@ = 428 
+0002: jump @CHEATS_23881 
+
+:CHEATS_18240
+0006: 0@ = 409 
+0002: jump @CHEATS_23881 
+
+:CHEATS_18255
+0006: 0@ = 574 
+0002: jump @CHEATS_23881 
+
+:CHEATS_18270
+0006: 0@ = 525 
+0002: jump @CHEATS_23881 
+
+:CHEATS_18285
+0006: 0@ = 583 
+0002: jump @CHEATS_23881 
+
+:CHEATS_18300
+0006: 0@ = 539 
+0002: jump @CHEATS_23881 
+
+:CHEATS_18315
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CH154' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'CH158' 'CH159' 'CH160' 'CH161' 'CH162' 'CH163' 'CH164' 'CH165' 'PETROTR' 'DUMMY' 'DUMMY' 'DUMMY' 
+
+:CHEATS_18481
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_18514 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_17021 
+
+:CHEATS_18514
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_18481 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 9 default_jump 0 @CHEATS_23983 jumps 0 @CHEATS_18668 1 @CHEATS_18683 2 @CHEATS_18698 3 @CHEATS_18713 4 @CHEATS_18728 5 @CHEATS_18743 6 @CHEATS_18758 
+0872: jump_table_jumps 7 @CHEATS_18773 8 @CHEATS_18788 -1 @CHEATS_17797 -1 @CHEATS_17812 -1 @CHEATS_17827 -1 @CHEATS_23983 -1 @CHEATS_23983 -1 @CHEATS_23983 -1 @CHEATS_23983 
+
+:CHEATS_18668
+0006: 0@ = 606 
+0002: jump @CHEATS_23881 
+
+:CHEATS_18683
+0006: 0@ = 607 
+0002: jump @CHEATS_23881 
+
+:CHEATS_18698
+0006: 0@ = 608 
+0002: jump @CHEATS_23881 
+
+:CHEATS_18713
+0006: 0@ = 610 
+0002: jump @CHEATS_23881 
+
+:CHEATS_18728
+0006: 0@ = 611 
+0002: jump @CHEATS_23881 
+
+:CHEATS_18743
+0006: 0@ = 435 
+0002: jump @CHEATS_23881 
+
+:CHEATS_18758
+0006: 0@ = 450 
+0002: jump @CHEATS_23881 
+
+:CHEATS_18773
+0006: 0@ = 591 
+0002: jump @CHEATS_23881 
+
+:CHEATS_18788
+0006: 0@ = 584 
+0002: jump @CHEATS_23881 
+
+:CHEATS_18803
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CH141' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'ANDROM' 'AT400' 'BEAGLE' 'CROPDST' 'DODO' 'HYDRA' 'NEVADA' 'RUSTLER' 'SHAMAL' 'SKIMMER' 'STUNT' 'DUMMY' 
+
+:CHEATS_18969
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_19002 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_11670 
+
+:CHEATS_19002
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_18969 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 11 default_jump 0 @CHEATS_23983 jumps 0 @CHEATS_19306 1 @CHEATS_19156 2 @CHEATS_19171 3 @CHEATS_19186 4 @CHEATS_19201 5 @CHEATS_19216 6 @CHEATS_19231 
+0872: jump_table_jumps 7 @CHEATS_19246 8 @CHEATS_19261 9 @CHEATS_19276 10 @CHEATS_19291 -1 @CHEATS_17021 -1 @CHEATS_23983 -1 @CHEATS_23983 -1 @CHEATS_23983 -1 @CHEATS_23983 
+
+:CHEATS_19156
+0006: 0@ = 577 
+0002: jump @CHEATS_23881 
+
+:CHEATS_19171
+0006: 0@ = 511 
+0002: jump @CHEATS_23881 
+
+:CHEATS_19186
+0006: 0@ = 512 
+0002: jump @CHEATS_23881 
+
+:CHEATS_19201
+0006: 0@ = 593 
+0002: jump @CHEATS_23881 
+
+:CHEATS_19216
+0006: 0@ = 520 
+0002: jump @CHEATS_23881 
+
+:CHEATS_19231
+0006: 0@ = 553 
+0002: jump @CHEATS_23881 
+
+:CHEATS_19246
+0006: 0@ = 476 
+0002: jump @CHEATS_23881 
+
+:CHEATS_19261
+0006: 0@ = 519 
+0002: jump @CHEATS_23881 
+
+:CHEATS_19276
+0006: 0@ = 460 
+0002: jump @CHEATS_23881 
+
+:CHEATS_19291
+0006: 0@ = 513 
+0002: jump @CHEATS_23881 
+
+:CHEATS_19306
+0006: 0@ = 592 
+0002: jump @CHEATS_23881 
+
+:CHEATS_19321
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CH152' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'CARGOBB' 'HUNTER' 'LEVIATH' 'MAVERIC' 'POLMAV' 'RAINDNC' 'SANMAV' 'SEASPAR' 'SPARROW' 'DUMMY' 'DUMMY' 'DUMMY' 
+
+:CHEATS_19487
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_19520 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_11670 
+
+:CHEATS_19520
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_19487 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 9 default_jump 0 @CHEATS_23983 jumps 0 @CHEATS_19674 1 @CHEATS_19689 2 @CHEATS_19704 3 @CHEATS_19719 4 @CHEATS_19734 5 @CHEATS_19749 6 @CHEATS_19764 
+0872: jump_table_jumps 7 @CHEATS_19779 8 @CHEATS_19794 -1 @CHEATS_17797 -1 @CHEATS_17812 -1 @CHEATS_17827 -1 @CHEATS_23983 -1 @CHEATS_23983 -1 @CHEATS_23983 -1 @CHEATS_23983 
+
+:CHEATS_19674
+0006: 0@ = 548 
+0002: jump @CHEATS_23881 
+
+:CHEATS_19689
+0006: 0@ = 425 
+0002: jump @CHEATS_23881 
+
+:CHEATS_19704
+0006: 0@ = 417 
+0002: jump @CHEATS_23881 
+
+:CHEATS_19719
+0006: 0@ = 487 
+0002: jump @CHEATS_23881 
+
+:CHEATS_19734
+0006: 0@ = 497 
+0002: jump @CHEATS_23881 
+
+:CHEATS_19749
+0006: 0@ = 563 
+0002: jump @CHEATS_23881 
+
+:CHEATS_19764
+0006: 0@ = 488 
+0002: jump @CHEATS_23881 
+
+:CHEATS_19779
+0006: 0@ = 447 
+0002: jump @CHEATS_23881 
+
+:CHEATS_19794
+0006: 0@ = 469 
+0002: jump @CHEATS_23881 
+
+:CHEATS_19809
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CH143' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'CH151' 'CH152' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 
+
+:CHEATS_19975
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_20008 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_11670 
+
+:CHEATS_20008
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_19975 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 2 default_jump 0 @CHEATS_23983 jumps 0 @CHEATS_20162 1 @CHEATS_20695 -1 @CHEATS_17692 -1 @CHEATS_17707 -1 @CHEATS_17722 -1 @CHEATS_17737 -1 @CHEATS_17752 
+0872: jump_table_jumps -1 @CHEATS_17767 -1 @CHEATS_17782 -1 @CHEATS_17797 -1 @CHEATS_17812 -1 @CHEATS_17827 -1 @CHEATS_23983 -1 @CHEATS_23983 -1 @CHEATS_23983 -1 @CHEATS_23983 
+
+:CHEATS_20162
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CH151' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'BENSON' 'BOBCAT' 'BURRITO' 'BOXVILL' 'BOXBURG' 'CEMENT' 'DFT30' 'FLATBED' 'LINERUN' 'MULE' 'NEWSVAN' 'PACKER' 
+
+:CHEATS_20328
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_20361 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_19809 
+
+:CHEATS_20361
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_20328 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 12 default_jump 0 @CHEATS_23983 jumps 0 @CHEATS_20515 1 @CHEATS_20530 2 @CHEATS_20545 3 @CHEATS_20560 4 @CHEATS_20575 5 @CHEATS_20590 6 @CHEATS_20605 
+0872: jump_table_jumps 7 @CHEATS_20620 8 @CHEATS_20635 9 @CHEATS_20650 10 @CHEATS_20665 11 @CHEATS_20680 -1 @CHEATS_23983 -1 @CHEATS_23983 -1 @CHEATS_23983 -1 @CHEATS_23983 
+
+:CHEATS_20515
+0006: 0@ = 499 
+0002: jump @CHEATS_23881 
+
+:CHEATS_20530
+0006: 0@ = 422 
+0002: jump @CHEATS_23881 
+
+:CHEATS_20545
+0006: 0@ = 482 
+0002: jump @CHEATS_23881 
+
+:CHEATS_20560
+0006: 0@ = 498 
+0002: jump @CHEATS_23881 
+
+:CHEATS_20575
+0006: 0@ = 609 
+0002: jump @CHEATS_23881 
+
+:CHEATS_20590
+0006: 0@ = 524 
+0002: jump @CHEATS_23881 
+
+:CHEATS_20605
+0006: 0@ = 578 
+0002: jump @CHEATS_23881 
+
+:CHEATS_20620
+0006: 0@ = 455 
+0002: jump @CHEATS_23881 
+
+:CHEATS_20635
+0006: 0@ = 403 
+0002: jump @CHEATS_23881 
+
+:CHEATS_20650
+0006: 0@ = 414 
+0002: jump @CHEATS_23881 
+
+:CHEATS_20665
+0006: 0@ = 582 
+0002: jump @CHEATS_23881 
+
+:CHEATS_20680
+0006: 0@ = 443 
+0002: jump @CHEATS_23881 
+
+:CHEATS_20695
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CH152' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'PICADOR' 'PONY' 'RDTRAIN' 'RUMPO' 'SADLER' 'SADLSHI' 'PETROL' 'TRACTOR' 'TRASHM' 'WALTON' 'YANKEE' 'YOSEMIT' 
+
+:CHEATS_20861
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_20894 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_19809 
+
+:CHEATS_20894
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_20861 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 12 default_jump 0 @CHEATS_23983 jumps 0 @CHEATS_21048 1 @CHEATS_21063 2 @CHEATS_21078 3 @CHEATS_21093 4 @CHEATS_21108 5 @CHEATS_21123 6 @CHEATS_21138 
+0872: jump_table_jumps 7 @CHEATS_21153 8 @CHEATS_21168 9 @CHEATS_21183 10 @CHEATS_21198 11 @CHEATS_21213 -1 @CHEATS_23983 -1 @CHEATS_23983 -1 @CHEATS_23983 -1 @CHEATS_23983 
+
+:CHEATS_21048
+0006: 0@ = 600 
+0002: jump @CHEATS_23881 
+
+:CHEATS_21063
+0006: 0@ = 413 
+0002: jump @CHEATS_23881 
+
+:CHEATS_21078
+0006: 0@ = 515 
+0002: jump @CHEATS_23881 
+
+:CHEATS_21093
+0006: 0@ = 440 
+0002: jump @CHEATS_23881 
+
+:CHEATS_21108
+0006: 0@ = 543 
+0002: jump @CHEATS_23881 
+
+:CHEATS_21123
+0006: 0@ = 605 
+0002: jump @CHEATS_23881 
+
+:CHEATS_21138
+0006: 0@ = 514 
+0002: jump @CHEATS_23881 
+
+:CHEATS_21153
+0006: 0@ = 531 
+0002: jump @CHEATS_23881 
+
+:CHEATS_21168
+0006: 0@ = 408 
+0002: jump @CHEATS_23881 
+
+:CHEATS_21183
+0006: 0@ = 478 
+0002: jump @CHEATS_23881 
+
+:CHEATS_21198
+0006: 0@ = 456 
+0002: jump @CHEATS_23881 
+
+:CHEATS_21213
+0006: 0@ = 554 
+0002: jump @CHEATS_23881 
+
+:CHEATS_21228
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CH146' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'CH151' 'CH152' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 
+
+:CHEATS_21394
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_21427 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_11670 
+
+:CHEATS_21427
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_21394 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 2 default_jump 0 @CHEATS_23983 jumps 0 @CHEATS_21581 1 @CHEATS_22114 -1 @CHEATS_14616 -1 @CHEATS_15149 -1 @CHEATS_18803 -1 @CHEATS_19321 -1 @CHEATS_19809 
+0872: jump_table_jumps -1 @CHEATS_21228 -1 @CHEATS_22492 -1 @CHEATS_14143 -1 @CHEATS_13795 -1 @CHEATS_17021 -1 @CHEATS_23983 -1 @CHEATS_23983 -1 @CHEATS_23983 -1 @CHEATS_23983 
+
+:CHEATS_21581
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CH151' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'AMBULAN' 'BARRCKS' 'BUS' 'CABBIE' 'COACH' 'ENFORCR' 'FBIRANC' 'FBITRUK' 'FIRETRK' 'FIRELA' 'CH155' 'CH156' 
+
+:CHEATS_21747
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_21780 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_21228 
+
+:CHEATS_21780
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_21747 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 12 default_jump 0 @CHEATS_23983 jumps 0 @CHEATS_21934 1 @CHEATS_21949 2 @CHEATS_21964 3 @CHEATS_21979 4 @CHEATS_21994 5 @CHEATS_22009 6 @CHEATS_22024 
+0872: jump_table_jumps 7 @CHEATS_22099 8 @CHEATS_22039 9 @CHEATS_22054 10 @CHEATS_22069 11 @CHEATS_22084 -1 @CHEATS_23983 -1 @CHEATS_23983 -1 @CHEATS_23983 -1 @CHEATS_23983 
+
+:CHEATS_21934
+0006: 0@ = 416 
+0002: jump @CHEATS_23881 
+
+:CHEATS_21949
+0006: 0@ = 433 
+0002: jump @CHEATS_23881 
+
+:CHEATS_21964
+0006: 0@ = 431 
+0002: jump @CHEATS_23881 
+
+:CHEATS_21979
+0006: 0@ = 438 
+0002: jump @CHEATS_23881 
+
+:CHEATS_21994
+0006: 0@ = 437 
+0002: jump @CHEATS_23881 
+
+:CHEATS_22009
+0006: 0@ = 427 
+0002: jump @CHEATS_23881 
+
+:CHEATS_22024
+0006: 0@ = 490 
+0002: jump @CHEATS_23881 
+
+:CHEATS_22039
+0006: 0@ = 407 
+0002: jump @CHEATS_23881 
+
+:CHEATS_22054
+0006: 0@ = 544 
+0002: jump @CHEATS_23881 
+
+:CHEATS_22069
+0006: 0@ = 596 
+0002: jump @CHEATS_23881 
+
+:CHEATS_22084
+0006: 0@ = 597 
+0002: jump @CHEATS_23881 
+
+:CHEATS_22099
+0006: 0@ = 528 
+0002: jump @CHEATS_23881 
+
+:CHEATS_22114
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CH152' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'CH157' 'RANGER' 'RHINO' 'SWATVAN' 'TAXI' 'UTILITY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 
+
+:CHEATS_22280
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_22313 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_21228 
+
+:CHEATS_22313
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_22280 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 6 default_jump 0 @CHEATS_23983 jumps 0 @CHEATS_22402 1 @CHEATS_22417 2 @CHEATS_22432 3 @CHEATS_22447 4 @CHEATS_22462 5 @CHEATS_22477 -1 @CHEATS_22024 
+
+:CHEATS_22402
+0006: 0@ = 528 
+0002: jump @CHEATS_23881 
+
+:CHEATS_22417
+0006: 0@ = 599 
+0002: jump @CHEATS_23881 
+
+:CHEATS_22432
+0006: 0@ = 432 
+0002: jump @CHEATS_23881 
+
+:CHEATS_22447
+0006: 0@ = 601 
+0002: jump @CHEATS_23881 
+
+:CHEATS_22462
+0006: 0@ = 420 
+0002: jump @CHEATS_23881 
+
+:CHEATS_22477
+0006: 0@ = 552 
+0002: jump @CHEATS_23881 
+
+:CHEATS_22492
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CH147' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'CH151' 'CH152' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 
+
+:CHEATS_22658
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_22691 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_11670 
+
+:CHEATS_22691
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_22658 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 2 default_jump 0 @CHEATS_23983 jumps 0 @CHEATS_22845 1 @CHEATS_23378 -1 @CHEATS_14616 -1 @CHEATS_15149 -1 @CHEATS_18803 -1 @CHEATS_19321 -1 @CHEATS_19809 
+0872: jump_table_jumps -1 @CHEATS_21228 -1 @CHEATS_22492 -1 @CHEATS_14143 -1 @CHEATS_13795 -1 @CHEATS_17021 -1 @CHEATS_23983 -1 @CHEATS_23983 -1 @CHEATS_23983 -1 @CHEATS_23983 
+
+:CHEATS_22845
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CH151' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'ALPHA' 'BANSHEE' 'BLISTAC' 'BUFFALO' 'BULLET' 'CHEETAH' 'CLUB' 'EUROS' 'FLASH' 'HOTRING' 'HOTRINA' 'HOTRINB' 
+
+:CHEATS_23011
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_23044 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_22492 
+
+:CHEATS_23044
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_23011 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 12 default_jump 0 @CHEATS_23983 jumps 0 @CHEATS_23198 1 @CHEATS_23213 2 @CHEATS_23228 3 @CHEATS_23243 4 @CHEATS_23258 5 @CHEATS_23273 6 @CHEATS_23288 
+0872: jump_table_jumps 7 @CHEATS_23303 8 @CHEATS_23318 9 @CHEATS_23333 10 @CHEATS_23348 11 @CHEATS_23363 -1 @CHEATS_23983 -1 @CHEATS_23983 -1 @CHEATS_23983 -1 @CHEATS_23983 
+
+:CHEATS_23198
+0006: 0@ = 602 
+0002: jump @CHEATS_23881 
+
+:CHEATS_23213
+0006: 0@ = 429 
+0002: jump @CHEATS_23881 
+
+:CHEATS_23228
+0006: 0@ = 496 
+0002: jump @CHEATS_23881 
+
+:CHEATS_23243
+0006: 0@ = 402 
+0002: jump @CHEATS_23881 
+
+:CHEATS_23258
+0006: 0@ = 541 
+0002: jump @CHEATS_23881 
+
+:CHEATS_23273
+0006: 0@ = 415 
+0002: jump @CHEATS_23881 
+
+:CHEATS_23288
+0006: 0@ = 589 
+0002: jump @CHEATS_23881 
+
+:CHEATS_23303
+0006: 0@ = 587 
+0002: jump @CHEATS_23881 
+
+:CHEATS_23318
+0006: 0@ = 565 
+0002: jump @CHEATS_23881 
+
+:CHEATS_23333
+0006: 0@ = 494 
+0002: jump @CHEATS_23881 
+
+:CHEATS_23348
+0006: 0@ = 502 
+0002: jump @CHEATS_23881 
+
+:CHEATS_23363
+0006: 0@ = 503 
+0002: jump @CHEATS_23881 
+
+:CHEATS_23378
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CH152' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'INFERNU' 'JESTER' 'PHOENIX' 'SABRE' 'STRATUM' 'SULTAN' 'SUPERGT' 'TURISMO' 'URANUS' 'ZR350' 'DUMMY' 'DUMMY' 
+
+:CHEATS_23544
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_23577 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_22492 
+
+:CHEATS_23577
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_23544 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 10 default_jump 0 @CHEATS_23983 jumps 0 @CHEATS_23731 1 @CHEATS_23746 2 @CHEATS_23761 3 @CHEATS_23776 4 @CHEATS_23791 5 @CHEATS_23806 6 @CHEATS_23821 
+0872: jump_table_jumps 7 @CHEATS_23836 8 @CHEATS_23851 9 @CHEATS_23866 -1 @CHEATS_23348 -1 @CHEATS_23363 -1 @CHEATS_23983 -1 @CHEATS_23983 -1 @CHEATS_23983 -1 @CHEATS_23983 
+
+:CHEATS_23731
+0006: 0@ = 411 
+0002: jump @CHEATS_23881 
+
+:CHEATS_23746
+0006: 0@ = 559 
+0002: jump @CHEATS_23881 
+
+:CHEATS_23761
+0006: 0@ = 603 
+0002: jump @CHEATS_23881 
+
+:CHEATS_23776
+0006: 0@ = 475 
+0002: jump @CHEATS_23881 
+
+:CHEATS_23791
+0006: 0@ = 561 
+0002: jump @CHEATS_23881 
+
+:CHEATS_23806
+0006: 0@ = 560 
+0002: jump @CHEATS_23881 
+
+:CHEATS_23821
+0006: 0@ = 506 
+0002: jump @CHEATS_23881 
+
+:CHEATS_23836
+0006: 0@ = 451 
+0002: jump @CHEATS_23881 
+
+:CHEATS_23851
+0006: 0@ = 558 
+0002: jump @CHEATS_23881 
+
+:CHEATS_23866
+0006: 0@ = 477 
+0002: jump @CHEATS_23881 
+
+:CHEATS_23881
+0247: load_model 0@ 
+038B: load_requested_models 
+04C4: store_coords_to 1@ 2@ 3@ from_actor $PLAYER_ACTOR with_offset 0.0 5.0 0.0 
+0172: 5@ = actor $PLAYER_ACTOR Z_angle 
+000B: 5@ += 90.0 
+00A5: 4@ = create_car 0@ at 1@ 2@ 3@ 
+020A: set_car 4@ door_status_to 1 
+0175: set_car 4@ Z_angle_to 5@ 
+01C3: remove_references_to_car 4@ 
+03E5: show_text_box 'CH144' 
+
+:CHEATS_23983
+01B4: set_player $PLAYER_CHAR can_move 1 
+0AB3: cleo_shared_var 200 = 0 
+0002: jump @CHEATS_51462 
+
+:CHEATS_24004
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CHT8' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'CHT57' 'CHT58' 'CHT59' 'CHT60' 'CHT61' 'CHT62' 'CHT63' 'CHT76' 'CHT79' 'CH230' 'DUMMY' 'DUMMY' 
+
+:CHEATS_24170
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_24203 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_217 
+
+:CHEATS_24203
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_24170 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 10 default_jump 0 @CHEATS_51462 jumps 0 @CHEATS_24357 1 @CHEATS_24422 2 @CHEATS_24472 3 @CHEATS_24522 4 @CHEATS_26948 5 @CHEATS_27080 6 @CHEATS_28259 
+0872: jump_table_jumps 7 @CHEATS_28383 8 @CHEATS_28517 9 @CHEATS_28651 -1 @CHEATS_30272 -1 @CHEATS_17021 -1 @CHEATS_23983 -1 @CHEATS_23983 -1 @CHEATS_23983 -1 @CHEATS_23983 
+
+:CHEATS_24357
+0945: get_player $PLAYER_CHAR max_armour_to 1@ 
+0652: 3@ = integer_stat 164 
+0062: 1@ -= 3@ // (int) 
+0653: 2@ = float_stat 24 
+0223: set_actor $PLAYER_ACTOR health_to 2@ 
+035F: actor $PLAYER_ACTOR armour += 1@ 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_24422
+0653: 1@ = float_stat 24 
+0007: 2@ = 1.15E10 
+0063: 2@ -= 1@ // (float) 
+0624: add 2@ to_float_stat 24 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_24472
+0945: get_player $PLAYER_CHAR max_armour_to 1@ 
+0006: 2@ = 150 
+0062: 2@ -= 1@ // (int) 
+055F: set_player $PLAYER_CHAR max_armour += 2@ 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_24522
+03E5: show_text_box 'CHT75' 
+
+:CHEATS_24533
+0653: 1@ = float_stat 21 
+01E5: show_text_1number_highpriority GXT 'CHT65' number 1@ time 10000 flag 1 
+
+:CHEATS_24559
+0001: wait 0 ms 
+00D6: if 1 
+0019:   1@ > 0 
+0AB0:   is_key_pressed 37 
+004D: jump_if_false @CHEATS_24630 
+000F: 1@ -= 5.0 
+0626: decrease_float_stat 21 by 5.0 
+01E5: show_text_1number_highpriority GXT 'CHT65' number 1@ time 10000 flag 1 
+0002: jump @CHEATS_24630 
+
+:CHEATS_24630
+0001: wait 0 ms 
+00D6: if 
+0AB0:   is_key_pressed 39 
+004D: jump_if_false @CHEATS_24694 
+000B: 1@ += 5.0 
+0624: add 5.0 to_float_stat 21 
+01E5: show_text_1number_highpriority GXT 'CHT65' number 1@ time 10000 flag 1 
+0002: jump @CHEATS_24694 
+
+:CHEATS_24694
+0001: wait 0 ms 
+00D6: if 
+0AB0:   is_key_pressed 40 
+004D: jump_if_false @CHEATS_24720 
+0002: jump @CHEATS_24774 
+
+:CHEATS_24720
+0001: wait 0 ms 
+00D6: if 
+0AB0:   is_key_pressed 38 
+004D: jump_if_false @CHEATS_24746 
+0002: jump @CHEATS_26707 
+
+:CHEATS_24746
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_24559 
+0002: jump @CHEATS_51462 
+
+:CHEATS_24774
+0653: 1@ = float_stat 22 
+01E5: show_text_1number_highpriority GXT 'CHT66' number 1@ time 10000 flag 1 
+
+:CHEATS_24800
+0001: wait 0 ms 
+00D6: if 1 
+0019:   1@ > 0 
+0AB0:   is_key_pressed 37 
+004D: jump_if_false @CHEATS_24871 
+000F: 1@ -= 5.0 
+0626: decrease_float_stat 22 by 5.0 
+01E5: show_text_1number_highpriority GXT 'CHT66' number 1@ time 10000 flag 1 
+0002: jump @CHEATS_24871 
+
+:CHEATS_24871
+0001: wait 0 ms 
+00D6: if 
+0AB0:   is_key_pressed 39 
+004D: jump_if_false @CHEATS_24935 
+000B: 1@ += 5.0 
+0624: add 5.0 to_float_stat 22 
+01E5: show_text_1number_highpriority GXT 'CHT66' number 1@ time 10000 flag 1 
+0002: jump @CHEATS_24935 
+
+:CHEATS_24935
+0001: wait 0 ms 
+00D6: if 
+0AB0:   is_key_pressed 40 
+004D: jump_if_false @CHEATS_24961 
+0002: jump @CHEATS_25015 
+
+:CHEATS_24961
+0001: wait 0 ms 
+00D6: if 
+0AB0:   is_key_pressed 38 
+004D: jump_if_false @CHEATS_24987 
+0002: jump @CHEATS_24533 
+
+:CHEATS_24987
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_24800 
+0002: jump @CHEATS_51462 
+
+:CHEATS_25015
+0653: 1@ = float_stat 23 
+01E5: show_text_1number_highpriority GXT 'CHT67' number 1@ time 10000 flag 1 
+
+:CHEATS_25041
+0001: wait 0 ms 
+00D6: if 1 
+0019:   1@ > 0 
+0AB0:   is_key_pressed 37 
+004D: jump_if_false @CHEATS_25112 
+000F: 1@ -= 5.0 
+0626: decrease_float_stat 23 by 5.0 
+01E5: show_text_1number_highpriority GXT 'CHT67' number 1@ time 10000 flag 1 
+0002: jump @CHEATS_25112 
+
+:CHEATS_25112
+0001: wait 0 ms 
+00D6: if 
+0AB0:   is_key_pressed 39 
+004D: jump_if_false @CHEATS_25176 
+000B: 1@ += 5.0 
+0624: add 5.0 to_float_stat 23 
+01E5: show_text_1number_highpriority GXT 'CHT67' number 1@ time 10000 flag 1 
+0002: jump @CHEATS_25176 
+
+:CHEATS_25176
+0001: wait 0 ms 
+00D6: if 
+0AB0:   is_key_pressed 40 
+004D: jump_if_false @CHEATS_25202 
+0002: jump @CHEATS_25256 
+
+:CHEATS_25202
+0001: wait 0 ms 
+00D6: if 
+0AB0:   is_key_pressed 38 
+004D: jump_if_false @CHEATS_25228 
+0002: jump @CHEATS_24774 
+
+:CHEATS_25228
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_25041 
+0002: jump @CHEATS_51462 
+
+:CHEATS_25256
+0653: 1@ = float_stat 25 
+01E5: show_text_1number_highpriority GXT 'CHT68' number 1@ time 10000 flag 1 
+
+:CHEATS_25282
+0001: wait 0 ms 
+00D6: if 1 
+0019:   1@ > 0 
+0AB0:   is_key_pressed 37 
+004D: jump_if_false @CHEATS_25353 
+000F: 1@ -= 5.0 
+0626: decrease_float_stat 25 by 5.0 
+01E5: show_text_1number_highpriority GXT 'CHT68' number 1@ time 10000 flag 1 
+0002: jump @CHEATS_25353 
+
+:CHEATS_25353
+0001: wait 0 ms 
+00D6: if 
+0AB0:   is_key_pressed 39 
+004D: jump_if_false @CHEATS_25417 
+000B: 1@ += 5.0 
+0624: add 5.0 to_float_stat 25 
+01E5: show_text_1number_highpriority GXT 'CHT68' number 1@ time 10000 flag 1 
+0002: jump @CHEATS_25417 
+
+:CHEATS_25417
+0001: wait 0 ms 
+00D6: if 
+0AB0:   is_key_pressed 40 
+004D: jump_if_false @CHEATS_25443 
+0002: jump @CHEATS_25497 
+
+:CHEATS_25443
+0001: wait 0 ms 
+00D6: if 
+0AB0:   is_key_pressed 38 
+004D: jump_if_false @CHEATS_25469 
+0002: jump @CHEATS_25015 
+
+:CHEATS_25469
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_25282 
+0002: jump @CHEATS_51462 
+
+:CHEATS_25497
+0652: 1@ = integer_stat 160 
+01E5: show_text_1number_highpriority GXT 'CHT69' number 1@ time 10000 flag 1 
+
+:CHEATS_25524
+0001: wait 0 ms 
+00D6: if 1 
+0019:   1@ > 0 
+0AB0:   is_key_pressed 37 
+004D: jump_if_false @CHEATS_25591 
+000E: 1@ -= 5 
+0629: change_integer_stat 160 to 1@ 
+01E5: show_text_1number_highpriority GXT 'CHT69' number 1@ time 10000 flag 1 
+0002: jump @CHEATS_25591 
+
+:CHEATS_25591
+0001: wait 0 ms 
+00D6: if 1 
+8029:   not  1@ >= 1000 
+0AB0:   is_key_pressed 39 
+004D: jump_if_false @CHEATS_25659 
+000A: 1@ += 5 
+0629: change_integer_stat 160 to 1@ 
+01E5: show_text_1number_highpriority GXT 'CHT69' number 1@ time 10000 flag 1 
+0002: jump @CHEATS_25659 
+
+:CHEATS_25659
+0001: wait 0 ms 
+00D6: if 
+0AB0:   is_key_pressed 40 
+004D: jump_if_false @CHEATS_25685 
+0002: jump @CHEATS_25739 
+
+:CHEATS_25685
+0001: wait 0 ms 
+00D6: if 
+0AB0:   is_key_pressed 38 
+004D: jump_if_false @CHEATS_25711 
+0002: jump @CHEATS_25256 
+
+:CHEATS_25711
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_25524 
+0002: jump @CHEATS_51462 
+
+:CHEATS_25739
+0652: 1@ = integer_stat 223 
+01E5: show_text_1number_highpriority GXT 'CHT70' number 1@ time 10000 flag 1 
+
+:CHEATS_25766
+0001: wait 0 ms 
+00D6: if 1 
+0019:   1@ > 0 
+0AB0:   is_key_pressed 37 
+004D: jump_if_false @CHEATS_25833 
+000E: 1@ -= 5 
+0629: change_integer_stat 223 to 1@ 
+01E5: show_text_1number_highpriority GXT 'CHT70' number 1@ time 10000 flag 1 
+0002: jump @CHEATS_25833 
+
+:CHEATS_25833
+0001: wait 0 ms 
+00D6: if 1 
+8029:   not  1@ >= 1000 
+0AB0:   is_key_pressed 39 
+004D: jump_if_false @CHEATS_25901 
+000A: 1@ += 5 
+0629: change_integer_stat 223 to 1@ 
+01E5: show_text_1number_highpriority GXT 'CHT70' number 1@ time 10000 flag 1 
+0002: jump @CHEATS_25901 
+
+:CHEATS_25901
+0001: wait 0 ms 
+00D6: if 
+0AB0:   is_key_pressed 40 
+004D: jump_if_false @CHEATS_25927 
+0002: jump @CHEATS_25981 
+
+:CHEATS_25927
+0001: wait 0 ms 
+00D6: if 
+0AB0:   is_key_pressed 38 
+004D: jump_if_false @CHEATS_25953 
+0002: jump @CHEATS_25497 
+
+:CHEATS_25953
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_25766 
+0002: jump @CHEATS_51462 
+
+:CHEATS_25981
+0652: 1@ = integer_stat 229 
+01E5: show_text_1number_highpriority GXT 'CHT71' number 1@ time 10000 flag 1 
+
+:CHEATS_26008
+0001: wait 0 ms 
+00D6: if 1 
+0019:   1@ > 0 
+0AB0:   is_key_pressed 37 
+004D: jump_if_false @CHEATS_26075 
+000E: 1@ -= 5 
+0629: change_integer_stat 229 to 1@ 
+01E5: show_text_1number_highpriority GXT 'CHT71' number 1@ time 10000 flag 1 
+0002: jump @CHEATS_26075 
+
+:CHEATS_26075
+0001: wait 0 ms 
+00D6: if 1 
+8029:   not  1@ >= 1000 
+0AB0:   is_key_pressed 39 
+004D: jump_if_false @CHEATS_26143 
+000A: 1@ += 5 
+0629: change_integer_stat 229 to 1@ 
+01E5: show_text_1number_highpriority GXT 'CHT71' number 1@ time 10000 flag 1 
+0002: jump @CHEATS_26143 
+
+:CHEATS_26143
+0001: wait 0 ms 
+00D6: if 
+0AB0:   is_key_pressed 40 
+004D: jump_if_false @CHEATS_26169 
+0002: jump @CHEATS_26223 
+
+:CHEATS_26169
+0001: wait 0 ms 
+00D6: if 
+0AB0:   is_key_pressed 38 
+004D: jump_if_false @CHEATS_26195 
+0002: jump @CHEATS_25739 
+
+:CHEATS_26195
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_26008 
+0002: jump @CHEATS_51462 
+
+:CHEATS_26223
+0652: 1@ = integer_stat 230 
+01E5: show_text_1number_highpriority GXT 'CHT72' number 1@ time 10000 flag 1 
+
+:CHEATS_26250
+0001: wait 0 ms 
+00D6: if 1 
+0019:   1@ > 0 
+0AB0:   is_key_pressed 37 
+004D: jump_if_false @CHEATS_26317 
+000E: 1@ -= 5 
+0629: change_integer_stat 230 to 1@ 
+01E5: show_text_1number_highpriority GXT 'CHT72' number 1@ time 10000 flag 1 
+0002: jump @CHEATS_26317 
+
+:CHEATS_26317
+0001: wait 0 ms 
+00D6: if 1 
+8029:   not  1@ >= 1000 
+0AB0:   is_key_pressed 39 
+004D: jump_if_false @CHEATS_26385 
+000A: 1@ += 5 
+0629: change_integer_stat 230 to 1@ 
+01E5: show_text_1number_highpriority GXT 'CHT72' number 1@ time 10000 flag 1 
+0002: jump @CHEATS_26385 
+
+:CHEATS_26385
+0001: wait 0 ms 
+00D6: if 
+0AB0:   is_key_pressed 40 
+004D: jump_if_false @CHEATS_26411 
+0002: jump @CHEATS_26465 
+
+:CHEATS_26411
+0001: wait 0 ms 
+00D6: if 
+0AB0:   is_key_pressed 38 
+004D: jump_if_false @CHEATS_26437 
+0002: jump @CHEATS_25981 
+
+:CHEATS_26437
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_26250 
+0002: jump @CHEATS_51462 
+
+:CHEATS_26465
+0652: 1@ = integer_stat 233 
+01E5: show_text_1number_highpriority GXT 'CHT73' number 1@ time 10000 flag 1 
+
+:CHEATS_26492
+0001: wait 0 ms 
+00D6: if 1 
+0019:   1@ > 0 
+0AB0:   is_key_pressed 37 
+004D: jump_if_false @CHEATS_26559 
+000E: 1@ -= 5 
+0629: change_integer_stat 233 to 1@ 
+01E5: show_text_1number_highpriority GXT 'CHT73' number 1@ time 10000 flag 1 
+0002: jump @CHEATS_26559 
+
+:CHEATS_26559
+0001: wait 0 ms 
+00D6: if 1 
+8029:   not  1@ >= 1000 
+0AB0:   is_key_pressed 39 
+004D: jump_if_false @CHEATS_26627 
+000A: 1@ += 5 
+0629: change_integer_stat 233 to 1@ 
+01E5: show_text_1number_highpriority GXT 'CHT73' number 1@ time 10000 flag 1 
+0002: jump @CHEATS_26627 
+
+:CHEATS_26627
+0001: wait 0 ms 
+00D6: if 
+0AB0:   is_key_pressed 40 
+004D: jump_if_false @CHEATS_26653 
+0002: jump @CHEATS_26707 
+
+:CHEATS_26653
+0001: wait 0 ms 
+00D6: if 
+0AB0:   is_key_pressed 38 
+004D: jump_if_false @CHEATS_26679 
+0002: jump @CHEATS_26223 
+
+:CHEATS_26679
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_26492 
+0002: jump @CHEATS_51462 
+
+:CHEATS_26707
+0653: 1@ = float_stat 64 
+01E5: show_text_1number_highpriority GXT 'CHT74' number 1@ time 10000 flag 1 
+
+:CHEATS_26733
+0001: wait 0 ms 
+00D6: if 1 
+0019:   1@ > 0 
+0AB0:   is_key_pressed 37 
+004D: jump_if_false @CHEATS_26804 
+000F: 1@ -= 5.0 
+0626: decrease_float_stat 64 by 5.0 
+01E5: show_text_1number_highpriority GXT 'CHT74' number 1@ time 10000 flag 1 
+0002: jump @CHEATS_26804 
+
+:CHEATS_26804
+0001: wait 0 ms 
+00D6: if 
+0AB0:   is_key_pressed 39 
+004D: jump_if_false @CHEATS_26868 
+000B: 1@ += 5.0 
+0624: add 5.0 to_float_stat 64 
+01E5: show_text_1number_highpriority GXT 'CHT74' number 1@ time 10000 flag 1 
+0002: jump @CHEATS_26868 
+
+:CHEATS_26868
+0001: wait 0 ms 
+00D6: if 
+0AB0:   is_key_pressed 40 
+004D: jump_if_false @CHEATS_26894 
+0002: jump @CHEATS_24533 
+
+:CHEATS_26894
+0001: wait 0 ms 
+00D6: if 
+0AB0:   is_key_pressed 38 
+004D: jump_if_false @CHEATS_26920 
+0002: jump @CHEATS_26465 
+
+:CHEATS_26920
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_26733 
+0002: jump @CHEATS_51462 
+
+:CHEATS_26948
+0001: wait 0 ms 
+0AB4: 1@ = cleo_shared_var 201 
+00D6: if 
+0039:   1@ == 0 
+004D: jump_if_false @CHEATS_27003 
+0AB3: cleo_shared_var 201 = 1 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_27003
+0001: wait 0 ms 
+0AB4: 1@ = cleo_shared_var 201 
+00D6: if 
+0039:   1@ == 1 
+004D: jump_if_false @CHEATS_51462 
+0AB3: cleo_shared_var 201 = 0 
+03E5: show_text_box 'CH145' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_27058
+0653: 0@ = float_stat 24 
+0223: set_actor $PLAYER_ACTOR health_to 0@ 
+0002: jump @CHEATS_184 
+
+:CHEATS_27080
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CHT62' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'CH180' 'CH181' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 
+
+:CHEATS_27246
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_27279 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_24004 
+
+:CHEATS_27279
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_27246 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 2 default_jump 0 @CHEATS_51462 jumps 0 @CHEATS_27368 1 @CHEATS_27806 -1 @CHEATS_27693 -1 @CHEATS_27714 -1 @CHEATS_27736 -1 @CHEATS_27758 -1 @CHEATS_27782 
+
+:CHEATS_27368
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CH180' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'CH166' 'CH167' 'CH168' 'CH169' 'CH170' 'CH171' 'CH172' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 
+
+:CHEATS_27534
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_27567 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_27080 
+
+:CHEATS_27567
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_27534 
+08D7: 1@ = panel 0@ active_row 
+0871: init_jump_table 1@ total_jumps 7 default_jump 0 @CHEATS_51462 jumps 0 @CHEATS_27651 1 @CHEATS_27672 2 @CHEATS_27693 3 @CHEATS_27714 4 @CHEATS_27736 5 @CHEATS_27758 6 @CHEATS_27782 
+
+:CHEATS_27651
+0006: 1@ = 1 
+0050: gosub @CHEATS_28244 
+0002: jump @CHEATS_27534 
+
+:CHEATS_27672
+0006: 1@ = 10 
+0050: gosub @CHEATS_28244 
+0002: jump @CHEATS_27534 
+
+:CHEATS_27693
+0006: 1@ = 100 
+0050: gosub @CHEATS_28244 
+0002: jump @CHEATS_27534 
+
+:CHEATS_27714
+0006: 1@ = 1000 
+0050: gosub @CHEATS_28244 
+0002: jump @CHEATS_27534 
+
+:CHEATS_27736
+0006: 1@ = 10000 
+0050: gosub @CHEATS_28244 
+0002: jump @CHEATS_27534 
+
+:CHEATS_27758
+0006: 1@ = 100000 
+0050: gosub @CHEATS_28244 
+0002: jump @CHEATS_27534 
+
+:CHEATS_27782
+0006: 1@ = 1000000 
+0050: gosub @CHEATS_28244 
+0002: jump @CHEATS_27534 
+
+:CHEATS_27806
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CH181' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'CH173' 'CH174' 'CH175' 'CH176' 'CH177' 'CH178' 'CH179' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 
+
+:CHEATS_27972
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_28005 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_27080 
+
+:CHEATS_28005
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_27972 
+08D7: 1@ = panel 0@ active_row 
+0871: init_jump_table 1@ total_jumps 7 default_jump 0 @CHEATS_51462 jumps 0 @CHEATS_28089 1 @CHEATS_28110 2 @CHEATS_28131 3 @CHEATS_28152 4 @CHEATS_28174 5 @CHEATS_28196 6 @CHEATS_28220 
+
+:CHEATS_28089
+0006: 1@ = -1 
+0050: gosub @CHEATS_28244 
+0002: jump @CHEATS_27972 
+
+:CHEATS_28110
+0006: 1@ = -10 
+0050: gosub @CHEATS_28244 
+0002: jump @CHEATS_27972 
+
+:CHEATS_28131
+0006: 1@ = -100 
+0050: gosub @CHEATS_28244 
+0002: jump @CHEATS_27972 
+
+:CHEATS_28152
+0006: 1@ = -1000 
+0050: gosub @CHEATS_28244 
+0002: jump @CHEATS_27972 
+
+:CHEATS_28174
+0006: 1@ = -10000 
+0050: gosub @CHEATS_28244 
+0002: jump @CHEATS_27972 
+
+:CHEATS_28196
+0006: 1@ = -100000 
+0050: gosub @CHEATS_28244 
+0002: jump @CHEATS_27972 
+
+:CHEATS_28220
+0006: 1@ = -1000000 
+0050: gosub @CHEATS_28244 
+0002: jump @CHEATS_27972 
+
+:CHEATS_28244
+0109: player $PLAYER_CHAR money += 1@ 
+0001: wait 500 ms 
+0051: return 
+
+:CHEATS_28259
+0001: wait 0 ms 
+0AB4: 1@ = cleo_shared_var 203 
+00D6: if 
+0039:   1@ == 0 
+004D: jump_if_false @CHEATS_28321 
+0330: set_player $PLAYER_CHAR infinite_run 1 
+0AB3: cleo_shared_var 203 = 1 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_28321
+0001: wait 0 ms 
+0AB4: 1@ = cleo_shared_var 203 
+00D6: if 
+0039:   1@ == 1 
+004D: jump_if_false @CHEATS_51462 
+0330: set_player $PLAYER_CHAR infinite_run 0 
+0AB3: cleo_shared_var 203 = 0 
+03E5: show_text_box 'CH145' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_28383
+0001: wait 0 ms 
+0A8D: 1@ = read_memory 9867636 size 1 virtual_protect 0 
+00D6: if 
+0039:   1@ == 0 
+004D: jump_if_false @CHEATS_28450 
+0A8C: write_memory 9867636 size 1 value 1 virtual_protect 0 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_28450
+0001: wait 0 ms 
+0A8D: 1@ = read_memory 9867636 size 1 virtual_protect 0 
+00D6: if 
+0039:   1@ == 1 
+004D: jump_if_false @CHEATS_51462 
+0A8C: write_memory 9867636 size 1 value 0 virtual_protect 0 
+03E5: show_text_box 'CH145' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_28517
+0001: wait 0 ms 
+0A8D: 1@ = read_memory 9867630 size 1 virtual_protect 0 
+00D6: if 
+0039:   1@ == 0 
+004D: jump_if_false @CHEATS_28584 
+0A8C: write_memory 9867630 size 1 value 1 virtual_protect 0 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_28584
+0001: wait 0 ms 
+0A8D: 1@ = read_memory 9867630 size 1 virtual_protect 0 
+00D6: if 
+0039:   1@ == 1 
+004D: jump_if_false @CHEATS_51462 
+0A8C: write_memory 9867630 size 1 value 0 virtual_protect 0 
+03E5: show_text_box 'CH145' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_28651
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CH230' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'CH231' 'CH232' 'CH233' 'CH234' 'CH235' 'CH236' 'CH237' 'CH238' 'CH239' 'CH240' 'CH241' 'DUMMY' 
+
+:CHEATS_28817
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_28850 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_24004 
+
+:CHEATS_28850
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_28817 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 11 default_jump 0 @CHEATS_51462 jumps 0 @CHEATS_29004 1 @CHEATS_29068 2 @CHEATS_29020 3 @CHEATS_29036 4 @CHEATS_29052 5 @CHEATS_29084 6 @CHEATS_29100 
+0872: jump_table_jumps 7 @CHEATS_29116 8 @CHEATS_29132 9 @CHEATS_29148 10 @CHEATS_29164 -1 @CHEATS_51462 -1 @CHEATS_51462 -1 @CHEATS_51462 -1 @CHEATS_51462 -1 @CHEATS_51462 
+
+:CHEATS_29004
+07FE: set_actor $PLAYER_ACTOR fighting_style_to 15 moves 6 
+0002: jump @CHEATS_51462 
+
+:CHEATS_29020
+07FE: set_actor $PLAYER_ACTOR fighting_style_to 5 moves 6 
+0002: jump @CHEATS_51462 
+
+:CHEATS_29036
+07FE: set_actor $PLAYER_ACTOR fighting_style_to 6 moves 6 
+0002: jump @CHEATS_51462 
+
+:CHEATS_29052
+07FE: set_actor $PLAYER_ACTOR fighting_style_to 7 moves 6 
+0002: jump @CHEATS_51462 
+
+:CHEATS_29068
+07FE: set_actor $PLAYER_ACTOR fighting_style_to 4 moves 6 
+0002: jump @CHEATS_51462 
+
+:CHEATS_29084
+07FE: set_actor $PLAYER_ACTOR fighting_style_to 8 moves 6 
+0002: jump @CHEATS_51462 
+
+:CHEATS_29100
+07FE: set_actor $PLAYER_ACTOR fighting_style_to 9 moves 6 
+0002: jump @CHEATS_51462 
+
+:CHEATS_29116
+07FE: set_actor $PLAYER_ACTOR fighting_style_to 11 moves 6 
+0002: jump @CHEATS_51462 
+
+:CHEATS_29132
+07FE: set_actor $PLAYER_ACTOR fighting_style_to 12 moves 6 
+0002: jump @CHEATS_51462 
+
+:CHEATS_29148
+07FE: set_actor $PLAYER_ACTOR fighting_style_to 13 moves 6 
+0002: jump @CHEATS_51462 
+
+:CHEATS_29164
+07FE: set_actor $PLAYER_ACTOR fighting_style_to 16 moves 6 
+0002: jump @CHEATS_51462 
+
+:CHEATS_29180
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CHT9' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'CH132' 'CH133' 'CH134' 'CH135' 'CH136' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 
+
+:CHEATS_29346
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_29379 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_217 
+
+:CHEATS_29379
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_29346 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 5 default_jump 0 @CHEATS_51462 jumps 0 @CHEATS_29468 1 @CHEATS_29602 2 @CHEATS_29736 3 @CHEATS_29870 4 @CHEATS_30004 -1 @CHEATS_9367 -1 @CHEATS_11670 
+
+:CHEATS_29468
+0001: wait 0 ms 
+0A8D: 1@ = read_memory 9867595 size 1 virtual_protect 0 
+00D6: if 
+0039:   1@ == 0 
+004D: jump_if_false @CHEATS_29535 
+0A8C: write_memory 9867595 size 1 value 1 virtual_protect 0 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_29535
+0001: wait 0 ms 
+0A8D: 1@ = read_memory 9867595 size 1 virtual_protect 0 
+00D6: if 
+0039:   1@ == 1 
+004D: jump_if_false @CHEATS_51462 
+0A8C: write_memory 9867595 size 1 value 0 virtual_protect 0 
+03E5: show_text_box 'CH145' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_29602
+0001: wait 0 ms 
+0A8D: 1@ = read_memory 9867598 size 1 virtual_protect 0 
+00D6: if 
+0039:   1@ == 0 
+004D: jump_if_false @CHEATS_29669 
+0A8C: write_memory 9867598 size 1 value 1 virtual_protect 0 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_29669
+0001: wait 0 ms 
+0A8D: 1@ = read_memory 9867598 size 1 virtual_protect 0 
+00D6: if 
+0039:   1@ == 1 
+004D: jump_if_false @CHEATS_51462 
+0A8C: write_memory 9867598 size 1 value 0 virtual_protect 0 
+03E5: show_text_box 'CH145' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_29736
+0001: wait 0 ms 
+0A8D: 1@ = read_memory 9867599 size 1 virtual_protect 0 
+00D6: if 
+0039:   1@ == 0 
+004D: jump_if_false @CHEATS_29803 
+0A8C: write_memory 9867599 size 1 value 1 virtual_protect 0 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_29803
+0001: wait 0 ms 
+0A8D: 1@ = read_memory 9867599 size 1 virtual_protect 0 
+00D6: if 
+0039:   1@ == 1 
+004D: jump_if_false @CHEATS_51462 
+0A8C: write_memory 9867599 size 1 value 0 virtual_protect 0 
+03E5: show_text_box 'CH145' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_29870
+0001: wait 0 ms 
+0A8D: 1@ = read_memory 9867600 size 1 virtual_protect 0 
+00D6: if 
+0039:   1@ == 0 
+004D: jump_if_false @CHEATS_29937 
+0A8C: write_memory 9867600 size 1 value 1 virtual_protect 0 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_29937
+0001: wait 0 ms 
+0A8D: 1@ = read_memory 9867600 size 1 virtual_protect 0 
+00D6: if 
+0039:   1@ == 1 
+004D: jump_if_false @CHEATS_51462 
+0A8C: write_memory 9867600 size 1 value 0 virtual_protect 0 
+03E5: show_text_box 'CH145' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_30004
+0001: wait 0 ms 
+0A8D: 1@ = read_memory 9867601 size 1 virtual_protect 0 
+00D6: if 
+0039:   1@ == 0 
+004D: jump_if_false @CHEATS_30071 
+0A8C: write_memory 9867601 size 1 value 1 virtual_protect 0 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_30071
+0001: wait 0 ms 
+0A8D: 1@ = read_memory 9867601 size 1 virtual_protect 0 
+00D6: if 
+0039:   1@ == 1 
+004D: jump_if_false @CHEATS_51462 
+0A8C: write_memory 9867601 size 1 value 0 virtual_protect 0 
+03E5: show_text_box 'CH145' 
+0002: jump @CHEATS_51462 
+0001: wait 0 ms 
+0A8D: 1@ = read_memory 9867609 size 1 virtual_protect 0 
+00D6: if 
+0039:   1@ == 0 
+004D: jump_if_false @CHEATS_30205 
+0A8C: write_memory 9867609 size 1 value 1 virtual_protect 0 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_30205
+0001: wait 0 ms 
+0A8D: 1@ = read_memory 9867609 size 1 virtual_protect 0 
+00D6: if 
+0039:   1@ == 1 
+004D: jump_if_false @CHEATS_51462 
+0A8C: write_memory 9867609 size 1 value 0 virtual_protect 0 
+03E5: show_text_box 'CH145' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_30272
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CHT10' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'CHT19' 'CHT47' 'CHT56' 'CHT64' 'CH131' 'CH188' 'CH218' 'CH226' 'CH229' 'DUMMY' 'DUMMY' 'DUMMY' 
+
+:CHEATS_30438
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_30471 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_217 
+
+:CHEATS_30471
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_30438 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 9 default_jump 0 @CHEATS_51462 jumps 0 @CHEATS_34855 1 @CHEATS_34886 2 @CHEATS_34929 3 @CHEATS_34954 4 @CHEATS_35080 5 @CHEATS_35119 6 @CHEATS_43675 
+0872: jump_table_jumps 7 @CHEATS_43686 8 @CHEATS_44062 -1 @CHEATS_30625 -1 @CHEATS_30272 -1 @CHEATS_17021 -1 @CHEATS_23983 -1 @CHEATS_23983 -1 @CHEATS_23983 -1 @CHEATS_23983 
+
+:CHEATS_30625
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CHT48' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'CHT49' 'CHT50' 'CHT51' 'CHT52' 'CHT53' 'CHT54' 'CHT55' 'CH253' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 
+
+:CHEATS_30791
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_30824 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_217 
+
+:CHEATS_30824
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_30791 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 8 default_jump 0 @CHEATS_51462 jumps 0 @CHEATS_30978 1 @CHEATS_31701 2 @CHEATS_33054 3 @CHEATS_34152 4 @CHEATS_34356 5 @CHEATS_34560 6 @CHEATS_34827 
+0872: jump_table_jumps 7 @CHEATS_50703 -1 @CHEATS_44062 -1 @CHEATS_30625 -1 @CHEATS_30272 -1 @CHEATS_17021 -1 @CHEATS_23983 -1 @CHEATS_23983 -1 @CHEATS_23983 -1 @CHEATS_23983 
+
+:CHEATS_30978
+076C: set_zone 'BATTP' gang 0 density_to 100 
+076C: set_zone 'ESPN1' gang 2 density_to 100 
+076C: set_zone 'ESPN2' gang 2 density_to 100 
+076C: set_zone 'ESPN3' gang 0 density_to 100 
+076C: set_zone 'ESPE1' gang 2 density_to 100 
+076C: set_zone 'ESPE2' gang 0 density_to 100 
+076C: set_zone 'ESPE3' gang 0 density_to 100 
+076C: set_zone 'JUNIHO' gang 2 density_to 100 
+076C: set_zone 'SFDWT1' gang 2 density_to 100 
+076C: set_zone 'SFDWT2' gang 0 density_to 100 
+076C: set_zone 'SFDWT3' gang 2 density_to 100 
+076C: set_zone 'SFDWT4' gang 0 density_to 100 
+076C: set_zone 'SFDWT5' gang 0 density_to 100 
+076C: set_zone 'SFDWT6' gang 2 density_to 100 
+076C: set_zone 'PARA' gang 0 density_to 100 
+076C: set_zone 'CALT' gang 0 density_to 100 
+076C: set_zone 'FINA' gang 2 density_to 100 
+076C: set_zone 'BAYV' gang 2 density_to 100 
+076C: set_zone 'JUNIHI' gang 0 density_to 100 
+076C: set_zone 'CHINA' gang 2 density_to 100 
+076C: set_zone 'CIVI' gang 0 density_to 100 
+076C: set_zone 'WESTP1' gang 0 density_to 100 
+076C: set_zone 'WESTP2' gang 2 density_to 100 
+076C: set_zone 'WESTP3' gang 2 density_to 100 
+076C: set_zone 'CITYS' gang 0 density_to 100 
+076C: set_zone 'THEA1' gang 2 density_to 100 
+076C: set_zone 'THEA2' gang 0 density_to 100 
+076C: set_zone 'THEA3' gang 0 density_to 100 
+076C: set_zone 'EASB1' gang 2 density_to 100 
+076C: set_zone 'EASB2' gang 0 density_to 100 
+076C: set_zone 'GARC' gang 0 density_to 100 
+076C: set_zone 'SFGLF3' gang 2 density_to 100 
+076C: set_zone 'CRANB' gang 2 density_to 100 
+076C: set_zone 'OCEAF1' gang 0 density_to 100 
+076C: set_zone 'OCEAF2' gang 2 density_to 100 
+076C: set_zone 'OCEAF3' gang 0 density_to 100 
+076C: set_zone 'HASH' gang 0 density_to 100 
+076C: set_zone 'DOH1' gang 2 density_to 100 
+076C: set_zone 'DOH2' gang 2 density_to 100 
+076C: set_zone 'SFBAG2' gang 0 density_to 100 
+076C: set_zone 'SFBAG3' gang 2 density_to 100 
+076C: set_zone 'SFBAG1' gang 0 density_to 100 
+076C: set_zone 'SFAIR1' gang 0 density_to 100 
+076C: set_zone 'SFAIR2' gang 2 density_to 100 
+076C: set_zone 'SFAIR3' gang 0 density_to 100 
+076C: set_zone 'SFAIR4' gang 0 density_to 100 
+076C: set_zone 'SFAIR5' gang 2 density_to 100 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_31701
+076C: set_zone 'YBELL1' gang 0 density_to 100 
+076C: set_zone 'YBELL2' gang 2 density_to 100 
+076C: set_zone 'SPIN' gang 2 density_to 100 
+076C: set_zone 'KACC' gang 0 density_to 100 
+076C: set_zone 'PRP1' gang 2 density_to 100 
+076C: set_zone 'PRP2' gang 0 density_to 100 
+076C: set_zone 'PRP3' gang 0 density_to 100 
+076C: set_zone 'PRP4' gang 2 density_to 100 
+076C: set_zone 'YELLOW' gang 2 density_to 100 
+076C: set_zone 'JTN1' gang 0 density_to 100 
+076C: set_zone 'JTN2' gang 2 density_to 100 
+076C: set_zone 'JTN3' gang 0 density_to 100 
+076C: set_zone 'JTN4' gang 0 density_to 100 
+076C: set_zone 'JTN5' gang 2 density_to 100 
+076C: set_zone 'JTN6' gang 0 density_to 100 
+076C: set_zone 'JTN7' gang 0 density_to 100 
+076C: set_zone 'JTN8' gang 2 density_to 100 
+076C: set_zone 'PINT' gang 2 density_to 100 
+076C: set_zone 'ISLE' gang 0 density_to 100 
+076C: set_zone 'ROCE1' gang 2 density_to 100 
+076C: set_zone 'ROCE2' gang 0 density_to 100 
+076C: set_zone 'WWE' gang 0 density_to 100 
+076C: set_zone 'WWE1' gang 2 density_to 100 
+076C: set_zone 'OVS' gang 2 density_to 100 
+076C: set_zone 'CREE' gang 0 density_to 100 
+076C: set_zone 'REDE1' gang 2 density_to 100 
+076C: set_zone 'REDE2' gang 0 density_to 100 
+076C: set_zone 'REDE3' gang 0 density_to 100 
+076C: set_zone 'REDW1' gang 2 density_to 100 
+076C: set_zone 'REDW2' gang 0 density_to 100 
+076C: set_zone 'REDW3' gang 0 density_to 100 
+076C: set_zone 'REDW4' gang 2 density_to 100 
+076C: set_zone 'HGP' gang 2 density_to 100 
+076C: set_zone 'STRIP1' gang 0 density_to 100 
+076C: set_zone 'STRIP2' gang 2 density_to 100 
+076C: set_zone 'JTW1' gang 0 density_to 100 
+076C: set_zone 'JTW2' gang 0 density_to 100 
+076C: set_zone 'VISA1' gang 2 density_to 100 
+076C: set_zone 'VISA2' gang 2 density_to 100 
+076C: set_zone 'STAR1' gang 0 density_to 100 
+076C: set_zone 'STAR2' gang 2 density_to 100 
+076C: set_zone 'CONST1' gang 0 density_to 100 
+076C: set_zone 'RING' gang 0 density_to 100 
+076C: set_zone 'SRY' gang 2 density_to 100 
+076C: set_zone 'JTE1' gang 0 density_to 100 
+076C: set_zone 'JTE2' gang 0 density_to 100 
+076C: set_zone 'JTE3' gang 2 density_to 100 
+076C: set_zone 'JTE4' gang 2 density_to 100 
+076C: set_zone 'BFLD1' gang 0 density_to 100 
+076C: set_zone 'BFLD2' gang 2 density_to 100 
+076C: set_zone 'CALI1' gang 0 density_to 100 
+076C: set_zone 'CALI2' gang 0 density_to 100 
+076C: set_zone 'VAIR1' gang 2 density_to 100 
+076C: set_zone 'VAIR2' gang 2 density_to 100 
+076C: set_zone 'VAIR3' gang 0 density_to 100 
+076C: set_zone 'LVBAG' gang 2 density_to 100 
+076C: set_zone 'PIRA' gang 0 density_to 100 
+076C: set_zone 'ROY' gang 0 density_to 100 
+076C: set_zone 'PILL1' gang 2 density_to 100 
+076C: set_zone 'PILL2' gang 0 density_to 100 
+076C: set_zone 'LST' gang 2 density_to 100 
+076C: set_zone 'LINDEN' gang 0 density_to 100 
+076C: set_zone 'HIGH' gang 0 density_to 100 
+076C: set_zone 'STRIP3' gang 2 density_to 100 
+076C: set_zone 'STRIP4' gang 2 density_to 100 
+076C: set_zone 'PINK' gang 0 density_to 100 
+076C: set_zone 'CAM' gang 2 density_to 100 
+076C: set_zone 'GGC1' gang 0 density_to 100 
+076C: set_zone 'GGC2' gang 0 density_to 100 
+076C: set_zone 'LDS' gang 2 density_to 100 
+076C: set_zone 'LVA1' gang 0 density_to 100 
+076C: set_zone 'LVA2' gang 0 density_to 100 
+076C: set_zone 'LVA3' gang 2 density_to 100 
+076C: set_zone 'LVA4' gang 2 density_to 100 
+076C: set_zone 'LVA5' gang 0 density_to 100 
+076C: set_zone 'DRAG' gang 2 density_to 100 
+076C: set_zone 'LOT' gang 0 density_to 100 
+076C: set_zone 'BINT1' gang 0 density_to 100 
+076C: set_zone 'BINT2' gang 2 density_to 100 
+076C: set_zone 'BINT3' gang 2 density_to 100 
+076C: set_zone 'BINT4' gang 0 density_to 100 
+076C: set_zone 'JTS1' gang 2 density_to 100 
+076C: set_zone 'JTS2' gang 0 density_to 100 
+076C: set_zone 'BFC1' gang 0 density_to 100 
+076C: set_zone 'BFC2' gang 2 density_to 100 
+076C: set_zone 'RIE' gang 0 density_to 100 
+076C: set_zone 'LDM' gang 0 density_to 100 
+076C: set_zone 'RSE' gang 2 density_to 100 
+076C: set_zone 'RSW1' gang 2 density_to 100 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_33054
+076C: set_zone 'RED' gang 0 density_to 100 
+076C: set_zone 'MONT' gang 0 density_to 100 
+076C: set_zone 'MONT1' gang 2 density_to 100 
+076C: set_zone 'MONINT' gang 2 density_to 100 
+076C: set_zone 'HBARNS' gang 0 density_to 100 
+076C: set_zone 'HANKY' gang 2 density_to 100 
+076C: set_zone 'BLUAC' gang 0 density_to 100 
+076C: set_zone 'FERN' gang 0 density_to 100 
+076C: set_zone 'PANOP' gang 2 density_to 100 
+076C: set_zone 'PALO' gang 2 density_to 100 
+076C: set_zone 'BLUEB' gang 0 density_to 100 
+076C: set_zone 'BLUEB1' gang 2 density_to 100 
+076C: set_zone 'TOPFA' gang 0 density_to 100 
+076C: set_zone 'NROCK' gang 0 density_to 100 
+076C: set_zone 'DILLI' gang 2 density_to 100 
+076C: set_zone 'FLINTC' gang 0 density_to 100 
+076C: set_zone 'CUNTC1' gang 0 density_to 100 
+076C: set_zone 'CUNTC2' gang 2 density_to 100 
+076C: set_zone 'CUNTC3' gang 2 density_to 100 
+076C: set_zone 'SFGLF1' gang 0 density_to 100 
+076C: set_zone 'SFGLF2' gang 2 density_to 100 
+076C: set_zone 'SFGLF4' gang 0 density_to 100 
+076C: set_zone 'HAUL' gang 0 density_to 100 
+076C: set_zone 'HILLP' gang 2 density_to 100 
+076C: set_zone 'EBAY' gang 2 density_to 100 
+076C: set_zone 'EBAY2' gang 0 density_to 100 
+076C: set_zone 'ETUNN' gang 2 density_to 100 
+076C: set_zone 'SILLY1' gang 0 density_to 100 
+076C: set_zone 'SILLY2' gang 0 density_to 100 
+076C: set_zone 'SILLY3' gang 2 density_to 100 
+076C: set_zone 'SILLY4' gang 0 density_to 100 
+076C: set_zone 'FARM' gang 0 density_to 100 
+076C: set_zone 'BEACO' gang 2 density_to 100 
+076C: set_zone 'FLINTI' gang 2 density_to 100 
+076C: set_zone 'FLINTR' gang 0 density_to 100 
+076C: set_zone 'LEAFY' gang 2 density_to 100 
+076C: set_zone 'BACKO' gang 0 density_to 100 
+076C: set_zone 'ROBAD' gang 0 density_to 100 
+076C: set_zone 'ROBAD1' gang 2 density_to 100 
+076C: set_zone 'ELQUE' gang 0 density_to 100 
+076C: set_zone 'SUNNN' gang 0 density_to 100 
+076C: set_zone 'BYTUN' gang 2 density_to 100 
+076C: set_zone 'ALDEA' gang 2 density_to 100 
+076C: set_zone 'SUNMA' gang 0 density_to 100 
+076C: set_zone 'BARRA' gang 2 density_to 100 
+076C: set_zone 'ROBINT' gang 0 density_to 100 
+076C: set_zone 'WHET' gang 0 density_to 100 
+076C: set_zone 'MTCHI1' gang 2 density_to 100 
+076C: set_zone 'MTCHI2' gang 0 density_to 100 
+076C: set_zone 'MTCHI3' gang 0 density_to 100 
+076C: set_zone 'MTCHI4' gang 2 density_to 100 
+076C: set_zone 'CREEK' gang 2 density_to 100 
+076C: set_zone 'CREEK1' gang 0 density_to 100 
+076C: set_zone 'SHACA' gang 2 density_to 100 
+076C: set_zone 'ANGPI' gang 0 density_to 100 
+076C: set_zone 'BONE' gang 2 density_to 100 
+076C: set_zone 'PAYAS' gang 0 density_to 100 
+076C: set_zone 'VALLE' gang 2 density_to 100 
+076C: set_zone 'ELCA' gang 0 density_to 100 
+076C: set_zone 'ELCA1' gang 0 density_to 100 
+076C: set_zone 'ELCA2' gang 2 density_to 100 
+076C: set_zone 'ARCO' gang 0 density_to 100 
+076C: set_zone 'MEAD' gang 0 density_to 100 
+076C: set_zone 'BRUJA' gang 2 density_to 100 
+076C: set_zone 'TOM' gang 2 density_to 100 
+076C: set_zone 'REST' gang 0 density_to 100 
+076C: set_zone 'BIGE' gang 2 density_to 100 
+076C: set_zone 'PALMS' gang 0 density_to 100 
+076C: set_zone 'OCTAN' gang 0 density_to 100 
+076C: set_zone 'PROBE' gang 2 density_to 100 
+076C: set_zone 'CARSO' gang 0 density_to 100 
+076C: set_zone 'QUARY' gang 0 density_to 100 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_34152
+0247: load_model #BALLAS1 
+0247: load_model #BALLAS2 
+0247: load_model #BALLAS3 
+038B: load_requested_models 
+0001: wait 0 ms 
+04C4: store_coords_to 1@ 2@ 3@ from_actor $PLAYER_ACTOR with_offset -1.0 1.0 0.0 
+04C4: store_coords_to 4@ 5@ 6@ from_actor $PLAYER_ACTOR with_offset 0.0 1.0 0.0 
+04C4: store_coords_to 7@ 8@ 9@ from_actor $PLAYER_ACTOR with_offset 1.0 1.0 0.0 
+009A: 10@ = create_actor_pedtype 7 model #BALLAS1 at 1@ 2@ 3@ 
+009A: 11@ = create_actor_pedtype 7 model #BALLAS2 at 4@ 5@ 6@ 
+009A: 12@ = create_actor_pedtype 7 model #BALLAS3 at 7@ 8@ 9@ 
+01C2: remove_references_to_actor 10@ // Like turning an actor into a random pedestrian 
+01C2: remove_references_to_actor 11@ // Like turning an actor into a random pedestrian 
+01C2: remove_references_to_actor 12@ // Like turning an actor into a random pedestrian 
+0247: load_model #BALLAS1 
+0247: load_model #BALLAS2 
+0247: load_model #BALLAS3 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_34356
+0247: load_model #LSV1 
+0247: load_model #LSV2 
+0247: load_model #LSV3 
+038B: load_requested_models 
+0001: wait 0 ms 
+04C4: store_coords_to 1@ 2@ 3@ from_actor $PLAYER_ACTOR with_offset -1.0 1.0 0.0 
+04C4: store_coords_to 4@ 5@ 6@ from_actor $PLAYER_ACTOR with_offset 0.0 1.0 0.0 
+04C4: store_coords_to 7@ 8@ 9@ from_actor $PLAYER_ACTOR with_offset 1.0 1.0 0.0 
+009A: 10@ = create_actor_pedtype 9 model #LSV1 at 1@ 2@ 3@ 
+009A: 11@ = create_actor_pedtype 9 model #LSV2 at 4@ 5@ 6@ 
+009A: 12@ = create_actor_pedtype 9 model #LSV3 at 7@ 8@ 9@ 
+01C2: remove_references_to_actor 10@ // Like turning an actor into a random pedestrian 
+01C2: remove_references_to_actor 11@ // Like turning an actor into a random pedestrian 
+01C2: remove_references_to_actor 12@ // Like turning an actor into a random pedestrian 
+0249: release_model #LSV1 
+0249: release_model #LSV2 
+0249: release_model #LSV3 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_34560
+0247: load_model #FAM1 
+0247: load_model #FAM2 
+0247: load_model #FAM3 
+0247: load_model #M4 
+038B: load_requested_models 
+0001: wait 0 ms 
+04C4: store_coords_to 1@ 2@ 3@ from_actor $PLAYER_ACTOR with_offset -1.0 1.0 0.0 
+04C4: store_coords_to 4@ 5@ 6@ from_actor $PLAYER_ACTOR with_offset 0.0 1.0 0.0 
+04C4: store_coords_to 7@ 8@ 9@ from_actor $PLAYER_ACTOR with_offset 1.0 1.0 0.0 
+009A: 10@ = create_actor_pedtype 8 model #FAM1 at 1@ 2@ 3@ 
+009A: 11@ = create_actor_pedtype 8 model #FAM2 at 4@ 5@ 6@ 
+009A: 12@ = create_actor_pedtype 8 model #FAM3 at 7@ 8@ 9@ 
+01B2: give_actor 10@ weapon 31 ammo 60000 // Load the weapon model before using this 
+01B2: give_actor 11@ weapon 31 ammo 60000 // Load the weapon model before using this 
+01B2: give_actor 12@ weapon 31 ammo 60000 // Load the weapon model before using this 
+07AF: $PLAYER_GROUP = player $PLAYER_CHAR group 
+0631: put_actor 10@ in_group $PLAYER_GROUP 
+0631: put_actor 11@ in_group $PLAYER_GROUP 
+0631: put_actor 12@ in_group $PLAYER_GROUP 
+0249: release_model #FAM1 
+0249: release_model #FAM2 
+0249: release_model #FAM3 
+0249: release_model #M4 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_34827
+0879: enable_gang_wars 1 
+08AC: hide_gang_zones_on_map 0 
+090D: highlight_all_inactive_gang_zones_as_available_for_gangwars 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_34855
+0001: wait 0 ms 
+00D6: if 
+0038:   $ONMISSION == 0 
+004D: jump_if_false @CHEATS_51462 
+03D8: show_save_screen 
+0002: jump @CHEATS_51462 
+
+:CHEATS_34886
+0AB6: get_target_blip_coords_to 1@ 2@ 3@ // IF and SET 
+00A1: put_actor $PLAYER_ACTOR at 1@ 2@ 3@ 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_34929
+0629: change_integer_stat 181 to 2 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_34954
+0001: wait 0 ms 
+0AB4: 1@ = cleo_shared_var 202 
+00D6: if 
+0039:   1@ == 0 
+004D: jump_if_false @CHEATS_35017 
+08DD: lose_stuff_after_wasted 0 
+08DE: lose_stuff_after_busted 0 
+0AB3: cleo_shared_var 202 = 1 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_35017
+0001: wait 0 ms 
+0AB4: 1@ = cleo_shared_var 202 
+00D6: if 
+0039:   1@ == 1 
+004D: jump_if_false @CHEATS_51462 
+08DD: lose_stuff_after_wasted 1 
+08DE: lose_stuff_after_busted 1 
+0AB3: cleo_shared_var 202 = 0 
+03E5: show_text_box 'CH145' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_35080
+0247: load_model #JETPACK 
+038B: load_requested_models 
+0001: wait 0 ms 
+07A7: put_jetpack_on_actor $PLAYER_ACTOR 
+0249: release_model #JETPACK 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_35119
+0001: wait 0 ms 
+00D6: if 1 
+0038:   $ONMISSION == 0 
+0038:   $Active_Interior == 0 
+004D: jump_if_false @CHEATS_51462 
+
+:CHEATS_35148
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CH188' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'CH182' 'CH183' 'CH184' 'CH185' 'CH186' 'CH187' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 
+
+:CHEATS_35314
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_35347 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_30272 
+
+:CHEATS_35347
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_35314 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 6 default_jump 0 @CHEATS_51462 jumps 0 @CHEATS_35436 1 @CHEATS_38158 2 @CHEATS_38446 3 @CHEATS_40462 4 @CHEATS_40815 5 @CHEATS_42320 -1 @CHEATS_51462 
+
+:CHEATS_35436
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CH182' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'CH189' 'CH190' 'CH191' 'CH205' 'CH193' 'CH194' 'CH206' 'CH213' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 
+
+:CHEATS_35602
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_35635 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_35148 
+
+:CHEATS_35635
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_35602 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 8 default_jump 0 @CHEATS_51462 jumps 0 @CHEATS_35789 1 @CHEATS_36077 2 @CHEATS_36365 3 @CHEATS_36718 4 @CHEATS_37006 5 @CHEATS_37294 6 @CHEATS_37582 
+0872: jump_table_jumps 7 @CHEATS_37870 -1 @CHEATS_51462 -1 @CHEATS_51462 -1 @CHEATS_51462 -1 @CHEATS_51462 -1 @CHEATS_51462 -1 @CHEATS_51462 -1 @CHEATS_51462 -1 @CHEATS_51462 
+
+:CHEATS_35789
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CH189' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'INTRO_1' 'SMOKE_1' 'SMOKE_2' 'SMOKE_3' 'SMOKE_4' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 
+
+:CHEATS_35955
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_35988 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_35436 
+
+:CHEATS_35988
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_35955 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 5 default_jump 0 @CHEATS_51462 jumps 0 @CHEATS_42663 1 @CHEATS_42674 2 @CHEATS_42685 3 @CHEATS_42696 4 @CHEATS_42707 -1 @CHEATS_42320 -1 @CHEATS_51462 
+
+:CHEATS_36077
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CH190' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'INTRO_2' 'RYDER_1' 'RYDER_3' 'RYDER_2' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 
+
+:CHEATS_36243
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_36276 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_35436 
+
+:CHEATS_36276
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_36243 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 4 default_jump 0 @CHEATS_51462 jumps 0 @CHEATS_42718 1 @CHEATS_42729 2 @CHEATS_42740 3 @CHEATS_42751 -1 @CHEATS_42707 -1 @CHEATS_42320 -1 @CHEATS_51462 
+
+:CHEATS_36365
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CH191' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'SWEET_1' 'SWEET1B' 'SWEET_3' 'SWEET_2' 'SWEET_4' 'SWEET_5' 'SWEET_6' 'SWEET_7' 'CRASH_2' 'LA1FIN1' 'LA1FIN2' 'DUMMY' 
+
+:CHEATS_36531
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_36564 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_35436 
+
+:CHEATS_36564
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_36531 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 11 default_jump 0 @CHEATS_51462 jumps 0 @CHEATS_42762 1 @CHEATS_42773 2 @CHEATS_42784 3 @CHEATS_42795 4 @CHEATS_42806 5 @CHEATS_42817 6 @CHEATS_42828 
+0872: jump_table_jumps 7 @CHEATS_42839 8 @CHEATS_42850 9 @CHEATS_42861 10 @CHEATS_42872 -1 @CHEATS_51462 -1 @CHEATS_51462 -1 @CHEATS_51462 -1 @CHEATS_51462 -1 @CHEATS_51462 
+
+:CHEATS_36718
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CH205' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'GROVE_1' 'GROVE_2' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 
+
+:CHEATS_36884
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_36917 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_35436 
+
+:CHEATS_36917
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_36884 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 2 default_jump 0 @CHEATS_51462 jumps 0 @CHEATS_42883 1 @CHEATS_42894 -1 @CHEATS_42784 -1 @CHEATS_42795 -1 @CHEATS_42806 -1 @CHEATS_42817 -1 @CHEATS_42828 
+
+:CHEATS_37006
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CH193' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'CRASH_1' 'CRASH_3' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 
+
+:CHEATS_37172
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_37205 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_35436 
+
+:CHEATS_37205
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_37172 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 2 default_jump 0 @CHEATS_51462 jumps 0 @CHEATS_42905 1 @CHEATS_42916 -1 @CHEATS_42784 -1 @CHEATS_42795 -1 @CHEATS_42806 -1 @CHEATS_42817 -1 @CHEATS_42828 
+
+:CHEATS_37294
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CH194' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'STRAP_1' 'STRAP_2' 'STRAP_3' 'STRAP_4' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 
+
+:CHEATS_37460
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_37493 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_35436 
+
+:CHEATS_37493
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_37460 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 4 default_jump 0 @CHEATS_51462 jumps 0 @CHEATS_42927 1 @CHEATS_42938 2 @CHEATS_42949 3 @CHEATS_42960 -1 @CHEATS_42806 -1 @CHEATS_42817 -1 @CHEATS_42828 
+
+:CHEATS_37582
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CH206' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'MAN_2' 'MAN_3' 'MAN_5' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 
+
+:CHEATS_37748
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_37781 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_35436 
+
+:CHEATS_37781
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_37748 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 3 default_jump 0 @CHEATS_51462 jumps 0 @CHEATS_42971 1 @CHEATS_42982 2 @CHEATS_42993 -1 @CHEATS_42960 -1 @CHEATS_42806 -1 @CHEATS_42817 -1 @CHEATS_42828 
+
+:CHEATS_37870
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CH213' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'RIOT_1' 'RIOT_2' 'CH214' 'CH215' 'CH216' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 
+
+:CHEATS_38036
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_38069 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_35436 
+
+:CHEATS_38069
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_38036 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 5 default_jump 0 @CHEATS_51462 jumps 0 @CHEATS_43004 1 @CHEATS_43015 2 @CHEATS_43026 3 @CHEATS_43037 4 @CHEATS_43048 -1 @CHEATS_42817 -1 @CHEATS_42828 
+
+:CHEATS_38158
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CH183' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'BCRASH1' 'CAT_1' 'CAT_2' 'CAT_3' 'CAT_4' 'TRUTH_1' 'TRUTH_2' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 
+
+:CHEATS_38324
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_38357 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_35148 
+
+:CHEATS_38357
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_38324 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 7 default_jump 0 @CHEATS_51462 jumps 0 @CHEATS_43059 1 @CHEATS_43070 2 @CHEATS_43081 3 @CHEATS_43092 4 @CHEATS_43103 5 @CHEATS_43114 6 @CHEATS_43125 
+
+:CHEATS_38446
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CH184' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'CH197' 'CH193' 'CH198' 'CH199' 'CH200' 'CH217' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 
+
+:CHEATS_38612
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_38645 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_35148 
+
+:CHEATS_38645
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_38612 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 6 default_jump 0 @CHEATS_51462 jumps 0 @CHEATS_38734 1 @CHEATS_39022 2 @CHEATS_39310 3 @CHEATS_39598 4 @CHEATS_39886 5 @CHEATS_40174 -1 @CHEATS_51462 
+
+:CHEATS_38734
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CH197' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'GAR_1' 'GAR_2' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 
+
+:CHEATS_38900
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_38933 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_38446 
+
+:CHEATS_38933
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_38900 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 2 default_jump 0 @CHEATS_51462 jumps 0 @CHEATS_43136 1 @CHEATS_43147 -1 @CHEATS_42828 -1 @CHEATS_42828 -1 @CHEATS_43048 -1 @CHEATS_42817 -1 @CHEATS_42828 
+
+:CHEATS_39022
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CH193' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'SCRA_1' 'SCRA_2' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 
+
+:CHEATS_39188
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_39221 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_38446 
+
+:CHEATS_39221
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_39188 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 2 default_jump 0 @CHEATS_51462 jumps 0 @CHEATS_43158 1 @CHEATS_43169 -1 @CHEATS_42828 -1 @CHEATS_42828 -1 @CHEATS_43048 -1 @CHEATS_42817 -1 @CHEATS_42828 
+
+:CHEATS_39310
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CH198' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'WUZI_1' 'FAR_4' 'FAR_5' 'WUZI_2' 'WUZI_4' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 
+
+:CHEATS_39476
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_39509 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_38446 
+
+:CHEATS_39509
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_39476 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 5 default_jump 0 @CHEATS_51462 jumps 0 @CHEATS_43180 1 @CHEATS_43191 2 @CHEATS_43202 3 @CHEATS_43213 4 @CHEATS_43224 -1 @CHEATS_42817 -1 @CHEATS_42828 
+
+:CHEATS_39598
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CH199' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'STEAL_1' 'STEAL_2' 'STEAL_4' 'STEAL_5' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 
+
+:CHEATS_39764
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_39797 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_38446 
+
+:CHEATS_39797
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_39764 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 4 default_jump 0 @CHEATS_51462 jumps 0 @CHEATS_43235 1 @CHEATS_43246 2 @CHEATS_43257 3 @CHEATS_43268 -1 @CHEATS_43224 -1 @CHEATS_42817 -1 @CHEATS_42828 
+
+:CHEATS_39886
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CH200' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'ZERO_1' 'ZERO_2' 'ZERO_4' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 
+
+:CHEATS_40052
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_40085 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_38446 
+
+:CHEATS_40085
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_40052 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 3 default_jump 0 @CHEATS_51462 jumps 0 @CHEATS_43279 1 @CHEATS_43290 2 @CHEATS_43301 -1 @CHEATS_43268 -1 @CHEATS_43224 -1 @CHEATS_42817 -1 @CHEATS_42828 
+
+:CHEATS_40174
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CH217' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'SYND_1' 'SYND_2' 'SYND_3' 'SYND_4' 'SYND_5' 'SYND_6' 'SYND_7' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 
+
+:CHEATS_40340
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_40373 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_38446 
+
+:CHEATS_40373
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_40340 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 7 default_jump 0 @CHEATS_51462 jumps 0 @CHEATS_43312 1 @CHEATS_43323 2 @CHEATS_43334 3 @CHEATS_43345 4 @CHEATS_43356 5 @CHEATS_43367 6 @CHEATS_43378 
+
+:CHEATS_40462
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CH185' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'DESERT1' 'DESERT2' 'DESERT3' 'DESERT4' 'DESERT6' 'DESERT9' 'DESERT8' 'DESER10' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 
+
+:CHEATS_40628
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_40661 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_35148 
+
+:CHEATS_40661
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_40628 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 8 default_jump 0 @CHEATS_51462 jumps 0 @CHEATS_43389 1 @CHEATS_43400 2 @CHEATS_43411 3 @CHEATS_43422 4 @CHEATS_43433 5 @CHEATS_43444 6 @CHEATS_43455 
+0872: jump_table_jumps 7 @CHEATS_43466 -1 @CHEATS_51462 -1 @CHEATS_51462 -1 @CHEATS_51462 -1 @CHEATS_51462 -1 @CHEATS_51462 -1 @CHEATS_51462 -1 @CHEATS_51462 -1 @CHEATS_51462 
+
+:CHEATS_40815
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CH186' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'CH202' 'CH203' 'CH193' 'CH204' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 
+
+:CHEATS_40981
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_41014 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_35148 
+
+:CHEATS_41014
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_40981 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 4 default_jump 0 @CHEATS_51462 jumps 0 @CHEATS_41103 1 @CHEATS_41456 2 @CHEATS_41744 3 @CHEATS_42032 -1 @CHEATS_51462 -1 @CHEATS_42320 -1 @CHEATS_51462 
+
+:CHEATS_41103
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CH202' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'CASINO1' 'CASEEN2' 'CASINO3' 'CASINO4' 'HEIST_1' 'HEIST_3' 'HEIST_2' 'HEIST_4' 'HEIST_5' 'HEIST_9' 'MAN_1' 'DUMMY' 
+
+:CHEATS_41269
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_41302 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_40815 
+
+:CHEATS_41302
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_41269 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 11 default_jump 0 @CHEATS_51462 jumps 0 @CHEATS_43477 1 @CHEATS_43488 2 @CHEATS_43499 3 @CHEATS_43510 4 @CHEATS_43521 5 @CHEATS_43532 6 @CHEATS_43543 
+0872: jump_table_jumps 7 @CHEATS_43554 8 @CHEATS_43565 9 @CHEATS_43576 10 @CHEATS_43587 -1 @CHEATS_51462 -1 @CHEATS_51462 -1 @CHEATS_51462 -1 @CHEATS_51462 -1 @CHEATS_51462 
+
+:CHEATS_41456
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CH203' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'CASINO5' 'CASINO6' 'CASINO9' 'CASIN10' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 
+
+:CHEATS_41622
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_41655 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_40815 
+
+:CHEATS_41655
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_41622 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 4 default_jump 0 @CHEATS_51462 jumps 0 @CHEATS_43598 1 @CHEATS_43609 2 @CHEATS_43620 3 @CHEATS_43631 -1 @CHEATS_51462 -1 @CHEATS_42320 -1 @CHEATS_51462 
+
+:CHEATS_41744
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CH193' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'VCRASH1' 'VCRASH2' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 
+
+:CHEATS_41910
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_41943 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_40815 
+
+:CHEATS_41943
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_41910 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 2 default_jump 0 @CHEATS_51462 jumps 0 @CHEATS_43642 1 @CHEATS_43653 -1 @CHEATS_43620 -1 @CHEATS_43631 -1 @CHEATS_51462 -1 @CHEATS_42320 -1 @CHEATS_51462 
+
+:CHEATS_42032
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CH204' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'DOC_2' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 
+
+:CHEATS_42198
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_42231 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_40815 
+
+:CHEATS_42231
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_42198 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 1 default_jump 0 @CHEATS_51462 jumps 0 @CHEATS_43664 -1 @CHEATS_43653 -1 @CHEATS_43620 -1 @CHEATS_43631 -1 @CHEATS_51462 -1 @CHEATS_42320 -1 @CHEATS_51462 
+
+:CHEATS_42320
+0001: wait 250 ms 
+08D4: 0@ = create_panel_with_title 'CH187' position 200.0 120.0 width 220.0 columns 1 interactive 1 background 1 alignment 0 
+08DB: set_panel 0@ column 0 header 'DUMMY' data 'CH208' 'CH209' 'CH210' 'CH211' 'CH212' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 'DUMMY' 
+
+:CHEATS_42486
+0001: wait 0 ms 
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_42519 
+08DA: remove_panel 0@ 
+0002: jump @CHEATS_35148 
+
+:CHEATS_42519
+00E1:   player 0 pressed_key 16 
+004D: jump_if_false @CHEATS_42486 
+08D7: 1@ = panel 0@ active_row 
+08DA: remove_panel 0@ 
+0871: init_jump_table 1@ total_jumps 5 default_jump 0 @CHEATS_51462 jumps 0 @CHEATS_42608 1 @CHEATS_42619 2 @CHEATS_42630 3 @CHEATS_42641 4 @CHEATS_42652 -1 @CHEATS_42320 -1 @CHEATS_51462 
+
+:CHEATS_42608
+0417: start_mission 3 
+0002: jump @CHEATS_51462 
+
+:CHEATS_42619
+0417: start_mission 4 
+0002: jump @CHEATS_51462 
+
+:CHEATS_42630
+0417: start_mission 5 
+0002: jump @CHEATS_51462 
+
+:CHEATS_42641
+0417: start_mission 6 
+0002: jump @CHEATS_51462 
+
+:CHEATS_42652
+0417: start_mission 7 
+0002: jump @CHEATS_51462 
+
+:CHEATS_42663
+0417: start_mission 11 
+0002: jump @CHEATS_51462 
+
+:CHEATS_42674
+0417: start_mission 27 
+0002: jump @CHEATS_51462 
+
+:CHEATS_42685
+0417: start_mission 28 
+0002: jump @CHEATS_51462 
+
+:CHEATS_42696
+0417: start_mission 29 
+0002: jump @CHEATS_51462 
+
+:CHEATS_42707
+0417: start_mission 30 
+0002: jump @CHEATS_51462 
+
+:CHEATS_42718
+0417: start_mission 12 
+0002: jump @CHEATS_51462 
+
+:CHEATS_42729
+0417: start_mission 24 
+0002: jump @CHEATS_51462 
+
+:CHEATS_42740
+0417: start_mission 25 
+0002: jump @CHEATS_51462 
+
+:CHEATS_42751
+0417: start_mission 26 
+0002: jump @CHEATS_51462 
+
+:CHEATS_42762
+0417: start_mission 13 
+0002: jump @CHEATS_51462 
+
+:CHEATS_42773
+0417: start_mission 14 
+0002: jump @CHEATS_51462 
+
+:CHEATS_42784
+0417: start_mission 15 
+0002: jump @CHEATS_51462 
+
+:CHEATS_42795
+0417: start_mission 16 
+0002: jump @CHEATS_51462 
+
+:CHEATS_42806
+0417: start_mission 17 
+0002: jump @CHEATS_51462 
+
+:CHEATS_42817
+0417: start_mission 18 
+0002: jump @CHEATS_51462 
+
+:CHEATS_42828
+0417: start_mission 19 
+0002: jump @CHEATS_51462 
+
+:CHEATS_42839
+0417: start_mission 20 
+0002: jump @CHEATS_51462 
+
+:CHEATS_42850
+0417: start_mission 21 
+0002: jump @CHEATS_51462 
+
+:CHEATS_42861
+0417: start_mission 37 
+0002: jump @CHEATS_51462 
+
+:CHEATS_42872
+0417: start_mission 38 
+0002: jump @CHEATS_51462 
+
+:CHEATS_42883
+0417: start_mission 106 
+0002: jump @CHEATS_51462 
+
+:CHEATS_42894
+0417: start_mission 107 
+0002: jump @CHEATS_51462 
+
+:CHEATS_42905
+0417: start_mission 22 
+0002: jump @CHEATS_51462 
+
+:CHEATS_42916
+0417: start_mission 23 
+0002: jump @CHEATS_51462 
+
+:CHEATS_42927
+0417: start_mission 31 
+0002: jump @CHEATS_51462 
+
+:CHEATS_42938
+0417: start_mission 32 
+0002: jump @CHEATS_51462 
+
+:CHEATS_42949
+0417: start_mission 33 
+0002: jump @CHEATS_51462 
+
+:CHEATS_42960
+0417: start_mission 34 
+0002: jump @CHEATS_51462 
+
+:CHEATS_42971
+0417: start_mission 103 
+0002: jump @CHEATS_51462 
+
+:CHEATS_42982
+0417: start_mission 104 
+0002: jump @CHEATS_51462 
+
+:CHEATS_42993
+0417: start_mission 105 
+0002: jump @CHEATS_51462 
+
+:CHEATS_43004
+0417: start_mission 108 
+0002: jump @CHEATS_51462 
+
+:CHEATS_43015
+0417: start_mission 109 
+0002: jump @CHEATS_51462 
+
+:CHEATS_43026
+0417: start_mission 110 
+0002: jump @CHEATS_51462 
+
+:CHEATS_43037
+0417: start_mission 111 
+0002: jump @CHEATS_51462 
+
+:CHEATS_43048
+0417: start_mission 112 
+0002: jump @CHEATS_51462 
+
+:CHEATS_43059
+0417: start_mission 39 
+0002: jump @CHEATS_51462 
+
+:CHEATS_43070
+0417: start_mission 41 
+0002: jump @CHEATS_51462 
+
+:CHEATS_43081
+0417: start_mission 42 
+0002: jump @CHEATS_51462 
+
+:CHEATS_43092
+0417: start_mission 43 
+0002: jump @CHEATS_51462 
+
+:CHEATS_43103
+0417: start_mission 44 
+0002: jump @CHEATS_51462 
+
+:CHEATS_43114
+0417: start_mission 46 
+0002: jump @CHEATS_51462 
+
+:CHEATS_43125
+0417: start_mission 47 
+0002: jump @CHEATS_51462 
+
+:CHEATS_43136
+0417: start_mission 49 
+0002: jump @CHEATS_51462 
+
+:CHEATS_43147
+0417: start_mission 50 
+0002: jump @CHEATS_51462 
+
+:CHEATS_43158
+0417: start_mission 51 
+0002: jump @CHEATS_51462 
+
+:CHEATS_43169
+0417: start_mission 52 
+0002: jump @CHEATS_51462 
+
+:CHEATS_43180
+0417: start_mission 53 
+0002: jump @CHEATS_51462 
+
+:CHEATS_43191
+0417: start_mission 54 
+0002: jump @CHEATS_51462 
+
+:CHEATS_43202
+0417: start_mission 55 
+0002: jump @CHEATS_51462 
+
+:CHEATS_43213
+0417: start_mission 56 
+0002: jump @CHEATS_51462 
+
+:CHEATS_43224
+0417: start_mission 57 
+0002: jump @CHEATS_51462 
+
+:CHEATS_43235
+0417: start_mission 67 
+0002: jump @CHEATS_51462 
+
+:CHEATS_43246
+0417: start_mission 68 
+0002: jump @CHEATS_51462 
+
+:CHEATS_43257
+0417: start_mission 69 
+0002: jump @CHEATS_51462 
+
+:CHEATS_43268
+0417: start_mission 70 
+0002: jump @CHEATS_51462 
+
+:CHEATS_43279
+0417: start_mission 72 
+0002: jump @CHEATS_51462 
+
+:CHEATS_43290
+0417: start_mission 73 
+0002: jump @CHEATS_51462 
+
+:CHEATS_43301
+0417: start_mission 74 
+0002: jump @CHEATS_51462 
+
+:CHEATS_43312
+0417: start_mission 58 
+0002: jump @CHEATS_51462 
+
+:CHEATS_43323
+0417: start_mission 59 
+0002: jump @CHEATS_51462 
+
+:CHEATS_43334
+0417: start_mission 60 
+0002: jump @CHEATS_51462 
+
+:CHEATS_43345
+0417: start_mission 61 
+0002: jump @CHEATS_51462 
+
+:CHEATS_43356
+0417: start_mission 64 
+0002: jump @CHEATS_51462 
+
+:CHEATS_43367
+0417: start_mission 62 
+0002: jump @CHEATS_51462 
+
+:CHEATS_43378
+0417: start_mission 63 
+0002: jump @CHEATS_51462 
+
+:CHEATS_43389
+0417: start_mission 75 
+0002: jump @CHEATS_51462 
+
+:CHEATS_43400
+0417: start_mission 76 
+0002: jump @CHEATS_51462 
+
+:CHEATS_43411
+0417: start_mission 77 
+0002: jump @CHEATS_51462 
+
+:CHEATS_43422
+0417: start_mission 78 
+0002: jump @CHEATS_51462 
+
+:CHEATS_43433
+0417: start_mission 79 
+0002: jump @CHEATS_51462 
+
+:CHEATS_43444
+0417: start_mission 80 
+0002: jump @CHEATS_51462 
+
+:CHEATS_43455
+0417: start_mission 81 
+0002: jump @CHEATS_51462 
+
+:CHEATS_43466
+0417: start_mission 82 
+0002: jump @CHEATS_51462 
+
+:CHEATS_43477
+0417: start_mission 84 
+0002: jump @CHEATS_51462 
+
+:CHEATS_43488
+0417: start_mission 85 
+0002: jump @CHEATS_51462 
+
+:CHEATS_43499
+0417: start_mission 86 
+0002: jump @CHEATS_51462 
+
+:CHEATS_43510
+0417: start_mission 88 
+0002: jump @CHEATS_51462 
+
+:CHEATS_43521
+0417: start_mission 96 
+0002: jump @CHEATS_51462 
+
+:CHEATS_43532
+0417: start_mission 97 
+0002: jump @CHEATS_51462 
+
+:CHEATS_43543
+0417: start_mission 98 
+0002: jump @CHEATS_51462 
+
+:CHEATS_43554
+0417: start_mission 99 
+0002: jump @CHEATS_51462 
+
+:CHEATS_43565
+0417: start_mission 100 
+0002: jump @CHEATS_51462 
+
+:CHEATS_43576
+0417: start_mission 101 
+0002: jump @CHEATS_51462 
+
+:CHEATS_43587
+0417: start_mission 102 
+0002: jump @CHEATS_51462 
+
+:CHEATS_43598
+0417: start_mission 89 
+0002: jump @CHEATS_51462 
+
+:CHEATS_43609
+0417: start_mission 90 
+0002: jump @CHEATS_51462 
+
+:CHEATS_43620
+0417: start_mission 91 
+0002: jump @CHEATS_51462 
+
+:CHEATS_43631
+0417: start_mission 92 
+0002: jump @CHEATS_51462 
+
+:CHEATS_43642
+0417: start_mission 93 
+0002: jump @CHEATS_51462 
+
+:CHEATS_43653
+0417: start_mission 94 
+0002: jump @CHEATS_51462 
+
+:CHEATS_43664
+0417: start_mission 95 
+0002: jump @CHEATS_51462 
+
+:CHEATS_43675
+0A1E: dump_screen 1 
+0002: jump @CHEATS_51462 
+
+:CHEATS_43686
+03E5: show_text_box 'CH227' 
+
+:CHEATS_43697
+0006: 0@ = 0 
+09C7: change_player $PLAYER_CHAR model_to 0@ 
+
+:CHEATS_43712
+0001: wait 0 ms 
+00D6: if 
+0AB0:   is_key_pressed 39 
+004D: jump_if_false @CHEATS_43765 
+0006: 0@ = 7 
+0247: load_model 0@ 
+038B: load_requested_models 
+09C7: change_player $PLAYER_CHAR model_to 0@ 
+0249: release_model 0@ 
+0002: jump @CHEATS_43838 
+
+:CHEATS_43765
+0001: wait 0 ms 
+00D6: if 
+0AB0:   is_key_pressed 37 
+004D: jump_if_false @CHEATS_43819 
+0006: 0@ = 288 
+0247: load_model 0@ 
+038B: load_requested_models 
+09C7: change_player $PLAYER_CHAR model_to 0@ 
+0249: release_model 0@ 
+0002: jump @CHEATS_43838 
+
+:CHEATS_43819
+0001: wait 0 ms 
+00D6: if 
+0AB0:   is_key_pressed 38 
+004D: jump_if_false @CHEATS_43712 
+
+:CHEATS_43838
+0001: wait 0 ms 
+00D6: if 
+0AB0:   is_key_pressed 39 
+004D: jump_if_false @CHEATS_43930 
+
+:CHEATS_43857
+0001: wait 0 ms 
+000A: 0@ += 1 
+00D6: if 1 
+0019:   0@ > 7 
+8019:   not  0@ > 288 
+004D: jump_if_false @CHEATS_43697 
+00D6: if 
+07DE:   model 0@ exists // versionB 
+004D: jump_if_false @CHEATS_43857 
+0247: load_model 0@ 
+038B: load_requested_models 
+09C7: change_player $PLAYER_CHAR model_to 0@ 
+0249: release_model 0@ 
+
+:CHEATS_43930
+0001: wait 0 ms 
+00D6: if 
+0AB0:   is_key_pressed 37 
+004D: jump_if_false @CHEATS_44022 
+
+:CHEATS_43949
+0001: wait 0 ms 
+000E: 0@ -= 1 
+00D6: if 1 
+0019:   0@ > 7 
+8019:   not  0@ > 288 
+004D: jump_if_false @CHEATS_43697 
+00D6: if 
+07DE:   model 0@ exists // versionB 
+004D: jump_if_false @CHEATS_43949 
+0247: load_model 0@ 
+038B: load_requested_models 
+09C7: change_player $PLAYER_CHAR model_to 0@ 
+0249: release_model 0@ 
+
+:CHEATS_44022
+0001: wait 0 ms 
+00D6: if 
+0AB0:   is_key_pressed 38 
+004D: jump_if_false @CHEATS_43838 
+01B4: set_player $PLAYER_CHAR can_move 1 
+0AB3: cleo_shared_var 200 = 0 
+0002: jump @CHEATS_51462 
+
+:CHEATS_44062
+0001: wait 0 ms 
+0AB4: 1@ = cleo_shared_var 205 
+00D6: if 
+0039:   1@ == 0 
+004D: jump_if_false @CHEATS_45855 
+0AB3: cleo_shared_var 205 = 1 
+0001: wait 250 ms 
+09E6: set_burglary_houses_accessible 1 
+07FB: set_interior 'ABATOIR' access 1 
+07FB: set_interior 'AMMUN1' access 1 
+07FB: set_interior 'CARMOD1' access 1 
+07FB: set_interior 'FDREST1' access 1 
+07FB: set_interior 'GF1' access 1 
+07FB: set_interior 'JETINT' access 1 
+07FB: set_interior 'LACS1' access 1 
+07FB: set_interior 'LAHS1B' access 1 
+07FB: set_interior 'MAFCAS' access 1 
+07FB: set_interior 'MAFCAS2' access 1 
+07FB: set_interior 'SMASHTV' access 1 
+07FB: set_interior 'SVVGHO1' access 1 
+07FB: set_interior 'SWEETS' access 1 
+07FB: set_interior 'TSDINER' access 1 
+07FB: set_interior 'WUZIBET' access 1 
+07FB: set_interior 'BARBERS' access 1 
+07FB: set_interior 'BDUPS1' access 1 
+07FB: set_interior 'CARMOD2' access 1 
+07FB: set_interior 'CARTER' access 1 
+07FB: set_interior 'GF2' access 1 
+07FB: set_interior 'LAHS1A' access 1 
+07FB: set_interior 'LASTRIP' access 1 
+07FB: set_interior 'RYDERS' access 1 
+07FB: set_interior 'SVVGHO2' access 1 
+07FB: set_interior 'VGHSB1' access 1 
+07FB: set_interior 'VGHSB3' access 1 
+07FB: set_interior 'BARBER2' access 1 
+07FB: set_interior 'BDUPS' access 1 
+07FB: set_interior 'BIKESCH' access 1 
+07FB: set_interior 'BROTHL1' access 1 
+07FB: set_interior 'CARLS' access 1 
+07FB: set_interior 'CARMOD3' access 1 
+07FB: set_interior 'CHANGER' access 1 
+07FB: set_interior 'CSSPRT' access 1 
+07FB: set_interior 'DRIVES' access 1 
+07FB: set_interior 'DRIVES2' access 1 
+07FB: set_interior 'GENOTB' access 1 
+07FB: set_interior 'GF3' access 1 
+07FB: set_interior 'LAHSB4' access 1 
+07FB: set_interior 'OGLOCS' access 1 
+07FB: set_interior 'PAPER' access 1 
+07FB: set_interior 'PDOMES' access 1 
+07FB: set_interior 'PDOMES2' access 1 
+07FB: set_interior 'POLICE3' access 1 
+07FB: set_interior 'SEXSHOP' access 1 
+07FB: set_interior 'S1TEST' access 1 
+07FB: set_interior 'STRIP2' access 1 
+07FB: set_interior 'STUDIO' access 1 
+07FB: set_interior 'TATTO3' access 1 
+07FB: set_interior 'AMMUN2' access 1 
+07FB: set_interior 'DINER1' access 1 
+07FB: set_interior 'DIRBIKE' access 1 
+07FB: set_interior 'GF4' access 1 
+07FB: set_interior 'LAHS2A' access 1 
+07FB: set_interior 'LAHSS6' access 1 
+07FB: set_interior 'SFHSM2' access 1 
+07FB: set_interior 'X711S2' access 1 
+07FB: set_interior 'CSDESGN' access 1 
+07FB: set_interior 'DINER2' access 1 
+07FB: set_interior 'FDPIZA' access 1 
+07FB: set_interior 'GANG' access 1 
+07FB: set_interior 'GF5' access 1 
+07FB: set_interior 'GYM1' access 1 
+07FB: set_interior 'LACRAK' access 1 
+07FB: set_interior 'LAHSB3' access 1 
+07FB: set_interior 'MADDOGS' access 1 
+07FB: set_interior 'MDDOGS' access 1 
+07FB: set_interior 'SFHSB1' access 1 
+07FB: set_interior 'SVHOT1' access 1 
+07FB: set_interior 'VGHSM2' access 1 
+07FB: set_interior 'AMMUN3' access 1 
+07FB: set_interior 'AMMUN5' access 1 
+07FB: set_interior 'BROTHEL' access 1 
+07FB: set_interior 'GF6' access 1 
+07FB: set_interior 'GYM2' access 1 
+07FB: set_interior 'LAHSB1' access 1 
+07FB: set_interior 'POLICE1' access 1 
+07FB: set_interior 'RCPLAY' access 1 
+07FB: set_interior 'REST2' access 1 
+07FB: set_interior 'SFHSB2' access 1 
+07FB: set_interior 'SFHSS2' access 1 
+07FB: set_interior 'SVCUNT' access 1 
+07FB: set_interior 'SVSFSM' access 1 
+07FB: set_interior 'X7_11S' access 1 
+07FB: set_interior '8TRACK' access 1 
+07FB: set_interior 'AMMUN4' access 1 
+07FB: set_interior 'GYM3' access 1 
+07FB: set_interior 'LAHSB2' access 1 
+07FB: set_interior 'OFTEST' access 1 
+07FB: set_interior 'BURHOUS' access 1 
+07FB: set_interior 'SFHSS1' access 1 
+07FB: set_interior 'SVLAMD' access 1 
+07FB: set_interior 'FDCHICK' access 1 
+07FB: set_interior 'LAHS2B' access 1 
+07FB: set_interior 'SFHSB3' access 1 
+07FB: set_interior 'SVGNMT2' access 1 
+07FB: set_interior 'SVVGMD' access 1 
+07FB: set_interior 'DESHOUS' access 1 
+07FB: set_interior 'FDBURG' access 1 
+07FB: set_interior 'POLICE2' access 1 
+07FB: set_interior 'SVGNMT1' access 1 
+07FB: set_interior 'TRICAS' access 1 
+07FB: set_interior 'SVSFMD' access 1 
+07FB: set_interior 'VGHSM3' access 1 
+07FB: set_interior 'X711S3' access 1 
+07FB: set_interior 'BAR2' access 1 
+07FB: set_interior 'SVLASM' access 1 
+07FB: set_interior 'BARBER3' access 1 
+07FB: set_interior 'MOROOM' access 1 
+07FB: set_interior 'SVLABIG' access 1 
+07FB: set_interior 'CSEXL' access 1 
+07FB: set_interior 'AIRPOR2' access 1 
+07FB: set_interior 'AIRPORT' access 1 
+07FB: set_interior 'CSCHP' access 1 
+07FB: set_interior 'MOTEL1' access 1 
+07FB: set_interior 'SFHSM1' access 1 
+07FB: set_interior 'VGHSS1' access 1 
+07FB: set_interior 'VGSHM2' access 1 
+07FB: set_interior 'VGSHM3' access 1 
+07FB: set_interior 'VGSHS2' access 1 
+07FB: set_interior 'TATTOO' access 1 
+07FB: set_interior 'X7_11C' access 1 
+07FB: set_interior 'BAR1' access 1 
+07FB: set_interior 'DAMIN' access 1 
+07FB: set_interior 'FDDONUT' access 1 
+07FB: set_interior 'TATTO2' access 1 
+07FB: set_interior 'X7_11D' access 1 
+07FB: set_interior 'ATRIUME' access 1 
+07FB: set_interior 'ATRIUMX' access 1 
+07FB: set_interior 'CLOTHGP' access 1 
+07FB: set_interior 'GENWRHS' access 1 
+07FB: set_interior 'UFOBAR' access 1 
+07FB: set_interior 'X7_11B' access 1 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_45855
+0001: wait 0 ms 
+0AB4: 1@ = cleo_shared_var 205 
+00D6: if 
+0039:   1@ == 1 
+004D: jump_if_false @CHEATS_51462 
+0AB3: cleo_shared_var 205 = 0 
+0001: wait 250 ms 
+09E6: set_burglary_houses_accessible 0 
+07FB: set_interior 'ABATOIR' access 0 
+07FB: set_interior 'AMMUN1' access 0 
+07FB: set_interior 'CARMOD1' access 0 
+07FB: set_interior 'FDREST1' access 0 
+07FB: set_interior 'GF1' access 0 
+07FB: set_interior 'JETINT' access 0 
+07FB: set_interior 'LACS1' access 0 
+07FB: set_interior 'LAHS1B' access 0 
+07FB: set_interior 'MAFCAS' access 0 
+07FB: set_interior 'MAFCAS2' access 0 
+07FB: set_interior 'SMASHTV' access 0 
+07FB: set_interior 'SVVGHO1' access 0 
+07FB: set_interior 'SWEETS' access 0 
+07FB: set_interior 'TSDINER' access 0 
+07FB: set_interior 'WUZIBET' access 0 
+07FB: set_interior 'BARBERS' access 0 
+07FB: set_interior 'BDUPS1' access 0 
+07FB: set_interior 'CARMOD2' access 0 
+07FB: set_interior 'CARTER' access 0 
+07FB: set_interior 'GF2' access 0 
+07FB: set_interior 'LAHS1A' access 0 
+07FB: set_interior 'LASTRIP' access 0 
+07FB: set_interior 'RYDERS' access 0 
+07FB: set_interior 'SVVGHO2' access 0 
+07FB: set_interior 'VGHSB1' access 0 
+07FB: set_interior 'VGHSB3' access 0 
+07FB: set_interior 'BARBER2' access 0 
+07FB: set_interior 'BDUPS' access 0 
+07FB: set_interior 'BIKESCH' access 0 
+07FB: set_interior 'BROTHL1' access 0 
+07FB: set_interior 'CARLS' access 0 
+07FB: set_interior 'CARMOD3' access 0 
+07FB: set_interior 'CHANGER' access 0 
+07FB: set_interior 'CSSPRT' access 0 
+07FB: set_interior 'DRIVES' access 0 
+07FB: set_interior 'DRIVES2' access 0 
+07FB: set_interior 'GENOTB' access 0 
+07FB: set_interior 'GF3' access 0 
+07FB: set_interior 'LAHSB4' access 0 
+07FB: set_interior 'OGLOCS' access 0 
+07FB: set_interior 'PAPER' access 0 
+07FB: set_interior 'PDOMES' access 0 
+07FB: set_interior 'PDOMES2' access 0 
+07FB: set_interior 'POLICE3' access 0 
+07FB: set_interior 'SEXSHOP' access 0 
+07FB: set_interior 'S1TEST' access 0 
+07FB: set_interior 'STRIP2' access 0 
+07FB: set_interior 'STUDIO' access 0 
+07FB: set_interior 'TATTO3' access 0 
+07FB: set_interior 'AMMUN2' access 0 
+07FB: set_interior 'DINER1' access 0 
+07FB: set_interior 'DIRBIKE' access 0 
+07FB: set_interior 'GF4' access 0 
+07FB: set_interior 'LAHS2A' access 0 
+07FB: set_interior 'LAHSS6' access 0 
+07FB: set_interior 'SFHSM2' access 0 
+07FB: set_interior 'X711S2' access 0 
+07FB: set_interior 'CSDESGN' access 0 
+07FB: set_interior 'DINER2' access 0 
+07FB: set_interior 'FDPIZA' access 0 
+07FB: set_interior 'GANG' access 0 
+07FB: set_interior 'GF5' access 0 
+07FB: set_interior 'GYM1' access 0 
+07FB: set_interior 'LACRAK' access 0 
+07FB: set_interior 'LAHSB3' access 0 
+07FB: set_interior 'MADDOGS' access 0 
+07FB: set_interior 'MDDOGS' access 0 
+07FB: set_interior 'SFHSB1' access 0 
+07FB: set_interior 'SVHOT1' access 0 
+07FB: set_interior 'VGHSM2' access 0 
+07FB: set_interior 'AMMUN3' access 0 
+07FB: set_interior 'AMMUN5' access 0 
+07FB: set_interior 'BROTHEL' access 0 
+07FB: set_interior 'GF6' access 0 
+07FB: set_interior 'GYM2' access 0 
+07FB: set_interior 'LAHSB1' access 0 
+07FB: set_interior 'POLICE1' access 0 
+07FB: set_interior 'RCPLAY' access 0 
+07FB: set_interior 'REST2' access 0 
+07FB: set_interior 'SFHSB2' access 0 
+07FB: set_interior 'SFHSS2' access 0 
+07FB: set_interior 'SVCUNT' access 0 
+07FB: set_interior 'SVSFSM' access 0 
+07FB: set_interior 'X7_11S' access 0 
+07FB: set_interior '8TRACK' access 0 
+07FB: set_interior 'AMMUN4' access 0 
+07FB: set_interior 'GYM3' access 0 
+07FB: set_interior 'LAHSB2' access 0 
+07FB: set_interior 'OFTEST' access 0 
+07FB: set_interior 'BURHOUS' access 0 
+07FB: set_interior 'SFHSS1' access 0 
+07FB: set_interior 'SVLAMD' access 0 
+07FB: set_interior 'FDCHICK' access 0 
+07FB: set_interior 'LAHS2B' access 0 
+07FB: set_interior 'SFHSB3' access 0 
+07FB: set_interior 'SVGNMT2' access 0 
+07FB: set_interior 'SVVGMD' access 0 
+07FB: set_interior 'DESHOUS' access 0 
+07FB: set_interior 'FDBURG' access 0 
+07FB: set_interior 'POLICE2' access 0 
+07FB: set_interior 'SVGNMT1' access 0 
+07FB: set_interior 'TRICAS' access 0 
+07FB: set_interior 'SVSFMD' access 0 
+07FB: set_interior 'VGHSM3' access 0 
+07FB: set_interior 'X711S3' access 0 
+07FB: set_interior 'BAR2' access 0 
+07FB: set_interior 'SVLASM' access 0 
+07FB: set_interior 'BARBER3' access 0 
+07FB: set_interior 'MOROOM' access 0 
+07FB: set_interior 'SVLABIG' access 0 
+07FB: set_interior 'CSEXL' access 0 
+07FB: set_interior 'AIRPOR2' access 0 
+07FB: set_interior 'AIRPORT' access 0 
+07FB: set_interior 'CSCHP' access 0 
+07FB: set_interior 'MOTEL1' access 0 
+07FB: set_interior 'SFHSM1' access 0 
+07FB: set_interior 'VGHSS1' access 0 
+07FB: set_interior 'VGSHM2' access 0 
+07FB: set_interior 'VGSHM3' access 0 
+07FB: set_interior 'VGSHS2' access 0 
+07FB: set_interior 'TATTOO' access 0 
+07FB: set_interior 'X7_11C' access 0 
+07FB: set_interior 'BAR1' access 0 
+07FB: set_interior 'DAMIN' access 0 
+07FB: set_interior 'FDDONUT' access 0 
+07FB: set_interior 'TATTO2' access 0 
+07FB: set_interior 'X7_11D' access 0 
+07FB: set_interior 'ATRIUME' access 0 
+07FB: set_interior 'ATRIUMX' access 0 
+07FB: set_interior 'CLOTHGP' access 0 
+07FB: set_interior 'GENWRHS' access 0 
+07FB: set_interior 'UFOBAR' access 0 
+07FB: set_interior 'X7_11B' access 0 
+03E5: show_text_box 'CH145' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_47648
+03E5: show_text_box 'CH247' 
+
+:CHEATS_47659
+04B8: get_weapon_data_from_actor $PLAYER_ACTOR slot 3 weapon 0@ ammo 1@ model 2@ 
+01B9: set_actor $PLAYER_ACTOR armed_weapon_to 0@ 
+
+:CHEATS_47683
+0001: wait 0 ms 
+00D6: if 
+0AB0:   is_key_pressed 38 
+004D: jump_if_false @CHEATS_47709 
+0002: jump @CHEATS_49381 
+
+:CHEATS_47709
+00D6: if 
+0AB0:   is_key_pressed 40 
+004D: jump_if_false @CHEATS_47731 
+0002: jump @CHEATS_47905 
+
+:CHEATS_47731
+00D6: if 
+0AB0:   is_key_pressed 37 
+004D: jump_if_false @CHEATS_47815 
+00D6: if 
+0019:   1@ > 0 
+004D: jump_if_false @CHEATS_47815 
+00D6: if 
+0AB0:   is_key_pressed 16 
+004D: jump_if_false @CHEATS_47797 
+000E: 1@ -= 100 
+017B: set_actor $PLAYER_ACTOR weapon 0@ ammo_to 1@ 
+
+:CHEATS_47797
+000E: 1@ -= 1 
+017B: set_actor $PLAYER_ACTOR weapon 0@ ammo_to 1@ 
+
+:CHEATS_47815
+00D6: if 
+0AB0:   is_key_pressed 39 
+004D: jump_if_false @CHEATS_47881 
+00D6: if 
+0AB0:   is_key_pressed 16 
+004D: jump_if_false @CHEATS_47863 
+000A: 1@ += 100 
+017B: set_actor $PLAYER_ACTOR weapon 0@ ammo_to 1@ 
+
+:CHEATS_47863
+000A: 1@ += 1 
+017B: set_actor $PLAYER_ACTOR weapon 0@ ammo_to 1@ 
+
+:CHEATS_47881
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_47683 
+0002: jump @CHEATS_51462 
+
+:CHEATS_47905
+04B8: get_weapon_data_from_actor $PLAYER_ACTOR slot 4 weapon 0@ ammo 1@ model 2@ 
+01B9: set_actor $PLAYER_ACTOR armed_weapon_to 0@ 
+
+:CHEATS_47929
+0001: wait 0 ms 
+00D6: if 
+0AB0:   is_key_pressed 38 
+004D: jump_if_false @CHEATS_47955 
+0002: jump @CHEATS_47659 
+
+:CHEATS_47955
+00D6: if 
+0AB0:   is_key_pressed 40 
+004D: jump_if_false @CHEATS_47977 
+0002: jump @CHEATS_48151 
+
+:CHEATS_47977
+00D6: if 
+0AB0:   is_key_pressed 37 
+004D: jump_if_false @CHEATS_48061 
+00D6: if 
+0019:   1@ > 0 
+004D: jump_if_false @CHEATS_48061 
+00D6: if 
+0AB0:   is_key_pressed 16 
+004D: jump_if_false @CHEATS_48043 
+000E: 1@ -= 100 
+017B: set_actor $PLAYER_ACTOR weapon 0@ ammo_to 1@ 
+
+:CHEATS_48043
+000E: 1@ -= 1 
+017B: set_actor $PLAYER_ACTOR weapon 0@ ammo_to 1@ 
+
+:CHEATS_48061
+00D6: if 
+0AB0:   is_key_pressed 39 
+004D: jump_if_false @CHEATS_48127 
+00D6: if 
+0AB0:   is_key_pressed 16 
+004D: jump_if_false @CHEATS_48109 
+000A: 1@ += 100 
+017B: set_actor $PLAYER_ACTOR weapon 0@ ammo_to 1@ 
+
+:CHEATS_48109
+000A: 1@ += 1 
+017B: set_actor $PLAYER_ACTOR weapon 0@ ammo_to 1@ 
+
+:CHEATS_48127
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_47929 
+0002: jump @CHEATS_51462 
+
+:CHEATS_48151
+04B8: get_weapon_data_from_actor $PLAYER_ACTOR slot 5 weapon 0@ ammo 1@ model 2@ 
+01B9: set_actor $PLAYER_ACTOR armed_weapon_to 0@ 
+
+:CHEATS_48175
+0001: wait 0 ms 
+00D6: if 
+0AB0:   is_key_pressed 38 
+004D: jump_if_false @CHEATS_48201 
+0002: jump @CHEATS_47905 
+
+:CHEATS_48201
+00D6: if 
+0AB0:   is_key_pressed 40 
+004D: jump_if_false @CHEATS_48223 
+0002: jump @CHEATS_48397 
+
+:CHEATS_48223
+00D6: if 
+0AB0:   is_key_pressed 37 
+004D: jump_if_false @CHEATS_48307 
+00D6: if 
+0019:   1@ > 0 
+004D: jump_if_false @CHEATS_48307 
+00D6: if 
+0AB0:   is_key_pressed 16 
+004D: jump_if_false @CHEATS_48289 
+000E: 1@ -= 100 
+017B: set_actor $PLAYER_ACTOR weapon 0@ ammo_to 1@ 
+
+:CHEATS_48289
+000E: 1@ -= 1 
+017B: set_actor $PLAYER_ACTOR weapon 0@ ammo_to 1@ 
+
+:CHEATS_48307
+00D6: if 
+0AB0:   is_key_pressed 39 
+004D: jump_if_false @CHEATS_48373 
+00D6: if 
+0AB0:   is_key_pressed 16 
+004D: jump_if_false @CHEATS_48355 
+000A: 1@ += 100 
+017B: set_actor $PLAYER_ACTOR weapon 0@ ammo_to 1@ 
+
+:CHEATS_48355
+000A: 1@ += 1 
+017B: set_actor $PLAYER_ACTOR weapon 0@ ammo_to 1@ 
+
+:CHEATS_48373
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_48175 
+0002: jump @CHEATS_51462 
+
+:CHEATS_48397
+04B8: get_weapon_data_from_actor $PLAYER_ACTOR slot 6 weapon 0@ ammo 1@ model 2@ 
+01B9: set_actor $PLAYER_ACTOR armed_weapon_to 0@ 
+
+:CHEATS_48421
+0001: wait 0 ms 
+00D6: if 
+0AB0:   is_key_pressed 38 
+004D: jump_if_false @CHEATS_48447 
+0002: jump @CHEATS_48151 
+
+:CHEATS_48447
+00D6: if 
+0AB0:   is_key_pressed 40 
+004D: jump_if_false @CHEATS_48469 
+0002: jump @CHEATS_48643 
+
+:CHEATS_48469
+00D6: if 
+0AB0:   is_key_pressed 37 
+004D: jump_if_false @CHEATS_48553 
+00D6: if 
+0019:   1@ > 0 
+004D: jump_if_false @CHEATS_48553 
+00D6: if 
+0AB0:   is_key_pressed 16 
+004D: jump_if_false @CHEATS_48535 
+000E: 1@ -= 100 
+017B: set_actor $PLAYER_ACTOR weapon 0@ ammo_to 1@ 
+
+:CHEATS_48535
+000E: 1@ -= 1 
+017B: set_actor $PLAYER_ACTOR weapon 0@ ammo_to 1@ 
+
+:CHEATS_48553
+00D6: if 
+0AB0:   is_key_pressed 39 
+004D: jump_if_false @CHEATS_48619 
+00D6: if 
+0AB0:   is_key_pressed 16 
+004D: jump_if_false @CHEATS_48601 
+000A: 1@ += 100 
+017B: set_actor $PLAYER_ACTOR weapon 0@ ammo_to 1@ 
+
+:CHEATS_48601
+000A: 1@ += 1 
+017B: set_actor $PLAYER_ACTOR weapon 0@ ammo_to 1@ 
+
+:CHEATS_48619
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_48421 
+0002: jump @CHEATS_51462 
+
+:CHEATS_48643
+04B8: get_weapon_data_from_actor $PLAYER_ACTOR slot 7 weapon 0@ ammo 1@ model 2@ 
+01B9: set_actor $PLAYER_ACTOR armed_weapon_to 0@ 
+
+:CHEATS_48667
+0001: wait 0 ms 
+00D6: if 
+0AB0:   is_key_pressed 38 
+004D: jump_if_false @CHEATS_48693 
+0002: jump @CHEATS_48397 
+
+:CHEATS_48693
+00D6: if 
+0AB0:   is_key_pressed 40 
+004D: jump_if_false @CHEATS_48715 
+0002: jump @CHEATS_48889 
+
+:CHEATS_48715
+00D6: if 
+0AB0:   is_key_pressed 37 
+004D: jump_if_false @CHEATS_48799 
+00D6: if 
+0019:   1@ > 0 
+004D: jump_if_false @CHEATS_48799 
+00D6: if 
+0AB0:   is_key_pressed 16 
+004D: jump_if_false @CHEATS_48781 
+000E: 1@ -= 100 
+017B: set_actor $PLAYER_ACTOR weapon 0@ ammo_to 1@ 
+
+:CHEATS_48781
+000E: 1@ -= 1 
+017B: set_actor $PLAYER_ACTOR weapon 0@ ammo_to 1@ 
+
+:CHEATS_48799
+00D6: if 
+0AB0:   is_key_pressed 39 
+004D: jump_if_false @CHEATS_48865 
+00D6: if 
+0AB0:   is_key_pressed 16 
+004D: jump_if_false @CHEATS_48847 
+000A: 1@ += 100 
+017B: set_actor $PLAYER_ACTOR weapon 0@ ammo_to 1@ 
+
+:CHEATS_48847
+000A: 1@ += 1 
+017B: set_actor $PLAYER_ACTOR weapon 0@ ammo_to 1@ 
+
+:CHEATS_48865
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_48667 
+0002: jump @CHEATS_51462 
+
+:CHEATS_48889
+04B8: get_weapon_data_from_actor $PLAYER_ACTOR slot 9 weapon 0@ ammo 1@ model 2@ 
+01B9: set_actor $PLAYER_ACTOR armed_weapon_to 0@ 
+
+:CHEATS_48913
+0001: wait 0 ms 
+00D6: if 
+0AB0:   is_key_pressed 38 
+004D: jump_if_false @CHEATS_48939 
+0002: jump @CHEATS_48643 
+
+:CHEATS_48939
+00D6: if 
+0AB0:   is_key_pressed 40 
+004D: jump_if_false @CHEATS_48961 
+0002: jump @CHEATS_49135 
+
+:CHEATS_48961
+00D6: if 
+0AB0:   is_key_pressed 37 
+004D: jump_if_false @CHEATS_49045 
+00D6: if 
+0019:   1@ > 0 
+004D: jump_if_false @CHEATS_49045 
+00D6: if 
+0AB0:   is_key_pressed 16 
+004D: jump_if_false @CHEATS_49027 
+000E: 1@ -= 100 
+017B: set_actor $PLAYER_ACTOR weapon 0@ ammo_to 1@ 
+
+:CHEATS_49027
+000E: 1@ -= 1 
+017B: set_actor $PLAYER_ACTOR weapon 0@ ammo_to 1@ 
+
+:CHEATS_49045
+00D6: if 
+0AB0:   is_key_pressed 39 
+004D: jump_if_false @CHEATS_49111 
+00D6: if 
+0AB0:   is_key_pressed 16 
+004D: jump_if_false @CHEATS_49093 
+000A: 1@ += 100 
+017B: set_actor $PLAYER_ACTOR weapon 0@ ammo_to 1@ 
+
+:CHEATS_49093
+000A: 1@ += 1 
+017B: set_actor $PLAYER_ACTOR weapon 0@ ammo_to 1@ 
+
+:CHEATS_49111
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_48913 
+0002: jump @CHEATS_51462 
+
+:CHEATS_49135
+04B8: get_weapon_data_from_actor $PLAYER_ACTOR slot 8 weapon 0@ ammo 1@ model 2@ 
+01B9: set_actor $PLAYER_ACTOR armed_weapon_to 0@ 
+
+:CHEATS_49159
+0001: wait 0 ms 
+00D6: if 
+0AB0:   is_key_pressed 38 
+004D: jump_if_false @CHEATS_49185 
+0002: jump @CHEATS_48889 
+
+:CHEATS_49185
+00D6: if 
+0AB0:   is_key_pressed 40 
+004D: jump_if_false @CHEATS_49207 
+0002: jump @CHEATS_49381 
+
+:CHEATS_49207
+00D6: if 
+0AB0:   is_key_pressed 37 
+004D: jump_if_false @CHEATS_49291 
+00D6: if 
+0019:   1@ > 0 
+004D: jump_if_false @CHEATS_49291 
+00D6: if 
+0AB0:   is_key_pressed 16 
+004D: jump_if_false @CHEATS_49273 
+000E: 1@ -= 100 
+017B: set_actor $PLAYER_ACTOR weapon 0@ ammo_to 1@ 
+
+:CHEATS_49273
+000E: 1@ -= 1 
+017B: set_actor $PLAYER_ACTOR weapon 0@ ammo_to 1@ 
+
+:CHEATS_49291
+00D6: if 
+0AB0:   is_key_pressed 39 
+004D: jump_if_false @CHEATS_49357 
+00D6: if 
+0AB0:   is_key_pressed 16 
+004D: jump_if_false @CHEATS_49339 
+000A: 1@ += 100 
+017B: set_actor $PLAYER_ACTOR weapon 0@ ammo_to 1@ 
+
+:CHEATS_49339
+000A: 1@ += 1 
+017B: set_actor $PLAYER_ACTOR weapon 0@ ammo_to 1@ 
+
+:CHEATS_49357
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_49159 
+0002: jump @CHEATS_51462 
+
+:CHEATS_49381
+04B8: get_weapon_data_from_actor $PLAYER_ACTOR slot 10 weapon 0@ ammo 1@ model 2@ 
+01B9: set_actor $PLAYER_ACTOR armed_weapon_to 0@ 
+
+:CHEATS_49405
+0001: wait 0 ms 
+00D6: if 
+0AB0:   is_key_pressed 38 
+004D: jump_if_false @CHEATS_49431 
+0002: jump @CHEATS_49135 
+
+:CHEATS_49431
+00D6: if 
+0AB0:   is_key_pressed 40 
+004D: jump_if_false @CHEATS_49453 
+0002: jump @CHEATS_47659 
+
+:CHEATS_49453
+00D6: if 
+0AB0:   is_key_pressed 37 
+004D: jump_if_false @CHEATS_49537 
+00D6: if 
+0019:   1@ > 0 
+004D: jump_if_false @CHEATS_49537 
+00D6: if 
+0AB0:   is_key_pressed 16 
+004D: jump_if_false @CHEATS_49519 
+000E: 1@ -= 100 
+017B: set_actor $PLAYER_ACTOR weapon 0@ ammo_to 1@ 
+
+:CHEATS_49519
+000E: 1@ -= 1 
+017B: set_actor $PLAYER_ACTOR weapon 0@ ammo_to 1@ 
+
+:CHEATS_49537
+00D6: if 
+0AB0:   is_key_pressed 39 
+004D: jump_if_false @CHEATS_49603 
+00D6: if 
+0AB0:   is_key_pressed 16 
+004D: jump_if_false @CHEATS_49585 
+000A: 1@ += 100 
+017B: set_actor $PLAYER_ACTOR weapon 0@ ammo_to 1@ 
+
+:CHEATS_49585
+000A: 1@ += 1 
+017B: set_actor $PLAYER_ACTOR weapon 0@ ammo_to 1@ 
+
+:CHEATS_49603
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_49405 
+0002: jump @CHEATS_51462 
+
+:CHEATS_49627
+015D: set_gamespeed 0.0 
+03E5: show_text_box 'CH245' 
+
+:CHEATS_49645
+0001: wait 0 ms 
+00BF: 0@ = current_time_hours, 1@ = current_time_minutes 
+00D6: if 
+0AB0:   is_key_pressed 39 
+004D: jump_if_false @CHEATS_49727 
+00D6: if 
+0029:   0@ >= 23 
+004D: jump_if_false @CHEATS_49712 
+0006: 0@ = 0 
+00C0: set_current_time_hours_to 0@ minutes_to 1@ 
+0002: jump @CHEATS_49727 
+
+:CHEATS_49712
+000A: 0@ += 1 
+00C0: set_current_time_hours_to 0@ minutes_to 1@ 
+
+:CHEATS_49727
+00BF: 0@ = current_time_hours, 1@ = current_time_minutes 
+00D6: if 
+0AB0:   is_key_pressed 37 
+004D: jump_if_false @CHEATS_49805 
+00D6: if 
+8019:   not  0@ > 0 
+004D: jump_if_false @CHEATS_49790 
+0006: 0@ = 23 
+00C0: set_current_time_hours_to 0@ minutes_to 1@ 
+0002: jump @CHEATS_49805 
+
+:CHEATS_49790
+000E: 0@ -= 1 
+00C0: set_current_time_hours_to 0@ minutes_to 1@ 
+
+:CHEATS_49805
+00BF: 0@ = current_time_hours, 1@ = current_time_minutes 
+00D6: if 
+0AB0:   is_key_pressed 38 
+004D: jump_if_false @CHEATS_49883 
+00D6: if 
+0029:   1@ >= 59 
+004D: jump_if_false @CHEATS_49868 
+0006: 1@ = 0 
+00C0: set_current_time_hours_to 0@ minutes_to 1@ 
+0002: jump @CHEATS_49883 
+
+:CHEATS_49868
+000A: 1@ += 1 
+00C0: set_current_time_hours_to 0@ minutes_to 1@ 
+
+:CHEATS_49883
+00BF: 0@ = current_time_hours, 1@ = current_time_minutes 
+00D6: if 
+0AB0:   is_key_pressed 40 
+004D: jump_if_false @CHEATS_49961 
+00D6: if 
+8019:   not  1@ > 0 
+004D: jump_if_false @CHEATS_49946 
+0006: 1@ = 59 
+00C0: set_current_time_hours_to 0@ minutes_to 1@ 
+0002: jump @CHEATS_49961 
+
+:CHEATS_49946
+000E: 1@ -= 1 
+00C0: set_current_time_hours_to 0@ minutes_to 1@ 
+
+:CHEATS_49961
+00D6: if 
+0AB0:   is_key_pressed 16 
+004D: jump_if_false @CHEATS_50263 
+088E: set_next_day 
+07D0: 2@ = weekday 
+00D6: if 
+0039:   2@ == 1 
+004D: jump_if_false @CHEATS_50024 
+00BC: show_text_highpriority GXT 'IE16' time 3000 flag 1 
+0002: jump @CHEATS_49645 
+
+:CHEATS_50024
+00D6: if 
+0039:   2@ == 2 
+004D: jump_if_false @CHEATS_50058 
+00BC: show_text_highpriority GXT 'IE10' time 3000 flag 1 
+
+:CHEATS_50058
+00D6: if 
+0039:   2@ == 3 
+004D: jump_if_false @CHEATS_50099 
+00BC: show_text_highpriority GXT 'IE11' time 3000 flag 1 
+0002: jump @CHEATS_49645 
+
+:CHEATS_50099
+00D6: if 
+0039:   2@ == 4 
+004D: jump_if_false @CHEATS_50140 
+00BC: show_text_highpriority GXT 'IE12' time 3000 flag 1 
+0002: jump @CHEATS_49645 
+
+:CHEATS_50140
+00D6: if 
+0039:   2@ == 5 
+004D: jump_if_false @CHEATS_50181 
+00BC: show_text_highpriority GXT 'IE13' time 3000 flag 1 
+0002: jump @CHEATS_49645 
+
+:CHEATS_50181
+00D6: if 
+0039:   2@ == 6 
+004D: jump_if_false @CHEATS_50222 
+00BC: show_text_highpriority GXT 'IE14' time 3000 flag 1 
+0002: jump @CHEATS_49645 
+
+:CHEATS_50222
+00D6: if 
+0039:   2@ == 7 
+004D: jump_if_false @CHEATS_50263 
+00BC: show_text_highpriority GXT 'IE15' time 3000 flag 1 
+0002: jump @CHEATS_49645 
+
+:CHEATS_50263
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_49645 
+015D: set_gamespeed 1.0 
+0002: jump @CHEATS_51462 
+
+:CHEATS_50294
+0AB5: store_char $PLAYER_ACTOR closest_vehicle_to 0@ closest_ped_to 1@ 
+020A: set_car 0@ door_status_to 1 
+01C3: remove_references_to_car 0@ 
+01C2: remove_references_to_actor 1@ // Like turning an actor into a random pedestrian 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_50340
+0AB5: store_char $PLAYER_ACTOR closest_vehicle_to 0@ closest_ped_to 1@ 
+020A: set_car 0@ door_status_to 2 
+01C3: remove_references_to_car 0@ 
+01C2: remove_references_to_actor 1@ // Like turning an actor into a random pedestrian 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_50386
+0001: wait 0 ms 
+00D6: if 
+00DF:   actor $PLAYER_ACTOR driving 
+004D: jump_if_false @CHEATS_51462 
+0713: actor $PLAYER_ACTOR driveby_actor -1 car -1 point 0.0 0.0 0.0 radius 90.0 4 0 firing_rate 100 
+0AB3: cleo_shared_var 206 = 1 
+03E5: show_text_box 'CH144' 
+03E5: show_text_box 'CH251' 
+0001: wait 2000 ms 
+0002: jump @CHEATS_51462 
+
+:CHEATS_50482
+0001: wait 0 ms 
+00D6: if 21 
+80DF:   not actor $PLAYER_ACTOR driving 
+00E1:   player 0 pressed_key 18 
+004D: jump_if_false @CHEATS_76 
+0605: actor $PLAYER_ACTOR perform_animation "NULL" IFP "NULL" framedelta 4.0 loop 0 lockX 0 lockY 0 lockF 0 time 0 
+0AB3: cleo_shared_var 206 = 0 
+03E5: show_text_box 'CH145' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_50565
+0001: wait 0 ms 
+0AB4: 0@ = cleo_shared_var 207 
+00D6: if 
+0039:   0@ == 0 
+004D: jump_if_false @CHEATS_50641 
+01C0: 0@ = player $PLAYER_CHAR wanted_level 
+010E: set_player $PLAYER_CHAR minimum_wanted_level_to 0@ 
+01F0: set_max_wanted_level_to 0@ 
+0AB3: cleo_shared_var 207 = 1 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_50641
+0AB4: 0@ = cleo_shared_var 207 
+00D6: if 
+0039:   0@ == 1 
+004D: jump_if_false @CHEATS_51462 
+010E: set_player $PLAYER_CHAR minimum_wanted_level_to 0 
+01F0: set_max_wanted_level_to 6 
+0AB3: cleo_shared_var 207 = 0 
+03E5: show_text_box 'CH145' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_50703
+03E5: show_text_box 'CH254' 
+00A0: store_actor $PLAYER_ACTOR position_to 0@ 1@ 2@ 
+08F1: get_zone_at 0@ 1@ 2@ nameB_to s$1 // 8-byte string 
+
+:CHEATS_50742
+076D: get_zone s$1 gang 1 density_to 3@ 
+01E5: show_text_1number_highpriority GXT 'CH255' number 3@ time 100 flag 1 
+0001: wait 0 ms 
+00D6: if 
+0AB0:   is_key_pressed 37 
+004D: jump_if_false @CHEATS_50796 
+0002: jump @CHEATS_51098 
+
+:CHEATS_50796
+00D6: if 
+0AB0:   is_key_pressed 39 
+004D: jump_if_false @CHEATS_50818 
+0002: jump @CHEATS_50920 
+
+:CHEATS_50818
+00D6: if 1 
+0AB0:   is_key_pressed 38 
+8029:   not  3@ >= 100 
+004D: jump_if_false @CHEATS_50857 
+000A: 3@ += 1 
+076C: set_zone s$1 gang 1 density_to 3@ 
+
+:CHEATS_50857
+00D6: if 1 
+0AB0:   is_key_pressed 40 
+0019:   3@ > 0 
+004D: jump_if_false @CHEATS_50896 
+000E: 3@ -= 1 
+076C: set_zone s$1 gang 1 density_to 3@ 
+
+:CHEATS_50896
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_50742 
+0002: jump @CHEATS_51269 
+
+:CHEATS_50920
+076D: get_zone s$1 gang 2 density_to 3@ 
+01E5: show_text_1number_highpriority GXT 'CH256' number 3@ time 100 flag 1 
+0001: wait 0 ms 
+00D6: if 
+0AB0:   is_key_pressed 37 
+004D: jump_if_false @CHEATS_50974 
+0002: jump @CHEATS_50742 
+
+:CHEATS_50974
+00D6: if 
+0AB0:   is_key_pressed 39 
+004D: jump_if_false @CHEATS_50996 
+0002: jump @CHEATS_51098 
+
+:CHEATS_50996
+00D6: if 1 
+0AB0:   is_key_pressed 38 
+8029:   not  3@ >= 100 
+004D: jump_if_false @CHEATS_51035 
+000A: 3@ += 1 
+076C: set_zone s$1 gang 2 density_to 3@ 
+
+:CHEATS_51035
+00D6: if 1 
+0AB0:   is_key_pressed 40 
+0019:   3@ > 0 
+004D: jump_if_false @CHEATS_51074 
+000E: 3@ -= 1 
+076C: set_zone s$1 gang 2 density_to 3@ 
+
+:CHEATS_51074
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_50920 
+0002: jump @CHEATS_51269 
+
+:CHEATS_51098
+076D: get_zone s$1 gang 0 density_to 3@ 
+01E5: show_text_1number_highpriority GXT 'CH257' number 3@ time 100 flag 1 
+0001: wait 0 ms 
+00D6: if 
+0AB0:   is_key_pressed 37 
+004D: jump_if_false @CHEATS_51152 
+0002: jump @CHEATS_50920 
+
+:CHEATS_51152
+00D6: if 
+0AB0:   is_key_pressed 39 
+004D: jump_if_false @CHEATS_51174 
+0002: jump @CHEATS_50742 
+
+:CHEATS_51174
+00D6: if 1 
+0AB0:   is_key_pressed 38 
+8029:   not  3@ >= 100 
+004D: jump_if_false @CHEATS_51213 
+000A: 3@ += 1 
+076C: set_zone s$1 gang 0 density_to 3@ 
+
+:CHEATS_51213
+00D6: if 1 
+0AB0:   is_key_pressed 40 
+0019:   3@ > 0 
+004D: jump_if_false @CHEATS_51252 
+000E: 3@ -= 1 
+076C: set_zone s$1 gang 0 density_to 3@ 
+
+:CHEATS_51252
+00D6: if 
+00E1:   player 0 pressed_key 15 
+004D: jump_if_false @CHEATS_51098 
+
+:CHEATS_51269
+0879: enable_gang_wars 1 
+08AC: hide_gang_zones_on_map 0 
+090D: highlight_all_inactive_gang_zones_as_available_for_gangwars 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_51297
+00D6: if 
+00DF:   actor $PLAYER_ACTOR driving 
+004D: jump_if_false @CHEATS_51462 
+03C0: 0@ = actor $PLAYER_ACTOR car 
+0731: set_car 0@ y_angle_to 0 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_51346
+0AB4: 0@ = cleo_shared_var 208 
+00D6: if 
+0039:   0@ == 0 
+004D: jump_if_false @CHEATS_51404 
+08C6: set_actor $PLAYER_ACTOR stay_on_bike 1 
+0AB3: cleo_shared_var 208 = 1 
+03E5: show_text_box 'CH144' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_51404
+0AB4: 0@ = cleo_shared_var 208 
+00D6: if 
+0039:   0@ == 1 
+004D: jump_if_false @CHEATS_51462 
+08C6: set_actor $PLAYER_ACTOR stay_on_bike 0 
+0AB3: cleo_shared_var 208 = 0 
+03E5: show_text_box 'CH145' 
+0002: jump @CHEATS_51462 
+
+:CHEATS_51462
+0001: wait 250 ms 
+01B4: set_player $PLAYER_CHAR can_move 1 
+0AB3: cleo_shared_var 200 = 0 
+0002: jump @CHEATS_76 

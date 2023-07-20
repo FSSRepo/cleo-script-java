@@ -1,0 +1,110 @@
+// This file was decompiled using SASCM.ini
+{$CLEO .cs}
+
+03A4: script_name 'BIGFOOT'
+
+:BIGFOOT_11
+0001: wait 0 ms
+00D6: if or
+0256:   player $PLAYER_CHAR defined
+004D: jump_if_false @BIGFOOT_11
+00D6: if 
+0038:   $ONMISSION == 0
+004D: jump_if_false @BIGFOOT_11
+00D6: if 
+00FE:   actor $PLAYER_ACTOR sphere 0 in_sphere -929.4054 -2180.65 33.8857 radius 25.0 25.0 25.0
+004D: jump_if_false @BIGFOOT_11
+00D6: if 2
+00BF: 29@ = current_time_hours, 30@ = current_time_minutes
+0029:   29@ >= 4
+001B:   0 > 29@
+004D: jump_if_false @BIGFOOT_137
+0002: jump @BIGFOOT_11
+
+:BIGFOOT_137
+0247: load_model #CELLPHONE
+038B: load_requested_models
+0002: jump @BIGFOOT_151
+
+:BIGFOOT_151
+0001: wait 0 ms
+00D6: if 
+0248:   model 330 available
+004D: jump_if_false @BIGFOOT_137
+0004: $ONMISSION = 1
+02A3: enable_widescreen 1
+0AAC: 1@ = load_audio_stream "CLEO\THEMES\XFILES.MP3"
+0AAD: set_audio_stream 1@ state 1
+0729: AS_actor $PLAYER_ACTOR hold_cellphone 1
+0001: wait 2000 ms
+00BB: show_text_lowpriority GXT 'BIG1' time 2000 flag 1
+0001: wait 2000 ms
+00BB: show_text_lowpriority GXT 'BIG2' time 2500 flag 1
+0001: wait 2500 ms
+00BB: show_text_lowpriority GXT 'BIG3' time 2000 flag 1
+0001: wait 2000 ms
+00BB: show_text_lowpriority GXT 'BIG4' time 2500 flag 1
+0001: wait 2500 ms
+0729: AS_actor $PLAYER_ACTOR hold_cellphone 0
+02A3: enable_widescreen 0
+0002: jump @BIGFOOT_332
+
+:BIGFOOT_332
+0001: wait 0 ms
+023C: load_special_actor 'BIGFOOT' as 5 // models 290-299
+038B: load_requested_models
+0002: jump @BIGFOOT_358
+
+:BIGFOOT_358
+0001: wait 0 ms
+00D6: if 
+023D:   special_actor 5 loaded
+004D: jump_if_false @BIGFOOT_332
+009A: 0@ = create_actor_pedtype 4 model 294 at -961.1642 -2183.509 40.7402
+0173: set_actor 0@ Z_angle_to 317.578
+0223: set_actor 0@ health_to 10000
+035F: actor 0@ armour += 2000
+0446: set_actor 0@ dismemberment_possible 0
+04D8: set_actor 0@ drowns_in_water 1
+0946: set_actor 0@ actions_uninterupted_by_weapon_fire 1
+060B: set_actor 0@ decision_maker_to 32
+01B9: set_actor $PLAYER_ACTOR armed_weapon_to 9999
+03FE: set_actor 0@ money 0
+0187: 7@ = create_marker_above_actor 0@
+07E0: set_marker 7@ type_to 2
+0001: wait 800 ms
+02AB: set_actor 0@ immunities BP 0 FP 0 EP 1 CP 1 MP 1
+0850: AS_actor 0@ follow_actor $PLAYER_ACTOR
+05E2: AS_actor 0@ kill_actor $PLAYER_ACTOR
+0249: release_model 330
+0002: jump @BIGFOOT_534
+
+:BIGFOOT_534
+0001: wait 0 ms
+00D6: if 
+0256:   player $PLAYER_CHAR defined
+004D: jump_if_false @BIGFOOT_608
+00D6: if 
+8118: not   actor 0@ dead
+004D: jump_if_false @BIGFOOT_641
+00D6: if 
+00F2:   actor $PLAYER_ACTOR near_actor 0@ radius 250.0 250.0 0
+004D: jump_if_false @BIGFOOT_608
+0002: jump @BIGFOOT_534
+
+:BIGFOOT_608
+01C2: remove_references_to_actor 0@  // Like turning an actor into a random pedestrian
+0004: $ONMISSION = 0
+0AAE: remove_audio_stream 1@
+0296: unload_special_actor 5
+0164: disable_marker 7@
+0002: jump @BIGFOOT_11
+
+:BIGFOOT_641
+01C2: remove_references_to_actor 0@  // Like turning an actor into a random pedestrian
+0004: $ONMISSION = 0
+0164: disable_marker 7@
+0394: play_music 1
+0296: unload_special_actor 5
+0AAE: remove_audio_stream 1@
+0A93: terminate_this_custom_script
