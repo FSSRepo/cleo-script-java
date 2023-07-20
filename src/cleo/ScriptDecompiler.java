@@ -20,6 +20,7 @@ public class ScriptDecompiler
 	private ArrayList<Integer> addresses = new ArrayList<Integer>();
 	private ArrayList<String> arguments = new ArrayList<>();
 	private IDECollector ide_collector;
+	private boolean running = false;
 	
 	public class OpcodeDecompiled {
 		public int id = 0;
@@ -42,11 +43,13 @@ public class ScriptDecompiler
 			is.read(data);
 			is.close();
 			is = null;
-		} catch(Exception e){ }
+		} catch(Exception e) {
+			
+		}
 		String decompiled = "// This file was decompiled using SASCM.ini\n{$CLEO .cs}\n\n";
-		
+		running = true;
 		// decompile
-		while(true) {
+		while(running) {
 			if(offset + 2 > data.length || !readOpcode()) {
 				break;
 			}
@@ -61,17 +64,20 @@ public class ScriptDecompiler
 		}
 		if(save_txt) {
 			try{
-				FileOutputStream os = new FileOutputStream(file.replaceAll(".csa|.cs","_decompiled.txt"));
+				FileOutputStream os = new FileOutputStream(file.replaceAll(".csa|.cs", "_decompiled.txt"));
 				os.write(decompiled.getBytes());
 				os.close();
-			} catch(Exception e){ }
+			} catch(Exception e) { 
+				
+			}
 		}
 		return decompiled;
 	}
 	
 	private void performDecompile() {
 		String final_line = (current.invert ? "not " : "") + current.decompiled_line;
-		if(arguments.size() == 0) {
+		boolean valid = current.param_count == -1 || current.param_count == arguments.size();
+		if(arguments.size() == 0 && valid) {
 			current.decompiled_line = String.format("%04X: %s", current.id, final_line);
 		} else {
 			String re = "(%1\\w%)";
@@ -86,11 +92,27 @@ public class ScriptDecompiler
 							arg = "#" + def;
 						}
 					}
+					// handle dynamic address jumpers
+					if((
+						current.id == 0x0871 || 
+						current.id == 0x0872 || 
+						current.id == 0x0050 ||
+						current.id == 0x002 || 
+						current.id == 0x04D) && 
+						argId.contains("p")) {
+						int address = Integer.parseInt(arg) * -1;
+						addresses.add(address);
+						arg = "@"+script_name+"_" + address;
+					}
 					final_line = final_line.replace(argId, arg);
 				}
 				re = "(%"+ (++i) +"\\w%)";
 			}
-			current.decompiled_line = String.format("%04X: %s", current.id, final_line);
+			if(valid) {
+				current.decompiled_line = String.format("%04X: %s", current.id, final_line);
+			} else {
+				current.decompiled_line = "";
+			}
 		}
 	}
 	
@@ -115,6 +137,10 @@ public class ScriptDecompiler
 		if(current.param_count != -1) {
 			for(int j = 0; j < current.param_count; j++) {
 				String argument = readArgument();
+				if(argument.length() == 0) { // must stop
+					running = false;
+					return;
+				}
 				if(current.id == 0x0D6) { // if must have one argument
 					int val = Integer.parseInt(argument);
 					if(val == 0) {
@@ -122,10 +148,6 @@ public class ScriptDecompiler
 					}
 				} else if(current.id == 0x03A4) { // get thread name
 					script_name = argument.replaceAll("'","");
-				} else if(current.id == 0x002 || current.id == 0x04D) {
-					int address = Integer.parseInt(argument) * -1;
-					addresses.add(address);
-					argument = "@"+script_name+"_"+address;
 				}
 				arguments.add(argument);
 			}

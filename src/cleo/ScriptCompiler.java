@@ -33,6 +33,7 @@ public class ScriptCompiler
 		public String value;
 		public int valuei;
 		public float valuef;
+		public boolean label;
 	}
 	
 	private class OpcodeCompiled {
@@ -73,7 +74,7 @@ public class ScriptCompiler
 				}
                 // check label -> code address
 				if(line.startsWith(":")) {
-					labels.put(line_idx + 1, line.substring(1));
+					labels.put(line_idx + 1, line.replace(':','@'));
 					continue;
 				}
 				OpcodeProcessed current = new OpcodeProcessed();
@@ -109,12 +110,29 @@ public class ScriptCompiler
 				for(int i = 0; i < op.arguments.size(); i ++) {
 					size ++;
 					OpParam param = new OpParam();
-					int position = op.args_index.get(i) - 1;
+					int position = op.args_index.get(i);
 					String arg = op.arguments.get(i);
-					if(op.id == 0x002 || op.id == 0x04D) {
+					if(arg.charAt(0) == '@') {
 						size += 4;
 						param.type = 0x1;
-						param.value = arg.substring(1);
+						param.label = true;
+						param.value = arg;
+					} else if(arg.startsWith("s$")) {
+						param.type = 0xA;
+						size += 2;
+						param.valuei = Integer.parseInt(arg.replace("s$",""));
+					} else if(arg.startsWith("v$")) {
+						param.type = 0x11;
+						size += 2;
+						param.valuei = Integer.parseInt(arg.replace("v$",""));
+					} else if(arg.endsWith("@s")) {
+						param.type = 0xB;
+						size += 2;
+						param.valuei = Integer.parseInt(arg.replace("@s",""));
+					} else if(arg.endsWith("@v")) {
+						param.type = 0x10;
+						size += 2;
+						param.valuei = Integer.parseInt(arg.replace("@v",""));
 					} else if(op.id == 0x00D6) {
 						size += 1;
 						param.type = 0x04;
@@ -139,7 +157,9 @@ public class ScriptCompiler
 						}
 					} else if(checkIfInteger(arg)) {
 						param.valuei = Integer.parseInt(arg);
-						param.type = (byte)(param.valuei < 128 ? 0x4 : (param.valuei > 32735 ? 0x1 : 0x5));
+						param.type = (Math.abs(param.valuei) < 128 ? 0x4 : 
+							(Math.abs(param.valuei) > 32735 ? 0x1 : 
+							0x5));
 						size += param.type == 0x4 ? 1 : (param.type == 0x5 ? 2 : 4);
 					} else if(checkIfFloat(arg)) {
 						param.type = 0x6;
@@ -165,8 +185,8 @@ public class ScriptCompiler
 				fwr.writeShort(oc.id);
 				for(OpParam param : oc.params) {
 					fwr.writeByte(param.type);
-					if(oc.id == 0x002 || oc.id == 0x04D) {
-						fwr.writeInt(-labels_addresses.get(param.value));
+					if(param.label) {
+						fwr.writeInt( - labels_addresses.get(param.value));
 						continue;
 					}
 					switch(param.type) {
@@ -175,6 +195,10 @@ public class ScriptCompiler
 							break;
 						case 0x2: // global var
 						case 0x3: // local var
+						case 0xA: // global string 8 var
+						case 0xB: // local string 8 var
+						case 0x10: // global string 16 var
+						case 0x11: // local string 16 var
 						case 0x5: // short value
 							fwr.writeShort(param.valuei);
 							break;
@@ -201,7 +225,7 @@ public class ScriptCompiler
         } catch (Exception e) {
 			StringWriter sw = new StringWriter();
 			e.printStackTrace(new PrintWriter(sw));
-            return "Compile Error:\n" + sw.toString();
+            return "Compile Error:\n" + sw.toString()+"\nLine "+line_idx+" breaked";
         }
 		return "Script Length: "+ size;
 	}
@@ -241,7 +265,7 @@ public class ScriptCompiler
     }
 	
 	private boolean collectArguments(OpcodeProcessed current, String reference, String code) {
-		String pattern_arguments = "\\$\\w+|\\#\\w+|\\@\\w+|\\s\\d+\\@|\\s\\d+\\.\\d+|-[\\d.]+|\\s\\d+|'([^']*)'|\"([^']*)\"|not|and";
+		String pattern_arguments = "[sv][$@]\\d+|\\$\\w+|\\#\\w+|\\@\\w+|\\s\\d+\\@|\\s\\d+\\.\\d+|-[\\d.]+|\\s\\d+|'(.*?)'|\"(.*?)\"";
         Pattern pattern = Pattern.compile(pattern_arguments);
 		Pattern pattern_ref = Pattern.compile("%(\\d+[a-zA-Z]?)%");
 		Matcher matcher = pattern.matcher(code);
@@ -266,14 +290,14 @@ public class ScriptCompiler
 			if(num_conditions == -1 || num_conditions < 0 || 
 				num_conditions > 7 && num_conditions < 21 || 
 				num_conditions > 27) {
-				error = "Line "+line_idx+": invalid if argument\n1 ... 7 AND operator, 21 ... 27 OR operator";
+				error = "Line "+line_idx+": invalid if argument\n1 ... 7 AND operator, 21 ... 27 OR operator, please specify the number of conditions.";
 				return false;
 			}
 		}
 		Matcher matcher_ref = pattern_ref.matcher(reference);
 		while (matcher_ref.find()) {
 			String value = matcher_ref.group(1);
-			current.args_index.add(Integer.parseInt(value.substring(0, 1)));
+			current.args_index.add(Integer.parseInt(value.replaceAll("[a-zA-Z]", "")) - 1);
 		}
 		if(current.param_count != -1 && current.arguments.size() != current.param_count) {
 			error = "Line "+line_idx+": missing parameters, expected "+current.param_count + ", given "+ current.arguments.size();
