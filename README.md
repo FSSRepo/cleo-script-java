@@ -11,3 +11,5 @@ cd cleo-script-java
 javac src/Main.java -cp src -d bin
 java -cp bin Main
 ```
+
+This creates res/bigfoot.cs and res/cheats_decompiled.txt
