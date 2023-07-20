@@ -1,7 +1,7 @@
 # cleo-script-java
 Compiler/Decompiler CLEO Scripts .cs for GTA:SA in Java, for a Sanny Builder port to android
 
-# Run
+# Run this project
 
 Run these commands, you need Java SDK installed in your workspace.
 
@@ -12,4 +12,4 @@ javac src/Main.java -cp src -d bin
 java -cp bin Main
 ```
 
-This creates res/bigfoot.cs and res/cheats_decompiled.txt
+This creates `res/bigfoot.cs` and `res/cheats_decompiled.txt` files.

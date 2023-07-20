@@ -1,6 +1,11 @@
+/*
+ * CLEO SCript Java
+ * FSSRepo 2023
+ */
+
 package cleo;
-import java.util.*;
 import java.io.*;
+import java.util.*;
 import java.util.regex.*;
 
 public class ScriptDecompiler

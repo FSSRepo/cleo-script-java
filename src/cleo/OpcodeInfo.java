@@ -1,3 +1,8 @@
+/*
+ * CLEO SCript Java
+ * FSSRepo 2023
+ */
+
 package cleo;
 
 public  class OpcodeInfo {
