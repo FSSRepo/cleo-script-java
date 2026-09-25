@@ -97,6 +97,7 @@ public class ScriptDecompiler
 						current.id == 0x0871 || 
 						current.id == 0x0872 || 
 						current.id == 0x0050 ||
+						current.id == 0x004F ||
 						current.id == 0x002 || 
 						current.id == 0x04D) && 
 						argId.contains("p")) {
@@ -133,31 +134,28 @@ public class ScriptDecompiler
 	
 	public void readArguments() {
 		arguments.clear();
-		// read arguments
-		if(current.param_count != -1) {
-			for(int j = 0; j < current.param_count; j++) {
-				String argument = readArgument();
-				if(argument.length() == 0) { // must stop
-					running = false;
-					return;
-				}
-				if(current.id == 0x0D6) { // if must have one argument
-					int val = Integer.parseInt(argument);
-					if(val == 0) {
-						argument = "";
-					}
-				} else if(current.id == 0x03A4) { // get thread name
-					script_name = argument.replaceAll("'","");
-				}
-				arguments.add(argument);
+		int count = current.param_count;
+		// for variable argument opcodes, derive count from format placeholders
+		if(count == -1) {
+			Matcher m = Pattern.compile("%\\d+[a-zA-Z]?%").matcher(current.decompiled_line);
+			count = 0;
+			while(m.find()) count++;
+		}
+		for(int j = 0; j < count; j++) {
+			String argument = readArgument();
+			if(argument.length() == 0) { // must stop
+				running = false;
+				return;
 			}
-		} else {
-			while(true) {
-				String argument = readArgument();
-				if(argument.length() == 0) {
-					break;
+			if(current.id == 0x0D6) { // if must have one argument
+				int val = Integer.parseInt(argument);
+				if(val == 0) {
+					argument = "";
 				}
+			} else if(current.id == 0x03A4) { // get thread name
+				script_name = argument.replaceAll("'","");
 			}
+			arguments.add(argument);
 		}
 	}
 	
@@ -171,7 +169,7 @@ public class ScriptDecompiler
 			case 0x2: // global var
 				int glb = readUShort();
 				String fd = ide_collector.getDefinitionById(glb, true);
-				arg =  fd == null ?  "$" + glb : fd;
+				arg =  fd == null ?  "$" + (glb / 4) : fd;
 				break;
 			case 0x3: // local var
 				arg = readUShort() + "@";
