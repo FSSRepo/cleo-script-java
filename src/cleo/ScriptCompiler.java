@@ -4,308 +4,427 @@
  */
 
 package cleo;
-import java.util.*;
 import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.*;
+import java.util.*;
 import java.util.regex.*;
 
+/**
+ * Compiles text in SASCM.ini syntax to CLEO bytecode (.cs).
+ *
+ * Argument syntax: integers (-5, 0x1F), floats (1.5), 'text8', 'text16', "long text",
+ * $VAR / $123 (global), 12@ (local), s$N / v$N / 12@s / 12@v (text variables), #MODEL,
+ * @label (jump target), and arrays $VAR(3@,25i) / 8@(2@,10f) (element type i, f, s or v).
+ * Jumps are encoded relative to the start of the script (negative value), as CLEO does.
+ */
 public class ScriptCompiler
 {
+	private static final Pattern RE_LABEL = Pattern.compile("@[A-Za-z_]\\w*");
+	private static final Pattern RE_GLOBAL = Pattern.compile("\\$[A-Za-z_]\\w*|\\$\\d+");
+	private static final Pattern RE_MODEL = Pattern.compile("#\\w+");
+	private static final Pattern RE_LOCAL = Pattern.compile("(\\d+)@");
+	private static final Pattern RE_GSTRVAR = Pattern.compile("s\\$(\\d+)");
+	private static final Pattern RE_GSTR16VAR = Pattern.compile("v\\$(\\d+)");
+	private static final Pattern RE_LSTRVAR = Pattern.compile("(\\d+)@s");
+	private static final Pattern RE_LSTR16VAR = Pattern.compile("(\\d+)@v");
+	private static final Pattern RE_ARRAY = Pattern.compile("(\\$[A-Za-z_]\\w*|\\$\\d+|\\d+@)\\((\\$[A-Za-z_]\\w*|\\$\\d+|\\d+@),(\\d+)([ifsv])\\)");
+	private static final Pattern RE_FLOAT = Pattern.compile("[+-]?(\\d+\\.\\d+([eE][+-]?\\d+)?|\\d+[eE][+-]?\\d+)f?");
+	private static final Pattern RE_INT = Pattern.compile("[+-]?\\d+|[+-]?0[xX][0-9a-fA-F]+");
+
 	private SCMLoader scm;
-	private HashMap<Integer, String> labels = new HashMap<>();
-	private ArrayList<OpcodeProcessed> opcodes_processed = new ArrayList<OpcodeProcessed>();
-	private ArrayList<OpcodeCompiled> opcodes_compiled = new ArrayList<OpcodeCompiled>();
-	private HashMap<String, Integer> labels_addresses = new HashMap<>();
 	private IDECollector ide_collector;
 	private HashMap<String, Integer> auto_globals = new HashMap<>();
 	private int next_auto_global_index = 25;
 	public String error = "";
 	public int line_idx = 0;
-	
-	private class OpcodeProcessed {
-		public int id = 0;
-		public int param_count = 0;
-		public boolean invert = false;
-		public int code_address = 0;
-		public ArrayList<String> arguments = new ArrayList<>();
-		public ArrayList<Integer> args_index = new ArrayList<Integer>();
+	/** Output extension given by the {$CLEO .cs} directive. */
+	public String format = ".cs";
+	/** Absolute jumps (main thread of main.scm): the value is origin + position, positive. Relative and negative by default. */
+	public boolean absoluteJumps = false;
+	/** Address of the first byte of the script when absoluteJumps is set. */
+	public int origin = 0;
+	/** Labels defined in another source (e.g. main.txt when compiling a mission): name with '@' -> absolute address, written as a positive value. */
+	public Map<String, Integer> externalLabels = new HashMap<>();
+	/** Labels of the last compiled source: name with '@' -> address (origin + offset when absoluteJumps, else the offset). */
+	public Map<String, Integer> labelAddresses = new HashMap<>();
+	/** Local variable slots used by the last compiled source (highest index + 1; text variables count their width). */
+	public int localVariableCount;
+
+	private static class Fixup {
+		int position;
+		String label;
+		int line;
 	}
-	
-	private class OpParam {
-		public int type;
-		public String value;
-		public int valuei;
-		public float valuef;
-		public boolean label;
-	}
-	
-	private class OpcodeCompiled {
-		public int id = 0;
-		public OpParam[] params;
-	}
-	
+
 	public ScriptCompiler(SCMLoader scm, IDECollector ide) {
 		this.scm = scm;
 		this.ide_collector = ide;
 	}
-	
+
 	public boolean hasError() {
 		return error.length() > 0;
 	}
-	
+
+	/** Compiles 'path' and writes the binary next to it (extension taken from the directive). Returns a summary or the error. */
 	public String compile(String path) {
-		int size = 0;
-		try {
-            // Crear un objeto BufferedReader para leer el archivo
-            BufferedReader reader  = new BufferedReader(new FileReader(path));
-			String line;
-			line_idx = 0;
-			error = "";
-			String format = ".cs";
-            while ((line = reader.readLine()) != null) {
-				line_idx++;
-				if(line.length() == 0 || 
-					line.startsWith("//")) {
-					continue;
-				}
-				if(line.startsWith("{$")) {
-					format = getFormat(line);
-					continue;
-				}
-				if(line.contains("//")) {
-					line = line.substring(0, line.indexOf("//"));
-				}
-                // check label -> code address
-				if(line.startsWith(":")) {
-					labels.put(line_idx + 1, line.replace(':','@'));
-					continue;
-				}
-				OpcodeProcessed current = new OpcodeProcessed();
-				String[] parts = line.split(":");
-				current.id = Integer.decode("0x" + parts[0]);
-				current.invert = current.id > 0x7FFF;
-				current.code_address = line_idx;
-				OpcodeInfo inf = scm.ops.get(current.invert ? (current.id - 0x8000) : current.id);
-				if(inf == null) {
-					// Unknown opcode
-					return "Line "+line_idx+": '"+ parts[0] +"' Unknown opcode";
-				}
-				current.param_count = inf.param_count;
-				// collect arguments
-				if(collectArguments(current, inf.code_line, parts[1].replace(current.invert ? "not " : "", ""))) {
-					opcodes_processed.add(current);
-				} else {
-					return error;
-				}
-            }
-			// code to binary
-			// calculate storage
-			for(OpcodeProcessed op : opcodes_processed) {
-				String label = labels.get(op.code_address);
-				if(label != null) {
-					labels_addresses.put(label, size);
-				}
-				//System.out.println(size + String.format(": Opcode: 0x%04X", op.id));
-				OpcodeCompiled oc = new OpcodeCompiled();
-				oc.id = op.id;
-				size += 2; // opcode id
-				oc.params = new OpParam[op.arguments.size()];
-				for(int i = 0; i < op.arguments.size(); i ++) {
-					size ++;
-					OpParam param = new OpParam();
-					int position = op.args_index.get(i);
-					String arg = op.arguments.get(i);
-					if(arg.charAt(0) == '@') {
-						size += 4;
-						param.type = 0x1;
-						param.label = true;
-						param.value = arg;
-					} else if(arg.startsWith("s$")) {
-						param.type = 0xA;
-						size += 2;
-						param.valuei = Integer.parseInt(arg.replace("s$",""));
-					} else if(arg.startsWith("v$")) {
-						param.type = 0x11;
-						size += 2;
-						param.valuei = Integer.parseInt(arg.replace("v$",""));
-					} else if(arg.endsWith("@s")) {
-						param.type = 0xB;
-						size += 2;
-						param.valuei = Integer.parseInt(arg.replace("@s",""));
-					} else if(arg.endsWith("@v")) {
-						param.type = 0x10;
-						size += 2;
-						param.valuei = Integer.parseInt(arg.replace("@v",""));
-					} else if(op.id == 0x00D6) {
-						size += 1;
-						param.type = 0x04;
-						param.valuei = Integer.parseInt(arg);
-					} else if(checkFormat(arg, "\\d{1,2}@")) {
-						param.type = 0x3;
-						size += 2;
-						param.valuei = Integer.parseInt(arg.replace("@",""));
-					} else if(arg.charAt(0) == '$') {
-						param.type = 0x2;
-						size += 2;
-						int fd = ide_collector.getIdByDefinition(arg);
-						if(fd != -1) {
-							param.valuei = fd;
-						} else {
-							Integer autoIndex = auto_globals.get(arg);
-							if(autoIndex == null) {
-								autoIndex = next_auto_global_index;
-								auto_globals.put(arg, autoIndex);
-								next_auto_global_index++;
-							}
-							param.valuei = autoIndex * 4;
-						}
-					} else if(checkIfInteger(arg)) {
-						param.valuei = Integer.parseInt(arg);
-						param.type = (Math.abs(param.valuei) < 128 ? 0x4 : 
-							(Math.abs(param.valuei) > 32735 ? 0x1 : 
-							0x5));
-						size += param.type == 0x4 ? 1 : (param.type == 0x5 ? 2 : 4);
-					} else if(checkIfFloat(arg)) {
-						param.type = 0x6;
-						size += 4;
-						param.valuef = Float.parseFloat(arg);
-					} else if(checkFormat(arg, "'([^']*)'")) {
-						param.value = arg.replace("'","");
-						param.type = (byte)(param.value.length() > 8 ? 0xF : 0x9);
-						size += (param.value.length() > 8 ? 16 : 8);
-					} else if(checkFormat(arg, "\"([^']*)\"")) {
-						param.value = arg.replace("\"","");
-						param.type = 0xE;
-						size += 1 + param.value.length();
-					}
-					oc.params[position] = param;
-				}
-				opcodes_compiled.add(oc);
-			}
-			opcodes_processed.clear();
-			// write
-			FileStreamWriter fwr = new FileStreamWriter(path.replaceAll(".txt", format));
-			for(OpcodeCompiled oc : opcodes_compiled) {
-				fwr.writeShort(oc.id);
-				for(OpParam param : oc.params) {
-					fwr.writeByte(param.type);
-					if(param.label) {
-						fwr.writeInt( - labels_addresses.get(param.value));
-						continue;
-					}
-					switch(param.type) {
-						case 0x1: // int value
-							fwr.writeInt(param.valuei);
-							break;
-						case 0x2: // global var
-						case 0x3: // local var
-						case 0xA: // global string 8 var
-						case 0xB: // local string 8 var
-						case 0x10: // global string 16 var
-						case 0x11: // local string 16 var
-						case 0x5: // short value
-							fwr.writeShort(param.valuei);
-							break;
-						case 0x6: // float value
-							fwr.writeFloat(param.valuef);
-							break;
-						case 0x4: // byte value
-							fwr.writeByte(param.valuei);
-							break;
-						case 0x9: // string 8
-							fwr.writeStringFromSize(8, param.value);
-							break;
-						case 0xF: // string 16
-							fwr.writeStringFromSize(16, param.value);
-							break;
-						case 0xE: // string 
-							fwr.writeByte(param.value.length());
-							fwr.writeString(param.value);
-							break;
-					}
-				}
-			}
-			fwr.finish();
-        } catch (Exception e) {
-			StringWriter sw = new StringWriter();
-			e.printStackTrace(new PrintWriter(sw));
-            return "Compile Error:\n" + sw.toString()+"\nLine "+line_idx+" breaked";
-        }
-		return "Script Length: "+ size;
+		return compile(path, null);
 	}
-	
-	private static String getFormat(String input) {
-		// Creamos el objeto Pattern y Matcher
-        Pattern regex = Pattern.compile("\\.cs[\\w]*");
-        Matcher matcher = regex.matcher(input);
-        // Realizamos la búsqueda del patrón en el input
-        return matcher.find() ? matcher.group() : "";
-    }
-	
-	private static boolean checkFormat(String input, String pattern) {
-       // Creamos el objeto Pattern y Matcher
-        Pattern regex = Pattern.compile(pattern);
-        Matcher matcher = regex.matcher(input);
-        // Realizamos la búsqueda del patrón en el input
-        return matcher.matches();
-    }
-	
-	private static boolean checkIfInteger(String input) {
-        try {
-            Integer.parseInt(input);
-            return true;
-        } catch (NumberFormatException e) {
-            return false;
-        }
-    }
-	
-	private static boolean checkIfFloat(String input) {
-        try {
-            Float.parseFloat(input);
-            return true;
-        } catch (NumberFormatException e) {
-            return false;
-        }
-    }
-	
-	private boolean collectArguments(OpcodeProcessed current, String reference, String code) {
-		String pattern_arguments = "[sv][$@]\\d+|\\$\\w+|\\#\\w+|\\@\\w+|\\s\\d+\\@|\\s\\d+\\.\\d+|-[\\d.]+|\\s\\d+|'(.*?)'|\"(.*?)\"";
-        Pattern pattern = Pattern.compile(pattern_arguments);
-		Pattern pattern_ref = Pattern.compile("%(\\d+[a-zA-Z]?)%");
-		Matcher matcher = pattern.matcher(code);
-		while (matcher.find()) {
-			String argument = matcher.group().replace(" ","");
-			if(argument.charAt(0) != '#') {
-				current.arguments.add(argument);
-			} else {
-				int fd = ide_collector.getIdByDefinition(argument.substring(1));
-				if(fd == -1) {
-					error = "Line "+line_idx+": invalid definition '" + argument + "'";
-					return false;
+
+	/** Same as compile(path) but writing to 'out' (null = next to the source). */
+	public String compile(String path, String out) {
+		error = "";
+		try {
+			String source = new String(Files.readAllBytes(Paths.get(path)), StandardCharsets.ISO_8859_1);
+			byte[] code = compileSource(source);
+			Files.write(Paths.get(out != null ? out : outputPath(path, format)), code);
+			return "Script Length: " + code.length;
+		} catch(ScriptFormatException e) {
+			error = e.getMessage();
+			return error;
+		} catch(IOException e) {
+			error = "I/O error: " + e.getMessage();
+			return error;
+		}
+	}
+
+	static String outputPath(String path, String format) {
+		int dot = path.lastIndexOf('.');
+		int sep = Math.max(path.lastIndexOf('/'), path.lastIndexOf('\\'));
+		String stem = dot > sep ? path.substring(0, dot) : path;
+		return stem + (format.isEmpty() ? ".cs" : format);
+	}
+
+	/** Compiles the text of a script and returns the bytecode. Throws ScriptFormatException carrying the line number. */
+	public byte[] compileSource(String source) {
+		HashMap<String, Integer> labels = new HashMap<>();
+		ArrayList<Fixup> fixups = new ArrayList<>();
+		ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+		FileStreamWriter w = new FileStreamWriter(buffer);
+		format = ".cs";
+		line_idx = 0;
+		localVariableCount = 0;
+		for(String raw : source.split("\r?\n", -1)) {
+			line_idx++;
+			String line = stripComment(raw).trim();
+			if(line.isEmpty()) {
+				continue;
+			}
+			if(line.startsWith("{$")) {
+				Matcher m = Pattern.compile("\\.cs\\w*").matcher(line);
+				if(m.find()) {
+					format = m.group();
 				}
-				current.arguments.add(fd +"");
+				continue;
+			}
+			if(line.startsWith(":")) {
+				String name = "@" + line.substring(1).trim();
+				if(labels.put(name, buffer.size()) != null) {
+					throw fail("duplicate label '" + name + "'");
+				}
+				continue;
+			}
+			compileLine(line, w, buffer, fixups);
+		}
+		byte[] code = buffer.toByteArray();
+		labelAddresses.clear();
+		for(Map.Entry<String, Integer> e : labels.entrySet()) {
+			labelAddresses.put(e.getKey(), absoluteJumps ? origin + e.getValue() : e.getValue());
+		}
+		for(Fixup f : fixups) {
+			Integer address = labels.get(f.label);
+			int v;
+			if(address != null) {
+				v = absoluteJumps ? origin + address : -address;
+			} else if(externalLabels.containsKey(f.label)) {
+				v = externalLabels.get(f.label);
+			} else {
+				line_idx = f.line;
+				throw fail("undefined label '" + f.label + "'");
+			}
+			for(int i = 0; i < 4; i++) {
+				code[f.position + i] = (byte) (v >> (8 * i));
 			}
 		}
-		if(current.id == 0x00D6) {
-			if(current.arguments.size() == 0) {
-				current.arguments.add("0");
+		return code;
+	}
+
+	private ScriptFormatException fail(String message) {
+		return new ScriptFormatException("Line " + line_idx + ": " + message, line_idx);
+	}
+
+	private void compileLine(String line, FileStreamWriter w, ByteArrayOutputStream buffer, ArrayList<Fixup> fixups) {
+		int colon = line.indexOf(':');
+		if(colon < 0) {
+			throw fail("expected 'XXXX: instruction'");
+		}
+		String hex = line.substring(0, colon).trim();
+		String body = line.substring(colon + 1).trim();
+		int id;
+		try {
+			id = Integer.parseInt(hex, 16);
+		} catch(NumberFormatException e) {
+			throw fail("'" + hex + "' is not an opcode");
+		}
+		if(body.startsWith("not ")) {
+			id |= 0x8000;
+			body = body.substring(4);
+		}
+		OpcodeInfo info = scm.get(id);
+		if(info == null) {
+			throw fail("'" + hex + "' Unknown opcode");
+		}
+		ArrayList<String> tokens = tokenize(body);
+		if((id & 0x7FFF) == 0x00D6) {
+			if(tokens.isEmpty()) {
+				tokens.add("0");
 			}
-			int num_conditions = !checkIfInteger(current.arguments.get(0)) ? -1 : Integer.parseInt(current.arguments.get(0));
-			if(num_conditions == -1 || num_conditions < 0 || 
-				num_conditions > 7 && num_conditions < 21 || 
-				num_conditions > 27) {
-				error = "Line "+line_idx+": invalid if argument\n1 ... 7 AND operator, 21 ... 27 OR operator, please specify the number of conditions.";
-				return false;
+			int n = isInt(tokens.get(0)) ? Integer.decode(tokens.get(0)) : -1;
+			if(n < 0 || (n > 7 && n < 21) || n > 27) {
+				throw fail("invalid if argument\n1 ... 7 AND operator, 21 ... 27 OR operator, please specify the number of conditions.");
 			}
 		}
-		Matcher matcher_ref = pattern_ref.matcher(reference);
-		while (matcher_ref.find()) {
-			String value = matcher_ref.group(1);
-			current.args_index.add(Integer.parseInt(value.replaceAll("[a-zA-Z]", "")) - 1);
+		boolean variadic = info.isVariadic();
+		int count = tokens.size();
+		if(variadic ? count < info.templateParams() : count != info.param_count) {
+			throw fail("missing parameters, expected " + (variadic ? "at least " + info.templateParams() : info.param_count) + ", given " + count);
 		}
-		if(current.param_count != -1 && current.arguments.size() != current.param_count) {
-			error = "Line "+line_idx+": missing parameters, expected "+current.param_count + ", given "+ current.arguments.size();
-			return false;
+		// token i -> parameter position according to the order of the %N% placeholders of the template
+		String[] params = new String[Math.max(count, info.templateParams())];
+		int extra = info.templateParams();
+		for(int i = 0; i < count; i++) {
+			int pos = i < info.placeholders.length ? info.placeholders[i] : extra++;
+			if(pos >= params.length) {
+				throw fail("parameter %" + (pos + 1) + "% out of range");
+			}
+			params[pos] = tokens.get(i);
 		}
-		return true;
+		w.writeShort(id);
+		for(int i = 0; i < params.length; i++) {
+			if(params[i] == null) {
+				throw fail("missing parameter " + (i + 1));
+			}
+			writeParam(w, buffer, fixups, id & 0x7FFF, params[i], info.kindOf(i));
+		}
+		if(variadic) {
+			w.writeByte(0); // terminator of the argument list
+		}
+	}
+
+	private void writeParam(FileStreamWriter w, ByteArrayOutputStream buffer, ArrayList<Fixup> fixups, int op, String arg, char kind) {
+		Matcher m;
+		if(kind == 'k') {
+			// raw 128-byte text, no type byte
+			if(arg.length() < 2 || arg.charAt(0) != '"' || arg.length() > 129) {
+				throw fail("expected a double-quoted text of up to 127 characters");
+			}
+			w.writeStringFromSize(128, arg.substring(1, arg.length() - 1));
+		} else if(op == 0x00D6) {
+			w.writeByte(0x04);
+			w.writeByte(Integer.decode(arg));
+		} else if(RE_LABEL.matcher(arg).matches()) {
+			w.writeByte(0x01);
+			Fixup f = new Fixup();
+			f.position = buffer.size();
+			f.label = arg;
+			f.line = line_idx;
+			fixups.add(f);
+			w.writeInt(0);
+		} else if(RE_MODEL.matcher(arg).matches()) {
+			int id = ide_collector.getIdByDefinition(arg.substring(1));
+			if(id == -1) {
+				throw fail("invalid definition '" + arg + "'");
+			}
+			writeInt(w, id);
+		} else if((m = RE_ARRAY.matcher(arg)).matches()) {
+			writeArray(w, m);
+		} else if((m = RE_GSTRVAR.matcher(arg)).matches()) {
+			w.writeByte(0xA);
+			w.writeShort(u16(m.group(1)));
+		} else if((m = RE_GSTR16VAR.matcher(arg)).matches()) {
+			w.writeByte(0x11);
+			w.writeShort(u16(m.group(1)));
+		} else if((m = RE_LSTRVAR.matcher(arg)).matches()) {
+			w.writeByte(0xB);
+			w.writeShort(u16(m.group(1)));
+			noteLocals(u16(m.group(1)), 2);
+		} else if((m = RE_LSTR16VAR.matcher(arg)).matches()) {
+			// not counted in the local variable total: the original header ignores them (vanilla mission 22 uses 21244@v)
+			w.writeByte(0x10);
+			w.writeShort(u16(m.group(1)));
+		} else if((m = RE_LOCAL.matcher(arg)).matches()) {
+			w.writeByte(0x3);
+			w.writeShort(u16(m.group(1)));
+			noteLocals(u16(m.group(1)), 1);
+		} else if(RE_GLOBAL.matcher(arg).matches()) {
+			w.writeByte(0x2);
+			w.writeShort(globalOffset(arg));
+		} else if(RE_INT.matcher(arg).matches()) {
+			writeInt(w, parseInt(arg));
+		} else if(RE_FLOAT.matcher(arg).matches()) {
+			w.writeByte(0x6);
+			w.writeFloat(Float.parseFloat(arg));
+		} else if(arg.startsWith("'") && arg.endsWith("'") && arg.length() >= 2) {
+			String s = arg.substring(1, arg.length() - 1);
+			if(s.length() > 16) {
+				throw fail("the text '" + s + "' is longer than 16 characters");
+			}
+			w.writeByte(s.length() > 8 ? 0xF : 0x9);
+			w.writeStringFromSize(s.length() > 8 ? 16 : 8, s);
+		} else if(arg.startsWith("\"") && arg.endsWith("\"") && arg.length() >= 2) {
+			String s = arg.substring(1, arg.length() - 1);
+			if(s.length() > 255) {
+				throw fail("the text is longer than 255 characters");
+			}
+			w.writeByte(0xE);
+			w.writeByte(s.length());
+			w.writeString(s);
+		} else {
+			throw fail("unrecognized argument '" + arg + "'");
+		}
+	}
+
+	/** Integer stored with the smallest type that holds it (int8, int16, int32). */
+	private static void writeInt(FileStreamWriter w, int v) {
+		if(v >= -128 && v <= 127) {
+			w.writeByte(0x4);
+			w.writeByte(v);
+		} else if(v >= -32768 && v <= 32767) {
+			w.writeByte(0x5);
+			w.writeShort(v);
+		} else {
+			w.writeByte(0x1);
+			w.writeInt(v);
+		}
+	}
+
+	private void writeArray(FileStreamWriter w, Matcher m) {
+		String base = m.group(1);
+		String index = m.group(2);
+		int size = Integer.parseInt(m.group(3));
+		int elem = "ifsv".indexOf(m.group(4).charAt(0));
+		if(size > 255) {
+			throw fail("array size " + size + " out of range (max 255)");
+		}
+		boolean global = base.startsWith("$");
+		boolean text = elem >= 2;
+		int width = elem == 2 ? 2 : (elem == 3 ? 4 : 1);
+		if(!global) {
+			noteLocals(u16(base.replace("@", "")), size * width);
+		}
+		if(!index.startsWith("$")) {
+			noteLocals(u16(index.replace("@", "")), 1);
+		}
+		w.writeByte(global ? (text ? 0xC : 0x7) : (text ? 0xD : 0x8));
+		w.writeShort(global ? globalOffset(base) : u16(base.replace("@", "")));
+		boolean global_index = index.startsWith("$");
+		w.writeShort(global_index ? globalOffset(index) : u16(index.replace("@", "")));
+		w.writeByte(size);
+		w.writeByte(elem | (global_index ? 0x80 : 0));
+	}
+
+	private void noteLocals(int first, int slots) {
+		localVariableCount = Math.max(localVariableCount, first + slots);
+	}
+
+	private int globalOffset(String arg) {
+		int fd = ide_collector.getGlobalIdByName(arg);
+		if(fd != -1) {
+			return fd;
+		}
+		if(arg.substring(1).matches("\\d+")) {
+			return u16(Long.toString(Long.parseLong(arg.substring(1)) * 4));
+		}
+		Integer autoIndex = auto_globals.get(arg);
+		if(autoIndex == null) {
+			autoIndex = next_auto_global_index++;
+			auto_globals.put(arg, autoIndex);
+		}
+		return autoIndex * 4;
+	}
+
+	private int u16(String digits) {
+		long v;
+		try {
+			v = Long.parseLong(digits);
+		} catch(NumberFormatException e) {
+			throw fail("invalid number '" + digits + "'");
+		}
+		if(v < 0 || v > 0xFFFF) {
+			throw fail("value " + v + " out of range (0..65535)");
+		}
+		return (int) v;
+	}
+
+	private int parseInt(String arg) {
+		try {
+			return Integer.decode(arg.startsWith("+") ? arg.substring(1) : arg);
+		} catch(NumberFormatException e) {
+			throw fail("integer out of range '" + arg + "'");
+		}
+	}
+
+	private static boolean isInt(String s) {
+		return RE_INT.matcher(s).matches();
+	}
+
+	/** Strips a // comment that is outside quotes. */
+	static String stripComment(String line) {
+		char quote = 0;
+		for(int i = 0; i < line.length(); i++) {
+			char c = line.charAt(i);
+			if(quote != 0) {
+				if(c == quote) {
+					quote = 0;
+				}
+			} else if(c == '\'' || c == '"') {
+				quote = c;
+			} else if(c == '/' && i + 1 < line.length() && line.charAt(i + 1) == '/') {
+				return line.substring(0, i);
+			}
+		}
+		return line;
+	}
+
+	/** Splits the body of the instruction into arguments; template words (which are not arguments) are discarded. */
+	private ArrayList<String> tokenize(String body) {
+		ArrayList<String> tokens = new ArrayList<>();
+		int i = 0, n = body.length();
+		while(i < n) {
+			char c = body.charAt(i);
+			if(Character.isWhitespace(c)) {
+				i++;
+				continue;
+			}
+			int j = i;
+			if(c == '\'' || c == '"') {
+				j = body.indexOf(c, i + 1);
+				if(j < 0) {
+					throw fail("unterminated quote");
+				}
+				j++;
+			} else {
+				while(j < n && !Character.isWhitespace(body.charAt(j))) {
+					j++;
+				}
+			}
+			String chunk = body.substring(i, j);
+			i = j;
+			if(isArgument(chunk)) {
+				tokens.add(chunk);
+			}
+		}
+		return tokens;
+	}
+
+	private static boolean isArgument(String s) {
+		char c = s.charAt(0);
+		if(c == '\'' || c == '"') {
+			return true;
+		}
+		return RE_LABEL.matcher(s).matches() || RE_GLOBAL.matcher(s).matches() || RE_MODEL.matcher(s).matches()
+			|| RE_LOCAL.matcher(s).matches() || RE_GSTRVAR.matcher(s).matches() || RE_GSTR16VAR.matcher(s).matches()
+			|| RE_LSTRVAR.matcher(s).matches() || RE_LSTR16VAR.matcher(s).matches() || RE_ARRAY.matcher(s).matches()
+			|| RE_FLOAT.matcher(s).matches() || RE_INT.matcher(s).matches();
 	}
 }
