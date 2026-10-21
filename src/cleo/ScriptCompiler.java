@@ -50,6 +50,10 @@ public class ScriptCompiler
 	public Map<String, Integer> labelAddresses = new HashMap<>();
 	/** Local variable slots used by the last compiled source (highest index + 1; text variables count their width). */
 	public int localVariableCount;
+	/** Append a Sanny Builder footer (global variable names, see ScriptFooter) to the compiled code. */
+	public boolean footer = false;
+	private HashMap<String, Integer> declaredGlobals = new HashMap<>();
+	private TreeMap<String, Integer> usedGlobalNames = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
 
 	private static class Fixup {
 		int position;
@@ -104,10 +108,21 @@ public class ScriptCompiler
 		format = ".cs";
 		line_idx = 0;
 		localVariableCount = 0;
+		declaredGlobals.clear();
+		usedGlobalNames.clear();
 		for(String raw : source.split("\r?\n", -1)) {
 			line_idx++;
 			String line = stripComment(raw).trim();
 			if(line.isEmpty()) {
+				continue;
+			}
+			if(line.startsWith("{$VAR ")) {
+				// {$VAR name index}: $name is the global variable with that index (written by the decompiler for Sanny footers)
+				String[] parts = line.substring(1, line.length() - (line.endsWith("}") ? 1 : 0)).trim().split("\\s+");
+				if(parts.length != 3 || !parts[1].matches("[A-Za-z_]\\w*") || !parts[2].matches("\\d+")) {
+					throw fail("expected {$VAR name index}");
+				}
+				declaredGlobals.put("$" + parts[1], u16(Long.toString(Long.parseLong(parts[2]) * 4)));
 				continue;
 			}
 			if(line.startsWith("{$")) {
@@ -145,6 +160,12 @@ public class ScriptCompiler
 			for(int i = 0; i < 4; i++) {
 				code[f.position + i] = (byte) (v >> (8 * i));
 			}
+		}
+		if(footer) {
+			byte[] tail = ScriptFooter.encode(code.length, usedGlobalNames);
+			byte[] all = Arrays.copyOf(code, code.length + tail.length);
+			System.arraycopy(tail, 0, all, code.length, tail.length);
+			return all;
 		}
 		return code;
 	}
@@ -328,6 +349,18 @@ public class ScriptCompiler
 	}
 
 	private int globalOffset(String arg) {
+		int offset = resolveGlobal(arg);
+		if(!Character.isDigit(arg.charAt(1))) {
+			usedGlobalNames.put(arg.substring(1), offset / 4);
+		}
+		return offset;
+	}
+
+	private int resolveGlobal(String arg) {
+		Integer declared = declaredGlobals.get(arg);
+		if(declared != null) {
+			return declared;
+		}
 		int fd = ide_collector.getGlobalIdByName(arg);
 		if(fd != -1) {
 			return fd;

@@ -23,6 +23,9 @@ public class SCMLoader
 				if(line.startsWith(";") || line.length() == 0 || line.startsWith("[") || line.startsWith("DATE")) {
 					continue;
 				}
+				if(line.matches("[0-9A-Fa-f]{4}=\\s*")) {
+					continue; // an opcode without a definition (Sanny Builder lists some like this)
+				}
 				int idx_start = line.indexOf(',');
 				int idx_eq = line.indexOf('=');
 				if(idx_start < 0 || idx_eq < 0 || idx_eq > idx_start) {

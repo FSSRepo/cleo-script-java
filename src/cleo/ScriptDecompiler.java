@@ -38,6 +38,16 @@ public class ScriptDecompiler
 		public String format = ".cs";
 		/** Header with the compiler directive. */
 		public boolean header = true;
+		/**
+		 * Whole-file decompilation only: if the file ends with a Sanny Builder footer, stop at the end of the code and use the
+		 * variable names it stores. The names used are declared in the output with {$VAR name index} so it compiles back.
+		 */
+		public boolean useFooter = true;
+		/**
+		 * Whole-file decompilation only: handle scripts "blocked" with junk after a jump. A script that starts with a jump
+		 * continues at its target, and once an unknown opcode that follows a jump continues at that jump's target.
+		 */
+		public boolean unblock = true;
 		/** Positive jump values are absolute addresses (main thread of main.scm); otherwise only non-positive values are jumps. */
 		public boolean absoluteJumps = false;
 		/**
@@ -51,6 +61,7 @@ public class ScriptDecompiler
 
 	private static final Pattern PLACEHOLDER = Pattern.compile("%(\\d+)([a-zA-Z]?)%");
 	private static final Pattern SAFE_NAME = Pattern.compile("[^A-Za-z0-9_]");
+	private static final Pattern VAR_NAME = Pattern.compile("[A-Za-z_]\\w*");
 
 	private static final int T_END = 0x0, T_INT32 = 0x1, T_GVAR = 0x2, T_LVAR = 0x3, T_INT8 = 0x4, T_INT16 = 0x5,
 		T_FLOAT = 0x6, T_GARRAY = 0x7, T_LARRAY = 0x8, T_STR8 = 0x9, T_GSTRVAR = 0xA, T_LSTRVAR = 0xB,
@@ -60,6 +71,10 @@ public class ScriptDecompiler
 	private IDECollector ide_collector;
 	private ArrayList<String> warnings = new ArrayList<>();
 	private TreeSet<Integer> mainReferences = new TreeSet<>();
+	private ScriptFooter footer;
+	private boolean blocked;
+	private HashMap<Integer, String> footerNames = new HashMap<>();
+	private TreeMap<Integer, String> usedFooterNames = new TreeMap<>();
 
 	private static class Arg {
 		String text;
@@ -111,10 +126,27 @@ public class ScriptDecompiler
 		return mainReferences;
 	}
 
+	/** Footer found by the last decompilation (see Options.useFooter); null if there was none. */
+	public ScriptFooter getFooter() {
+		return footer;
+	}
+
 	public String decompile(byte[] data, Options opt) {
 		warnings.clear();
 		mainReferences.clear();
-		int end = opt.end < 0 ? data.length : Math.min(opt.end, data.length);
+		blocked = false;
+		footerNames.clear();
+		usedFooterNames.clear();
+		footer = opt.useFooter && opt.start == 0 && opt.end < 0 ? ScriptFooter.parse(data) : null;
+		if(footer != null) {
+			for(Map.Entry<String, Integer> e : footer.variables.entrySet()) {
+				// only names the compiler can read back, and not a plain number
+				if(VAR_NAME.matcher(e.getKey()).matches()) {
+					footerNames.putIfAbsent(e.getValue() * 4, e.getKey());
+				}
+			}
+		}
+		int end = opt.end < 0 ? (footer != null ? footer.codeLength : data.length) : Math.min(opt.end, data.length);
 		if(opt.start < 0 || opt.start > end) {
 			throw new ScriptFormatException("Invalid range: start=" + opt.start + " end=" + end, opt.start);
 		}
@@ -153,6 +185,12 @@ public class ScriptDecompiler
 		StringBuilder out = new StringBuilder();
 		if(opt.header) {
 			out.append("// This file was decompiled using SASCM.ini\n{$CLEO ").append(opt.format).append("}\n\n");
+		}
+		for(Map.Entry<Integer, String> e : usedFooterNames.entrySet()) {
+			out.append("{$VAR ").append(e.getValue()).append(' ').append(e.getKey() / 4).append("}\n");
+		}
+		if(blocked) {
+			out.append("// CLEO Script blocked\n\n");
 		}
 		for(Instr in : code) {
 			if(addresses.contains(in.address)) {
@@ -207,6 +245,8 @@ public class ScriptDecompiler
 	private ArrayList<Instr> decode(byte[] data, Options opt, int end) {
 		ArrayList<Instr> code = new ArrayList<>();
 		Cursor cur = new Cursor(data, opt.start, end);
+		boolean unblock = opt.unblock && opt.start == 0;
+		boolean first_try_unblock = true;
 		while(cur.pos + 2 <= end) {
 			Instr in = new Instr();
 			in.offset = cur.pos;
@@ -216,6 +256,16 @@ public class ScriptDecompiler
 				in.invert = in.id > 0x7FFF;
 				in.info = scm.get(in.id);
 				if(in.info == null) {
+					Instr last = code.isEmpty() ? null : code.get(code.size() - 1);
+					if(unblock && first_try_unblock && last != null && last.id == 0x0002 && last.args.size() == 1 && last.args.get(0).literal) {
+						// junk after a jump: continue at its target once
+						int target = -last.args.get(0).value;
+						if(target > cur.pos - 2 && target < end) {
+							first_try_unblock = false;
+							cur.pos = target;
+							continue;
+						}
+					}
 					warnings.add(String.format("%d: unknown opcode %04X, decompilation stopped", in.address, in.id));
 					break;
 				}
@@ -225,6 +275,14 @@ public class ScriptDecompiler
 				break;
 			}
 			code.add(in);
+			if(unblock && code.size() == 1 && in.id == 0x0002 && in.args.size() == 1 && in.args.get(0).literal && in.args.get(0).value < 0) {
+				// a script that starts with a jump: the bytes in between are not code
+				int target = -in.args.get(0).value;
+				if(target > cur.pos && target < end) {
+					blocked = true;
+					cur.pos = target;
+				}
+			}
 		}
 		return code;
 	}
@@ -330,6 +388,12 @@ public class ScriptDecompiler
 
 	private String globalVar(int offset) {
 		String def = ide_collector.getDefinitionById(offset, true);
+		String own = footerNames.get(offset);
+		if(own != null && !("$" + own).equals(def)) {
+			// a name the project does not define: declare it in the output ({$VAR name index})
+			usedFooterNames.put(offset, own);
+			return "$" + own;
+		}
 		return def != null ? def : "$" + (offset / 4);
 	}
 

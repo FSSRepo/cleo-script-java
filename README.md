@@ -50,6 +50,35 @@ java -cp bin Main build project/ -o main.scm
 Variadic opcodes (`start_new_script`, `call_function`, ...) end their argument list with a `0x00` type byte; the
 decompiler reads it and the compiler writes it.
 
+# Scripts compiled by Sanny Builder
+
+Sanny Builder 4 appends a footer to the `.cs` files it compiles (layout read back from `sanny.exe` and checked against
+`res/cheats.cs`, which Sanny compiled):
+
+```
+code
+"E\0"                                  marks a footer written by Sanny 4
+"VAR\0" u32 n, n x { name\0, i32 index }  names of the global variables ($index) used by the project
+[ "FLAG\0" u32, "SRC\0" u32 length + source text ]   optional: the source of the script
+u32 codeLength, "__SBFTR\0"            the last 12 bytes of the file
+```
+
+The decompiler stops at the end of the code (no more "unknown opcode" warning at the data) and uses the variable names,
+declaring the ones the project does not define in the output as `{$VAR name index}` so the text compiles back to the same
+variables. Use `--no-footer` to ignore it. `compile --footer` writes a footer with the variable names the script uses.
+`ScriptFooter.parse(bytes)` also exposes the embedded source (`source`) when the file carries it.
+
+The compiler reproduces Sanny's code: decompiling `res/cheats.cs` and compiling the text again gives code of the same size,
+and the only bytes that differ are the stale bytes Sanny leaves after the NUL of 8-byte texts (written as zero here).
+
+Other details: scripts that start with a jump over junk bytes ("blocked" scripts) are decompiled from the jump target, and an unknown opcode
+right after a jump continues at that target once (`unblock`, on by default). Several opcode lists can be loaded (later files
+override earlier ones), for example Sanny's own files:
+
+```
+java -cp bin Main decompile script.cs --ini "<Sanny>/data/sa/SASCM.INI,<Sanny>/data/sa/SASCM.CLEO.ini,<Sanny>/data/sa/SASCM.NewOpcodes.ini"
+```
+
 # Building a GTA SA main.scm
 
 `export` writes a folder:

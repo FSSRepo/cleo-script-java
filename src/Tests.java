@@ -173,6 +173,18 @@ public class Tests
 		check("unknown opcode: warning", d.getWarnings().size() == 1);
 		d.decompile(new byte[] { 0x01, 0x00, 0x01, 0x00 }, o);
 		check("truncated data: warning", d.getWarnings().size() == 1);
+		// a "blocked" script: it starts with a jump over junk bytes
+		byte[] blockedScript = { 0x02, 0x00, 0x01, (byte) 0xE9, (byte) 0xFF, (byte) 0xFF, (byte) 0xFF, (byte) 0xEE, (byte) 0xEE,
+			(byte) 0xEE, (byte) 0xEE, (byte) 0xEE, (byte) 0xEE, (byte) 0xEE, (byte) 0xEE, (byte) 0xEE, (byte) 0xEE, (byte) 0xEE,
+			(byte) 0xEE, (byte) 0xEE, (byte) 0xEE, (byte) 0xEE, (byte) 0xEE, 0x01, 0x00, 0x04, 0x05 };
+		ScriptDecompiler.Options bo = new ScriptDecompiler.Options();
+		bo.header = false;
+		String unblocked = new ScriptDecompiler(scm, ide).decompile(blockedScript, bo);
+		check("blocked script: continues after the jump", unblocked.contains("0001: wait 5 ms") && unblocked.contains("CLEO Script blocked"));
+		bo.unblock = false;
+		ScriptDecompiler plain = new ScriptDecompiler(scm, ide);
+		plain.decompile(blockedScript, bo);
+		check("blocked script: unblock=false stops with a warning", plain.getWarnings().size() == 1);
 		// references to the main thread become @MAIN_x labels
 		ScriptDecompiler.Options r = new ScriptDecompiler.Options();
 		r.header = false;
@@ -183,13 +195,36 @@ public class Tests
 	}
 
 	private static void roundTripCleo() throws IOException {
-		// decompile -> compile -> decompile gives the same text
+		// decompile -> compile -> decompile gives the same text (with the footer, so the variable names survive)
 		for(String f : new String[] { "res/cheats.cs", "res/bigfoot.cs" }) {
 			byte[] bin = Files.readAllBytes(Paths.get(f));
 			ScriptDecompiler dec = new ScriptDecompiler(scm, ide);
 			String t1 = dec.decompile(bin, new ScriptDecompiler.Options());
-			eq("round trip " + f, t1, dec.decompile(compile(t1), new ScriptDecompiler.Options()));
+			check("no warnings for " + f + " " + dec.getWarnings(), dec.getWarnings().isEmpty());
+			ScriptCompiler c = new ScriptCompiler(scm, ide);
+			c.footer = true;
+			eq("round trip " + f, t1, dec.decompile(c.compileSource(t1), new ScriptDecompiler.Options()));
 		}
+		// cheats.cs was compiled by Sanny Builder: it carries a footer with 754 variable names
+		byte[] cheats = Files.readAllBytes(Paths.get("res/cheats.cs"));
+		ScriptFooter footer = ScriptFooter.parse(cheats);
+		check("cheats.cs has a Sanny footer", footer != null);
+		if(footer != null) {
+			eq("footer: code length", 51488, footer.codeLength);
+			eq("footer: variable count", 754, footer.variables.size());
+			eq("footer: Active_Interior is $43", Integer.valueOf(43), footer.variables.get("Active_Interior"));
+			check("footer: extended", footer.extended);
+			// our compiler reproduces Sanny's code; the only differences are the stale bytes after the NUL of 8-byte texts
+			ScriptDecompiler dec = new ScriptDecompiler(scm, ide);
+			byte[] ours = compile(dec.decompile(cheats, new ScriptDecompiler.Options()));
+			eq("cheats.cs: same code size as Sanny's", footer.codeLength, ours.length);
+			boolean onlyPadding = true;
+			for(int i = 0; i < ours.length; i++) {
+				onlyPadding &= cheats[i] == ours[i] || ours[i] == 0;
+			}
+			check("cheats.cs: bytes that differ are only text padding", onlyPadding);
+		}
+		check("no footer in a script without it", ScriptFooter.parse(Files.readAllBytes(Paths.get("res/bigfoot.cs"))) == null);
 		byte[] a = Files.readAllBytes(Paths.get("res/bigfoot.cs"));
 		String t = new ScriptDecompiler(scm, ide).decompile(a, new ScriptDecompiler.Options());
 		check("bigfoot: identical bytes", Arrays.equals(a, compile(t)));

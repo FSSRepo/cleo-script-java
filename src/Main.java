@@ -15,7 +15,8 @@ public class Main
 		"Usage:\n" +
 		"  java -cp bin Main                        demo: compiles res/bigfoot.txt and decompiles res/cheats.cs\n" +
 		"  java -cp bin Main decompile <file> [options]    decompiles a .cs / .scm / binary file\n" +
-		"  java -cp bin Main compile <source.txt> [-o output]  compiles to .cs\n" +
+		"  java -cp bin Main compile <source.txt> [-o output] [--absolute --base N] [--footer]\n" +
+		"                                                      compiles to .cs (--footer appends a Sanny Builder footer with the variable names)\n" +
 		"  java -cp bin Main export <main.scm> <dir> [--missions file|none] [--names file|none]   export main.scm to editable text (default res/missions.txt, res/CustomVariables.ini)\n" +
 		"  java -cp bin Main build <dir> -o <main.scm>         rebuild main.scm (header, offsets and references recomputed)\n" +
 		"  java -cp bin Main scm <main.scm> info               segments and mission table\n" +
@@ -27,9 +28,10 @@ public class Main
 		"  --base N            address of the first byte of the range\n" +
 		"  --name NAME         name used for labels\n" +
 		"  --absolute          positive jump values are absolute addresses (main thread of main.scm)\n" +
+		"  --no-footer         ignore the Sanny Builder footer of a .cs (by default the code stops there and its variable names are used)\n" +
 		"  --offsets           appends '// address' to every line\n" +
 		"Common options:\n" +
-		"  --ini <SASCM.INI>   (default res/SASCM.INI)\n" +
+		"  --ini <a.ini,b.ini> opcode lists, later ones override (default res/SASCM.INI)\n" +
 		"  --ide <a.ide,b.ide,...>   (default res/vehicles.ide,peds.ide,default.ide,globals.ide)\n";
 
 	public static void main(String[] args)
@@ -56,7 +58,7 @@ public class Main
 		ArrayList<String> pos = new ArrayList<>();
 		for(int i = 1; i < args.length; i++) {
 			String a = args[i];
-			if(a.equals("--offsets") || a.equals("--absolute")) {
+			if(a.equals("--offsets") || a.equals("--absolute") || a.equals("--footer") || a.equals("--no-footer")) {
 				opt.put(a.substring(2), "1");
 			} else if(a.startsWith("-") && a.length() > 1 && !Character.isDigit(a.charAt(1))) {
 				if(i + 1 >= args.length) {
@@ -73,12 +75,16 @@ public class Main
 			ide.load(f.trim());
 		}
 		SCMLoader scm = new SCMLoader();
-		scm.load(opt.getOrDefault("ini", "res/SASCM.INI"));
+		// several opcode lists can be given (later files override earlier ones), e.g. Sanny Builder's SASCM.INI,SASCM.CLEO.ini
+		for(String f : opt.getOrDefault("ini", "res/SASCM.INI").split(",")) {
+			scm.load(f.trim());
+		}
 		switch(cmd) {
 			case "compile": {
 				need(pos, 1, "compile <source.txt>");
 				ScriptCompiler comp = new ScriptCompiler(scm, ide);
 				comp.absoluteJumps = opt.containsKey("absolute");
+				comp.footer = opt.containsKey("footer");
 				if(opt.containsKey("base")) {
 					comp.origin = Integer.decode(opt.get("base"));
 				}
@@ -185,6 +191,7 @@ public class Main
 		if(opt.containsKey("name")) o.scriptName = opt.get("name");
 		o.showOffsets = opt.containsKey("offsets");
 		o.absoluteJumps = opt.containsKey("absolute");
+		o.useFooter = !opt.containsKey("no-footer");
 		return o;
 	}
 
